@@ -17,7 +17,11 @@ class MyApp extends StatelessWidget {
           return Text('Error goes here');
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return MyHomePage();
+          return MaterialApp(
+            home: MyHomePage(
+              title: 'MyHomePage',
+            ),
+          );
         }
         return CircularProgressIndicator();
       },
