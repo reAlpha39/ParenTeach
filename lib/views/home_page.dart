@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String dummyText =
+        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya. Read More...';
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -11,6 +14,7 @@ class HomePage extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(horizontal: margin, vertical: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +41,71 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Stack(
+                  children: [
+                    Container(
+                      height: 164,
+                      width: Get.width,
+                      decoration: BoxDecoration(
+                        color: pinkColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Selamat Datang di \nParenTeach',
+                              style: whiteTextBold.copyWith(fontSize: 18),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.all(5),
+                                  primary: Colors.white,
+                                  elevation: 0),
+                              child: Text(
+                                'Explore',
+                                style: pinkText.copyWith(fontSize: 12),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // Illustrasi (Belum tau responsive apa belum)
+                    Positioned(
+                      top: 30,
+                      right: 10,
+                      child: Container(
+                        height: 170,
+                        width: 170,
+                        child: Image.asset('assets/reading.png'),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  'Apa itu parenting?',
+                  style: blackTextBold.copyWith(fontSize: 15),
+                ),
+                Text(
+                  dummyText,
+                  style: blackText,
+                ),
+                Text(
+                  'Fitur Kita',
+                  style: blackTextBold.copyWith(fontSize: 15),
+                ),
               ],
             ),
           ),

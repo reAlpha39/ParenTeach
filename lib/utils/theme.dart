@@ -19,3 +19,19 @@ TextStyle blackTextBold = GoogleFonts.poppins(fontWeight: FontWeight.bold);
 TextStyle blackText2 = GoogleFonts.poppins(color: blackColor2);
 TextStyle blackTextBold2 =
     GoogleFonts.poppins(color: blackColor2, fontWeight: FontWeight.bold);
+
+/// Black Text Style
+/// Gunakan method copyWith() untuk mengubah propertinya
+TextStyle whiteText = GoogleFonts.poppins(
+  color: Colors.white,
+);
+TextStyle whiteTextBold =
+    GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold);
+
+/// Black Text Style
+/// Gunakan method copyWith() untuk mengubah propertinya
+TextStyle pinkText = GoogleFonts.poppins(
+  color: pinkColor,
+);
+TextStyle pinkTextBold =
+    GoogleFonts.poppins(color: pinkColor, fontWeight: FontWeight.bold);
