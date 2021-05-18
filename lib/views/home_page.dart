@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/widgets/kotak_fitur.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String dummyText =
         'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya. Read More...';
+    List fitur = [
+      'Reminding',
+      'Activities',
+      'Playground',
+      'Rapot',
+      'QnA',
+      'Blog'
+    ];
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -92,20 +101,53 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Text(
                   'Apa itu parenting?',
                   style: blackTextBold.copyWith(fontSize: 15),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Text(
                   dummyText,
                   style: blackText,
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Text(
                   'Fitur Kita',
                   style: blackTextBold.copyWith(fontSize: 15),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  runSpacing: 12,
+                  children: List.generate(
+                    6,
+                    (index) => (index == 1)
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                            child: KotakFitur(
+                              fitur: fitur[index],
+                            ),
+                          )
+                        : (index == 4)
+                            ? Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 25),
+                                child: KotakFitur(
+                                  fitur: fitur[index],
+                                ),
+                              )
+                            : KotakFitur(
+                                fitur: fitur[index],
+                              ),
+                  ),
+                )
               ],
             ),
           ),
