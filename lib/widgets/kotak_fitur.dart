@@ -16,6 +16,9 @@ class KotakFitur extends StatelessWidget {
             color: pinkColor,
             borderRadius: BorderRadius.circular(10),
           ),
+          child: Image.asset(
+            buildFiturImage(fitur),
+          ),
         ),
         Text(
           fitur,
@@ -23,5 +26,24 @@ class KotakFitur extends StatelessWidget {
         )
       ],
     );
+  }
+
+  String buildFiturImage(String fitur) {
+    switch (fitur) {
+      case 'Reminding':
+        return 'assets/fitur1.png';
+      case 'Activities':
+        return 'assets/fitur2.png';
+      case 'Playground':
+        return 'assets/fitur3.png';
+      case 'Rapot':
+        return 'assets/fitur4.png';
+      case 'QnA':
+        return 'assets/fitur5.png';
+      case 'Blog':
+        return 'assets/fitur6.png';
+      default:
+        return '';
+    }
   }
 }
