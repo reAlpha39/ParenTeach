@@ -6,6 +6,7 @@ class PlaygroundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: greyBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -66,7 +67,41 @@ class PlaygroundPage extends StatelessWidget {
                           'Ayo Bermain',
                           style: whiteText.copyWith(fontSize: 18),
                         ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         //TODO: Buat Permainan
+                        Center(
+                          child: Wrap(
+                            runSpacing: 20,
+                            spacing: 20,
+                            runAlignment: WrapAlignment.spaceBetween,
+                            children: List.generate(
+                              6,
+                              (index) => Container(
+                                height: 170,
+                                width: 170,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Container(
+                        //   child: Expanded(
+                        //     child: GridView.count(
+                        //       crossAxisCount: 2,
+                        //       children: <Widget>[
+                        //         FlutterLogo(),
+                        //         FlutterLogo(),
+                        //         FlutterLogo(),
+                        //         FlutterLogo(),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // )
                       ],
                     ),
                   ),
