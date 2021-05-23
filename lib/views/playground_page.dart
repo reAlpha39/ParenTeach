@@ -50,7 +50,7 @@ class PlaygroundPage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'Activities',
+                              'Playground',
                               style: whiteTextBold.copyWith(fontSize: 24),
                             ),
                             Icon(
