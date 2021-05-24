@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:parenteach/views/activities_page.dart';
 import 'package:parenteach/views/home_page.dart';
 
 void main() {
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: ActivitiesPage(),
+            home: HomePage(),
           );
         }
         return CircularProgressIndicator();

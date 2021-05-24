@@ -124,30 +124,18 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Wrap(
-                  runSpacing: 12,
+                GridView(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 10, crossAxisCount: 3),
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   children: List.generate(
                     6,
-                    (index) => (index == 1)
-                        ? Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 25),
-                            child: KotakFitur(
-                              fitur: fitur[index],
-                            ),
-                          )
-                        : (index == 4)
-                            ? Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 25),
-                                child: KotakFitur(
-                                  fitur: fitur[index],
-                                ),
-                              )
-                            : KotakFitur(
-                                fitur: fitur[index],
-                              ),
+                    (index) => KotakFitur(
+                      fitur: fitur[index],
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),

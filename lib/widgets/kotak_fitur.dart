@@ -10,8 +10,8 @@ class KotakFitur extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 110,
-          width: 100,
+          height: 95,
+          width: 110,
           decoration: BoxDecoration(
             color: pinkColor,
             borderRadius: BorderRadius.circular(10),
