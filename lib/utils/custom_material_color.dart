@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-const Color primaryColor = Color(0xffe1f5fe);
-
 MaterialColor customMaterialColor(Color color) {
   List strengths = <double>[.05];
   Map swatch = <int, Color>{};
