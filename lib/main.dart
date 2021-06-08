@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:parenteach/routes/login_binding.dart';
 import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/routes/routes.dart';
+import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/utils/utils.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
             getPages: Routes.route,
             initialRoute: routeName.reverse[RouteName.LOGINPAGE],
             initialBinding: LoginBinding(),
+            theme: ThemeData(
+              primarySwatch: customMaterialColor(pinkColor),
+            ),
           );
         }
         return CircularProgressIndicator();
