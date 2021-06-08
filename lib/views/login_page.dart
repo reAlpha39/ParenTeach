@@ -94,11 +94,14 @@ class LoginPage extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.centerRight,
-                          child: Text(
-                            'Forgot Password?',
-                            style: blackText.copyWith(
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic,
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              'Forgot Password?',
+                              style: blackText.copyWith(
+                                fontSize: 12,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                         ),
