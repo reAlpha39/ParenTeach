@@ -180,13 +180,8 @@ class LoginPage extends StatelessWidget {
             child: _buttonState(),
           ),
         ),
-        onPressed: isEnabled
-            ? () {
-                Get.offAndToNamed(
-                  routeName.reverse[RouteName.HOMEPAGE]!,
-                );
-              }
-            : null,
+        onPressed:
+            isEnabled ? () => _loginController.initializeFirestore() : null,
       ),
     );
   }
