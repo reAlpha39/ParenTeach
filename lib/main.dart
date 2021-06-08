@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:parenteach/views/home_page.dart';
+import 'package:get/get.dart';
+import 'package:parenteach/routes/login_binding.dart';
+import 'package:parenteach/routes/route_name.dart';
+import 'package:parenteach/routes/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +21,12 @@ class MyApp extends StatelessWidget {
           return Text('Error goes here');
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
+          return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            home: HomePage(),
+            title: 'Parenteach',
+            getPages: Routes.route,
+            initialRoute: routeName.reverse[RouteName.LOGINPAGE],
+            initialBinding: LoginBinding(),
           );
         }
         return CircularProgressIndicator();
