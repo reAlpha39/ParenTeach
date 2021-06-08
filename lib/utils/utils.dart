@@ -1,1 +1,1 @@
-export 'custom_color.dart';
+export 'custom_material_color.dart';
