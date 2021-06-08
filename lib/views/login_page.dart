@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/login_controller.dart';
-import 'package:parenteach/utils/custom_scroll_behavior.dart';
-import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/login_provider.dart';
 import 'package:parenteach/widgets/login_textfield.dart';
 

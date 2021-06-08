@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:parenteach/routes/login_binding.dart';
 import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/views/home_page.dart';
-import 'package:parenteach/views/login_page.dart';
+import 'package:parenteach/views/views.dart';
 
 class Routes {
   static final route = [
