@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/login_controller.dart';
@@ -12,152 +14,156 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () =>
-            WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
-        child: Align(
-          alignment: Alignment.center,
-          child: ScrollConfiguration(
-            behavior: CustomScrollBehavior(),
-            child: SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 24.0),
-                        child: Text(
-                          'ParenTeach',
-                          style: pinkTextBold.copyWith(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 36,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 1,
-                        width: 150,
-                        color: pinkColor,
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: 200,
-                    width: 200,
-                    child: Image.asset('assets/saly.png'),
-                  ),
-                  Container(
-                    width: 280,
-                    child: Column(
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        body: GestureDetector(
+          onTap: () =>
+              WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
+          child: Align(
+            alignment: Alignment.center,
+            child: ScrollConfiguration(
+              behavior: CustomScrollBehavior(),
+              child: SingleChildScrollView(
+                physics: ClampingScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 24.0),
                           child: Text(
-                            'Login In Your Account',
-                            style: blackTextBold,
-                          ),
-                        ),
-                        Container(
-                          height: 65,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                          ),
-                          child: LoginTextField(
-                            textEditingController: _loginController.passSekolah,
-                            labelText: 'Password Sekolah',
-                          ),
-                        ),
-                        Container(
-                          height: 65,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                          ),
-                          child: LoginTextField(
-                            textEditingController: _loginController.username,
-                            labelText: 'Username/Email',
-                          ),
-                        ),
-                        Container(
-                          height: 65,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                          ),
-                          child: LoginTextField(
-                            textEditingController: _loginController.password,
-                            labelText: 'Password',
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              'Forgot Password?',
-                              style: blackText.copyWith(
-                                fontSize: 12,
-                                fontStyle: FontStyle.italic,
-                              ),
+                            'ParenTeach',
+                            style: pinkTextBold.copyWith(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 36,
                             ),
                           ),
                         ),
-                        Obx(
-                          () => _loginButton(),
-                        ),
+                        Container(
+                          height: 1,
+                          width: 150,
+                          color: pinkColor,
+                        )
                       ],
                     ),
-                  ),
-                  Text(
-                    'Login With',
-                    style: blackText,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8.0,
+                    Container(
+                      height: 200,
+                      width: 200,
+                      child: Image.asset('assets/saly.png'),
                     ),
-                    width: 220,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        LoginProvider(
-                          imageAsset: 'assets/google_logo.png',
-                        ),
-                        LoginProvider(
-                          imageAsset: 'assets/google_logo.png',
-                        ),
-                        LoginProvider(
-                          imageAsset: 'assets/google_logo.png',
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Don't have Account? ",
-                        style: blackText,
+                    Container(
+                      width: 280,
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Login In Your Account',
+                              style: blackTextBold,
+                            ),
+                          ),
+                          Container(
+                            height: 65,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                            ),
+                            child: LoginTextField(
+                              textEditingController:
+                                  _loginController.passSekolah,
+                              labelText: 'Password Sekolah',
+                            ),
+                          ),
+                          Container(
+                            height: 65,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                            ),
+                            child: LoginTextField(
+                              textEditingController: _loginController.username,
+                              labelText: 'Username/Email',
+                            ),
+                          ),
+                          Container(
+                            height: 65,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                            ),
+                            child: LoginTextField(
+                              textEditingController: _loginController.password,
+                              labelText: 'Password',
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                'Forgot Password?',
+                                style: blackText.copyWith(
+                                  fontSize: 12,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Obx(
+                            () => _loginButton(),
+                          ),
+                        ],
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.black),
+                    ),
+                    Text(
+                      'Login With',
+                      style: blackText,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8.0,
+                      ),
+                      width: 220,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          LoginProvider(
+                            imageAsset: 'assets/google_logo.png',
+                          ),
+                          LoginProvider(
+                            imageAsset: 'assets/google_logo.png',
+                          ),
+                          LoginProvider(
+                            imageAsset: 'assets/google_logo.png',
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have Account? ",
+                          style: blackText,
                         ),
-                        child: Text(
-                          "Sign Up",
-                          style: blackTextBold.copyWith(
-                            fontStyle: FontStyle.italic,
+                        TextButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                          ),
+                          child: Text(
+                            "Sign Up",
+                            style: blackTextBold.copyWith(
+                              fontStyle: FontStyle.italic,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -215,5 +221,28 @@ class LoginPage extends StatelessWidget {
         style: whiteText.copyWith(fontSize: 16),
       );
     }
+  }
+
+  Future<bool> _onWillPop() {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Exit',
+      content: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 4,
+          horizontal: 12,
+        ),
+        child: Center(
+          child: Text('Apakah anda ingin keluar dari aplikasi?'),
+        ),
+      ),
+      textConfirm: 'OK',
+      textCancel: 'Batal',
+      buttonColor: pinkColor,
+      cancelTextColor: Colors.black87,
+      confirmTextColor: Colors.white,
+      onConfirm: () => exit(0),
+      onCancel: () => Get.back(),
+    ).then((value) => value = false);
   }
 }
