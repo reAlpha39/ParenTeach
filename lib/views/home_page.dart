@@ -111,12 +111,17 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       HomeFiturCard(
                         route: RouteName.PLAYGROUNDPAGE,
                         imageAsset: 'assets/playground_menu_icon.png',
                         titleCard: 'Playground',
+                      ),
+                      HomeFiturCard(
+                        route: RouteName.ACTIVITIESPAGE,
+                        imageAsset: 'assets/playground_menu_icon.png',
+                        titleCard: 'Activities',
                       ),
                     ],
                   ),
