@@ -114,14 +114,14 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       HomeFiturCard(
+                        route: RouteName.ACTIVITIESPAGE,
+                        imageAsset: 'assets/activities_menu_icon.png',
+                        titleCard: 'Activities',
+                      ),
+                      HomeFiturCard(
                         route: RouteName.PLAYGROUNDPAGE,
                         imageAsset: 'assets/playground_menu_icon.png',
                         titleCard: 'Playground',
-                      ),
-                      HomeFiturCard(
-                        route: RouteName.ACTIVITIESPAGE,
-                        imageAsset: 'assets/playground_menu_icon.png',
-                        titleCard: 'Activities',
                       ),
                     ],
                   ),
