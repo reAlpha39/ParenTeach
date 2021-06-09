@@ -117,7 +117,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     Text(
                       'Login With',
-                      style: blackText,
+                      style: blackTextBold2,
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(

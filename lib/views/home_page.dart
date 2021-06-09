@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/routes/route_name.dart';
@@ -8,7 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String dummyText =
-        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya. Read More...';
+        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.';
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -103,9 +104,20 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Text(
-                  dummyText,
-                  style: blackText,
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: dummyText, style: blackText),
+                      TextSpan(
+                        text: ' Read More...',
+                        style: blackTextBold,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // TODO:Add Route To Blog
+                          },
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 15,
