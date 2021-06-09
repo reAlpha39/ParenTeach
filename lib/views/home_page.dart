@@ -100,32 +100,63 @@ class HomePage extends StatelessWidget {
                   'Apa itu parenting?',
                   style: blackTextBold.copyWith(fontSize: 15),
                 ),
+                SizedBox(
+                  height: 15,
+                ),
                 Text(
                   dummyText,
                   style: blackText,
+                ),
+                SizedBox(
+                  height: 15,
                 ),
                 Text(
                   'Fitur Kita',
                   style: blackTextBold.copyWith(fontSize: 15),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      HomeFiturCard(
-                        route: RouteName.ACTIVITIESPAGE,
-                        imageAsset: 'assets/activities_menu_icon.png',
-                        titleCard: 'Activities',
-                      ),
-                      HomeFiturCard(
-                        route: RouteName.PLAYGROUNDPAGE,
-                        imageAsset: 'assets/playground_menu_icon.png',
-                        titleCard: 'Playground',
-                      ),
-                    ],
-                  ),
+                SizedBox(
+                  height: 15,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    HomeFiturCard(
+                      route: RouteName.ACTIVITIESPAGE,
+                      imageAsset: 'assets/reminding_menu_icon.png',
+                      titleCard: 'Reminding',
+                    ),
+                    HomeFiturCard(
+                      route: RouteName.ACTIVITIESPAGE,
+                      imageAsset: 'assets/activities_menu_icon.png',
+                      titleCard: 'Activities',
+                    ),
+                    HomeFiturCard(
+                      route: RouteName.PLAYGROUNDPAGE,
+                      imageAsset: 'assets/playground_menu_icon.png',
+                      titleCard: 'Playground',
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    HomeFiturCard(
+                      route: RouteName.PLAYGROUNDPAGE,
+                      imageAsset: 'assets/rapot_menu_icon.png',
+                      titleCard: 'Rapot',
+                    ),
+                    HomeFiturCard(
+                      route: RouteName.PLAYGROUNDPAGE,
+                      imageAsset: 'assets/qna_menu_icon.png',
+                      titleCard: 'QnA',
+                    ),
+                    HomeFiturCard(
+                      route: RouteName.PLAYGROUNDPAGE,
+                      imageAsset: 'assets/blog_menu_icon.png',
+                      titleCard: 'Blog',
+                    ),
+                  ],
+                )
               ],
             ),
           ),
