@@ -163,7 +163,7 @@ class HomePage extends StatelessWidget {
                       titleCard: 'QnA',
                     ),
                     HomeFiturCard(
-                      route: RouteName.PLAYGROUNDPAGE,
+                      route: RouteName.BLOGPAGE,
                       imageAsset: 'assets/blog_menu_icon.png',
                       titleCard: 'Blog',
                     ),

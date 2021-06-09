@@ -22,5 +22,9 @@ class Routes {
       name: routeName.reverse[RouteName.ACTIVITIESPAGE]!,
       page: () => ActivitiesPage(),
     ),
+    GetPage(
+      name: routeName.reverse[RouteName.BLOGPAGE]!,
+      page: () => BlogPage(),
+    ),
   ];
 }
