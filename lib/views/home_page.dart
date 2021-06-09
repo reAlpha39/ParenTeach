@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/widgets/home_fitur_card.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -105,6 +107,19 @@ class HomePage extends StatelessWidget {
                 Text(
                   'Fitur Kita',
                   style: blackTextBold.copyWith(fontSize: 15),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      HomeFiturCard(
+                        route: RouteName.PLAYGROUNDPAGE,
+                        imageAsset: 'assets/playground_menu_icon.png',
+                        titleCard: 'Playground',
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

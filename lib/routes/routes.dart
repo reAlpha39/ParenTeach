@@ -14,5 +14,9 @@ class Routes {
       name: routeName.reverse[RouteName.HOMEPAGE]!,
       page: () => HomePage(),
     ),
+    GetPage(
+      name: routeName.reverse[RouteName.PLAYGROUNDPAGE]!,
+      page: () => PlaygroundPage(),
+    ),
   ];
 }
