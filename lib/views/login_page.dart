@@ -1,12 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/login_controller.dart';
-import 'package:parenteach/utils/shared_methods.dart';
-import 'package:parenteach/utils/utils.dart';
-import 'package:parenteach/widgets/login_provider.dart';
-import 'package:parenteach/widgets/login_textfield.dart';
+
+import '../controllers/login_controller.dart';
+import '../utils/shared_methods.dart';
+import '../utils/utils.dart';
+import '../widgets/login_provider.dart';
+import '../widgets/login_textfield.dart';
 
 class LoginPage extends StatelessWidget {
   final LoginController _loginController = Get.find();

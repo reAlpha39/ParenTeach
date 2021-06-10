@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/repositories/database_provider.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/utils.dart';
+
+import '../repositories/database_provider.dart';
+import '../routes/route_name.dart';
+import '../utils/utils.dart';
 
 class LoginController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();

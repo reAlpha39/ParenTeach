@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/theme.dart';
+
+import '../utils/theme.dart';
 
 class BlogPage extends StatelessWidget {
   const BlogPage({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/routes/login_binding.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/routes/routes.dart';
-import 'package:parenteach/utils/utils.dart';
+import 'routes/login_binding.dart';
+import 'routes/route_name.dart';
+import 'routes/routes.dart';
+import 'utils/utils.dart';
 
 void main() {
   runApp(MyApp());

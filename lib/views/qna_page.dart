@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/utils.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
-import 'package:parenteach/widgets/qna_card.dart';
+
+import '../utils/utils.dart';
+import '../widgets/custom_appbar.dart';
+import '../widgets/qna_card.dart';
 
 class QnaPage extends StatelessWidget {
   const QnaPage({Key? key}) : super(key: key);
