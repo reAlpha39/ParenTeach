@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/login_controller.dart';
+import 'package:parenteach/utils/shared_methods.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/login_provider.dart';
 import 'package:parenteach/widgets/login_textfield.dart';
@@ -14,7 +15,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: _onWillPop,
+      onWillPop: () {
+        return onWillPop();
+      },
       child: Scaffold(
         body: GestureDetector(
           onTap: () =>
@@ -220,28 +223,5 @@ class LoginPage extends StatelessWidget {
         style: whiteText.copyWith(fontSize: 16),
       );
     }
-  }
-
-  Future<bool> _onWillPop() {
-    return Get.defaultDialog(
-      radius: 17,
-      title: 'Exit',
-      content: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 4,
-          horizontal: 12,
-        ),
-        child: Center(
-          child: Text('Apakah anda ingin keluar dari aplikasi?'),
-        ),
-      ),
-      textConfirm: 'OK',
-      textCancel: 'Batal',
-      buttonColor: pinkColor,
-      cancelTextColor: Colors.black87,
-      confirmTextColor: Colors.white,
-      onConfirm: () => exit(0),
-      onCancel: () => Get.back(),
-    ).then((value) => value = false);
   }
 }
