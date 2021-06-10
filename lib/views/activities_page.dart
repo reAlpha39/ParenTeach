@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/activity_score_box.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class ActivitiesPage extends StatelessWidget {
   @override

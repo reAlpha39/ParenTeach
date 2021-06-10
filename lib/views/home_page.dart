@@ -113,7 +113,7 @@ class HomePage extends StatelessWidget {
                         style: blackTextBold,
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // TODO:Add Route To Blog
+                            Get.toNamed(routeName.reverse[RouteName.BLOGPAGE]!);
                           },
                       ),
                     ],
