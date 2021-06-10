@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/utils.dart';
+
+import '../utils/utils.dart';
 
 class PilihRemindingCard extends StatelessWidget {
   const PilihRemindingCard({

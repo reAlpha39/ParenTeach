@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/utils.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
-import 'package:parenteach/widgets/playground_card.dart';
+
+import '../routes/route_name.dart';
+import '../utils/utils.dart';
+import '../widgets/custom_appbar.dart';
+import '../widgets/playground_card.dart';
 
 class PlaygroundPage extends StatelessWidget {
   const PlaygroundPage({Key? key}) : super(key: key);

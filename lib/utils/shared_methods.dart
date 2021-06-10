@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/utils.dart';
+
+import 'utils.dart';
 
 // Method for handling back button
 Future<bool> onWillPop() {

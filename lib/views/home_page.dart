@@ -1,12 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/shared_methods.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/home_fitur_card.dart';
+
+import '../routes/route_name.dart';
+import '../utils/shared_methods.dart';
+import '../utils/theme.dart';
+import '../widgets/home_fitur_card.dart';
 
 class HomePage extends StatelessWidget {
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:parenteach/utils/utils.dart';
+
+import '../utils/utils.dart';
 
 class LoginTextField extends StatelessWidget {
   final TextEditingController? _textEditingController;

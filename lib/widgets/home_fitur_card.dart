@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/utils.dart';
+
+import '../routes/route_name.dart';
+import '../utils/utils.dart';
 
 class HomeFiturCard extends StatelessWidget {
   final RouteName? route;

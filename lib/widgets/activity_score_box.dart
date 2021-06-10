@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/utils.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+
+import '../utils/utils.dart';
 
 class ActivityScoreBox extends StatelessWidget {
   final String? pertanyaan;

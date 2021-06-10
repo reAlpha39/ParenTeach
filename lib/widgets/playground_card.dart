@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/theme.dart';
+
+import '../routes/route_name.dart';
+import '../utils/theme.dart';
 
 class PlaygroundCard extends StatelessWidget {
   final String imageAsset;

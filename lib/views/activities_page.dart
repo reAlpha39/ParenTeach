@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/activity_score_box.dart';
+import '../utils/theme.dart';
+import '../widgets/activity_score_box.dart';
 
 class ActivitiesPage extends StatelessWidget {
   @override

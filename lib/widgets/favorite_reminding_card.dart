@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:parenteach/utils/utils.dart';
+
+import '../utils/utils.dart';
 
 class FavoriteRemindingCard extends StatelessWidget {
   const FavoriteRemindingCard({
