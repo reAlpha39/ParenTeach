@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/widgets/favorite_reminding_card.dart';
 
 class RemindingPage extends StatelessWidget {
   const RemindingPage({Key? key}) : super(key: key);
@@ -42,22 +43,8 @@ class RemindingPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          height: 152,
-                          width: 152,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        Container(
-                          height: 152,
-                          width: 152,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
+                        FavoriteRemindingCard(),
+                        FavoriteRemindingCard(),
                       ],
                     )
                   ],
