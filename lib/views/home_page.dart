@@ -133,7 +133,7 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     HomeFiturCard(
-                      route: RouteName.ACTIVITIESPAGE,
+                      route: RouteName.REMINDINGPAGE,
                       imageAsset: 'assets/reminding_menu_icon.png',
                       titleCard: 'Reminding',
                     ),

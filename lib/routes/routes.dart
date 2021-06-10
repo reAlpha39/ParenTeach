@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:parenteach/routes/login_binding.dart';
 import 'package:parenteach/routes/route_name.dart';
+import 'package:parenteach/views/reminding_page.dart';
 import 'package:parenteach/views/views.dart';
 
 class Routes {
@@ -25,6 +26,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.BLOGPAGE]!,
       page: () => BlogPage(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.REMINDINGPAGE]!,
+      page: () => RemindingPage(),
     ),
   ];
 }
