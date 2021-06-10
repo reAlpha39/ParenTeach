@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/favorite_reminding_card.dart';
+import 'package:parenteach/widgets/reminding_page_textfield.dart';
 
 class RemindingPage extends StatelessWidget {
-  const RemindingPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +45,11 @@ class RemindingPage extends StatelessWidget {
                         FavoriteRemindingCard(),
                         FavoriteRemindingCard(),
                       ],
-                    )
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RemindingPageTextField()
                   ],
                 ),
               ),
