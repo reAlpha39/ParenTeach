@@ -36,11 +36,11 @@ class QnaPage extends StatelessWidget {
                 color: pinkColor,
                 alignment: Alignment.topCenter,
                 padding: const EdgeInsets.only(
-                  top: 12,
+                  bottom: 12,
                 ),
                 width: 200,
                 child: Image.asset(
-                  'assets/qna.png',
+                  'assets/qna_illustration.png',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -79,6 +79,8 @@ class QnaPage extends StatelessWidget {
                           child: TextField(
                             decoration: InputDecoration.collapsed(
                               hintText: 'Cari pertanyaan disini',
+                              hintStyle: blackText.copyWith(
+                                  color: Colors.grey, fontSize: 13),
                             ),
                           ),
                         ),
@@ -121,7 +123,7 @@ class QnaPage extends StatelessWidget {
                         child: Text(
                           'Sikap',
                           style: pinkText.copyWith(
-                            fontSize: 20,
+                            fontSize: 18,
                           ),
                         ),
                       ),
@@ -132,7 +134,7 @@ class QnaPage extends StatelessWidget {
                         child: Text(
                           'Bakat Siswa',
                           style: pinkText.copyWith(
-                            fontSize: 20,
+                            fontSize: 18,
                           ),
                         ),
                       ),
