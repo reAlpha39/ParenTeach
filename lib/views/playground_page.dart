@@ -11,7 +11,13 @@ class PlaygroundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(enableLeading: true, title: 'Playground', enableNotifIcon: true),
+      appBar: CustomAppBar(
+        enableLeading: true,
+        title: 'Playground',
+        enableNotifIcon: true,
+        backgroundColor: pinkColor,
+        foregroundColor: Colors.white,
+      ),
       body: Stack(
         children: [
           Container(
