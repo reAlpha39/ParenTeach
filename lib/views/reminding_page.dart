@@ -13,17 +13,27 @@ class RemindingPage extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              height: 205,
+              height: 250,
               width: Get.width,
               decoration: BoxDecoration(color: pinkColor),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Image.asset(
+                  'assets/reminding_illustration.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 24,
+                    ),
                     Align(
                       alignment: Alignment.center,
                       child: Text(
