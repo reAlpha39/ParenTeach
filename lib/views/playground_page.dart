@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/utils.dart';
+import 'package:parenteach/widgets/custom_appbar.dart';
 import 'package:parenteach/widgets/playground_card.dart';
 
 class PlaygroundPage extends StatelessWidget {
@@ -10,43 +11,7 @@ class PlaygroundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: Center(
-          child: GestureDetector(
-            onTap: () => Get.back(),
-            child: Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(
-                Icons.arrow_back,
-                color: pinkColor,
-              ),
-            ),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.notifications,
-                  color: Colors.white,
-                  size: 30,
-                )),
-          ),
-        ],
-        centerTitle: true,
-        title: Text(
-          'Playground',
-          style: whiteTextBold.copyWith(fontSize: 24),
-        ),
-      ),
+      appBar: CustomAppBar(enableLeading: true, title: 'Playground', enableNotifIcon: true),
       body: Stack(
         children: [
           Container(
