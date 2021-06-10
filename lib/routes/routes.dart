@@ -31,5 +31,9 @@ class Routes {
       name: routeName.reverse[RouteName.REMINDINGPAGE]!,
       page: () => RemindingPage(),
     ),
+    GetPage(
+      name: routeName.reverse[RouteName.QNAPAGE]!,
+      page: () => QnaPage(),
+    ),
   ];
 }

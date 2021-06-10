@@ -166,7 +166,7 @@ class HomePage extends StatelessWidget {
                         titleCard: 'Rapot',
                       ),
                       HomeFiturCard(
-                        route: RouteName.PLAYGROUNDPAGE,
+                        route: RouteName.QNAPAGE,
                         imageAsset: 'assets/qna_menu_icon.png',
                         titleCard: 'QnA',
                       ),
