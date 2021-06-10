@@ -26,6 +26,7 @@ class QnaCard extends StatelessWidget {
             color: Colors.white,
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
                 child: Text(
