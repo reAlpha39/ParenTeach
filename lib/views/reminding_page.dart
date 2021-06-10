@@ -18,8 +18,9 @@ class RemindingPage extends StatelessWidget {
               decoration: BoxDecoration(color: pinkColor),
             ),
             Padding(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
               child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -61,6 +62,22 @@ class RemindingPage extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
+                    PilihRemindingCard(),
                     PilihRemindingCard(),
                   ],
                 ),

@@ -28,7 +28,7 @@ class PilihRemindingCard extends StatelessWidget {
                 padding: const EdgeInsets.all(14.0),
                 child: Text(
                   'Sudahkah anda menjadi teladan yang baik?',
-                  style: blackText,
+                  style: blackTextBold,
                 ),
               ),
             ),
