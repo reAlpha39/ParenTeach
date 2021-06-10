@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/favorite_reminding_card.dart';
+import 'package:parenteach/widgets/pilih_reminding_card.dart';
 import 'package:parenteach/widgets/reminding_page_textfield.dart';
 
 class RemindingPage extends StatelessWidget {
@@ -47,9 +48,20 @@ class RemindingPage extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
-                    RemindingPageTextField()
+                    RemindingPageTextField(),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Pilih Remindingmu',
+                      style: blackText,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    PilihRemindingCard(),
                   ],
                 ),
               ),
