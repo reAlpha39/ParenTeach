@@ -12,13 +12,33 @@ class PlaygroundPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        leading: Center(
+          child: GestureDetector(
+            onTap: () => Get.back(),
+            child: Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(
+                Icons.arrow_back,
+                color: pinkColor,
+              ),
+            ),
+          ),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.add_alert_rounded),
-            ),
+                onPressed: () {},
+                icon: Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                  size: 30,
+                )),
           ),
         ],
         centerTitle: true,
