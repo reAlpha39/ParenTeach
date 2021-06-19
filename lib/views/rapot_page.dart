@@ -224,7 +224,23 @@ class RapotPage extends StatelessWidget {
                             ),
                           )
                           ..add(
-                            _downloadRaportButton(),
+                            downloadRaportButton(),
+                          )
+                          ..add(
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Siswa Di Sekolah',
+                                  style: blackTextBold.copyWith(
+                                    fontSize: 18,
+                                    color: pinkColor,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                       ),
                     ),
@@ -238,7 +254,7 @@ class RapotPage extends StatelessWidget {
     );
   }
 
-  Widget _downloadRaportButton() {
+  Widget downloadRaportButton() {
     return ElevatedButton(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all<double>(0),
