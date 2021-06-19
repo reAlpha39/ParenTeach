@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'routes/login_binding.dart';
 import 'routes/route_name.dart';
 import 'routes/routes.dart';

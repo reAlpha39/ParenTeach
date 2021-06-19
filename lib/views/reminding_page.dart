@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/utils.dart';
-import 'package:parenteach/widgets/favorite_reminding_card.dart';
-import 'package:parenteach/widgets/pilih_reminding_card.dart';
-import 'package:parenteach/widgets/reminding_page_textfield.dart';
+
+import '../utils/utils.dart';
+import '../widgets/pilih_reminding_card.dart';
 
 class RemindingPage extends StatelessWidget {
   @override

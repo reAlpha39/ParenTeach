@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/card_nilai_raport.dart';
+import '../utils/theme.dart';
+import '../widgets/card_nilai_raport.dart';
 
 class RapotPage extends StatelessWidget {
   @override

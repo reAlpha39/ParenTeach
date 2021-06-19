@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:parenteach/views/rapot_page.dart';
+import '../views/rapot_page.dart';
 
 import '../views/reminding_page.dart';
 import '../views/views.dart';
