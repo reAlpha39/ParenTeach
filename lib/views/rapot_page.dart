@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/widgets/card_nilai_raport.dart';
 
 class RapotPage extends StatelessWidget {
   @override
@@ -129,58 +130,7 @@ class RapotPage extends StatelessWidget {
                       child: Column(
                         children: List.generate(
                           10,
-                          (index) => Container(
-                            margin: EdgeInsets.only(
-                              bottom: 10,
-                            ),
-                            width: Get.width,
-                            height: 55,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '1. ',
-                                        style: blackTextBold.copyWith(
-                                            color: pinkColor, fontSize: 18),
-                                      ),
-                                      Text(
-                                        'Ilmu Pengetahuan Alam',
-                                        style: blackText,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '80',
-                                        style: blackTextBold.copyWith(
-                                            color: blueColor, fontSize: 18),
-                                      ),
-                                      Text(
-                                        ' : ',
-                                        style: blackTextBold.copyWith(
-                                            fontSize: 18),
-                                      ),
-                                      Text(
-                                        '78',
-                                        style: blackTextBold.copyWith(
-                                            color: Colors.yellow, fontSize: 18),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          (index) => CardNilaiRaport(),
                         ),
                       ),
                     ),
