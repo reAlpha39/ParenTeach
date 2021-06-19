@@ -215,13 +215,16 @@ class RapotPage extends StatelessWidget {
                                                   fontSize: 18),
                                             ),
                                           ],
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
                                 ),
                               ],
                             ),
+                          )
+                          ..add(
+                            _downloadRaportButton(),
                           ),
                       ),
                     ),
@@ -232,6 +235,29 @@ class RapotPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _downloadRaportButton() {
+    return ElevatedButton(
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all<double>(0),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: Text(
+            'Download Raport',
+            style: whiteText,
+          ),
+        ),
+      ),
+      onPressed: () {},
     );
   }
 
