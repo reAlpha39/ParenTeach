@@ -20,6 +20,29 @@ class BlogPage extends StatelessWidget {
                         'https://imgx.parapuan.co/file/parapuan/mobile/crop/0x0:0x0/360x240/photo/2021/04/04/pexels-alexander-suhorucov-64575-20210404075011.jpg'),
                     fit: BoxFit.cover),
               ),
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        color: pinkColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
             Container(
               height: Get.height / 2 + 150,
