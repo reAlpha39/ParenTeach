@@ -112,18 +112,6 @@ class RapotPage extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  Row(
-                    children: [
-                      buildKategoriRapot(blueColor, 'Pengetahuan'),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      buildKategoriRapot(Colors.yellow, 'Keterampilan'),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
                   Expanded(
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
@@ -131,10 +119,113 @@ class RapotPage extends StatelessWidget {
                         children: List.generate(
                           10,
                           (index) => CardNilaiRaport(),
-                        ),
+                        )
+                          ..insert(
+                            0,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Row(
+                                children: [
+                                  buildKategoriRapot(blueColor, 'Pengetahuan'),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  buildKategoriRapot(
+                                      Colors.yellow, 'Keterampilan'),
+                                ],
+                              ),
+                            ),
+                          )
+                          ..add(
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    bottom: 10,
+                                  ),
+                                  width: Get.width / 3,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Rangking',
+                                          style: blackText,
+                                        ),
+                                        Text(
+                                          '2',
+                                          style: blackTextBold.copyWith(
+                                              color: blueColor, fontSize: 18),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    bottom: 10,
+                                  ),
+                                  width: Get.width / 2,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'Rata-rata',
+                                              style: blackText,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              '80',
+                                              style: blackTextBold.copyWith(
+                                                  color: blueColor,
+                                                  fontSize: 18),
+                                            ),
+                                            Text(
+                                              ' : ',
+                                              style: blackTextBold.copyWith(
+                                                  fontSize: 18),
+                                            ),
+                                            Text(
+                                              '78',
+                                              style: blackTextBold.copyWith(
+                                                  color: Colors.yellow,
+                                                  fontSize: 18),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             )
