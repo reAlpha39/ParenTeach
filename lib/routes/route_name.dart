@@ -5,7 +5,8 @@ enum RouteName {
   ACTIVITIESPAGE,
   BLOGPAGE,
   REMINDINGPAGE,
-  QNAPAGE
+  QNAPAGE,
+  RAPOTPAGE
 }
 
 final routeName = EnumValues({
@@ -16,6 +17,7 @@ final routeName = EnumValues({
   '/blog_page': RouteName.BLOGPAGE,
   '/reminding_page': RouteName.REMINDINGPAGE,
   '/qna_page': RouteName.QNAPAGE,
+  '/rapot_page': RouteName.RAPOTPAGE,
 });
 
 class EnumValues<T> {

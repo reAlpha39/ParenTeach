@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:parenteach/views/rapot_page.dart';
 
 import '../views/reminding_page.dart';
 import '../views/views.dart';
@@ -35,6 +36,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.QNAPAGE]!,
       page: () => QnaPage(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.RAPOTPAGE]!,
+      page: () => RapotPage(),
     ),
   ];
 }

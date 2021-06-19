@@ -160,7 +160,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       HomeFiturCard(
-                        route: RouteName.PLAYGROUNDPAGE,
+                        route: RouteName.RAPOTPAGE,
                         imageAsset: 'assets/rapot_menu_icon.png',
                         titleCard: 'Rapot',
                       ),
