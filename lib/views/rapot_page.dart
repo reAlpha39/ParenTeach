@@ -205,6 +205,68 @@ class RapotPage extends StatelessWidget {
                                 ),
                               ],
                             ),
+                          )
+                          ..add(
+                            Container(
+                              height: 150,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              child: Column(
+                                children: [
+                                  Table(
+                                    children: [
+                                      TableRow(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: Text(
+                                              'Nama Bakat',
+                                              style: blackText.copyWith(
+                                                  color: blueColor,
+                                                  fontSize: 16),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: Text(
+                                              'Nilai',
+                                              style: blackText.copyWith(
+                                                  color: Colors.yellow,
+                                                  fontSize: 16),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Table(
+                                    border: TableBorder.all(),
+                                    children: [
+                                      TableRow(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: Text(
+                                              '1. Futsal',
+                                              style: blackTextBold,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: Text(
+                                              'A',
+                                              style: blackTextBold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                       ),
                     ),
