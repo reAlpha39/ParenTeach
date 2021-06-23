@@ -72,56 +72,7 @@ class RapotPage extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    width: Get.width,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              'Presensi Siswa',
-                              style: blackText,
-                            ),
-                            Text(
-                              '90 %',
-                              style: blackTextBold,
-                            ),
-                          ],
-                        ),
-                        Container(
-                          color: Colors.grey.withOpacity(0.3),
-                          height: 70,
-                          width: 1,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              'Sikap siswa',
-                              style: blackText,
-                            ),
-                            Text(
-                              'BAIK',
-                              style: blackTextBold,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  buildPresensiSikapSiswa(jumlahPresensi: 90, sikap: 'BAIK'),
                   SizedBox(
                     height: 30,
                   ),
@@ -263,6 +214,60 @@ class RapotPage extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Container buildPresensiSikapSiswa(
+      {required int? jumlahPresensi, required String? sikap}) {
+    return Container(
+      width: Get.width,
+      height: 70,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Presensi Siswa',
+                style: blackText,
+              ),
+              Text(
+                '${jumlahPresensi!} %',
+                style: blackTextBold,
+              ),
+            ],
+          ),
+          Container(
+            color: Colors.grey.withOpacity(0.3),
+            height: 70,
+            width: 1,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Sikap siswa',
+                style: blackText,
+              ),
+              Text(
+                sikap!.toUpperCase(),
+                style: blackTextBold,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
