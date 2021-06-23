@@ -15,6 +15,10 @@ class RapotPage extends StatelessWidget {
               width: Get.width,
               decoration: BoxDecoration(
                 color: pinkColor,
+                image: DecorationImage(
+                  image: AssetImage('assets/bubble_bg.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
