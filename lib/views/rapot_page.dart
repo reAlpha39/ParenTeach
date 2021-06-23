@@ -57,7 +57,20 @@ class RapotPage extends StatelessWidget {
                 children: [
                   // TODO: Add TabBar To Change Raport Type
                   SizedBox(
-                    height: 130,
+                    height: 75,
+                  ),
+                  Row(
+                    children: [
+                      buildDropDown(
+                          height: 50, width: 120, hint: '2018 / 2019'),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      buildDropDown(height: 50, width: 61, hint: '2'),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Container(
                     width: Get.width,
@@ -250,6 +263,38 @@ class RapotPage extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Container buildDropDown({
+    required double? width,
+    required double? height,
+    required String? hint,
+  }) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: DropdownButton(
+        elevation: 0,
+        hint: Text(hint!),
+        isExpanded: true,
+        underline: SizedBox(
+          height: 0,
+        ),
+        icon: Icon(Icons.arrow_drop_down),
+        items: ['A', 'B', 'C', 'D'].map((String value) {
+          return DropdownMenuItem(
+            value: value,
+            child: new Text(value),
+          );
+        }).toList(),
+        onChanged: (_) {},
       ),
     );
   }
