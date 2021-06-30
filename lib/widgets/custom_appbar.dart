@@ -68,7 +68,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ]
           : null,
-      centerTitle: true,
+      centerTitle: false,
       title: Text(
         title,
         style: whiteTextBold.copyWith(
