@@ -1,5 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../utils/theme.dart';
 
@@ -34,8 +36,8 @@ class QnaCard extends StatelessWidget {
                   tapBodyToExpand: true,
                   tapBodyToCollapse: false,
                   hasIcon: true,
-                  expandIcon: Icons.arrow_circle_down_outlined,
-                  collapseIcon: Icons.arrow_circle_up_outlined,
+                  expandIcon: LineIcons.chevronCircleDown,
+                  collapseIcon: LineIcons.chevronCircleUp,
                   iconColor: pinkColor,
                 ),
                 header: Text(
