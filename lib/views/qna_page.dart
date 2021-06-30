@@ -21,7 +21,7 @@ class QnaPage extends StatelessWidget {
           WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: CustomAppBar(
-          enableLeading: false,
+          enableLeading: true,
           title: 'QnA',
           enableNotifIcon: false,
           backgroundColor: pinkColor,
