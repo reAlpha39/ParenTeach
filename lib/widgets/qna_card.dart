@@ -1,3 +1,4 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/theme.dart';
@@ -25,28 +26,30 @@ class QnaCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             color: Colors.white,
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
+          child: ExpandableNotifier(
+            child: ScrollOnExpand(
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToExpand: true,
+                  tapBodyToCollapse: false,
+                  hasIcon: true,
+                  expandIcon: Icons.arrow_circle_down_outlined,
+                  collapseIcon: Icons.arrow_circle_up_outlined,
+                  iconColor: pinkColor,
+                ),
+                header: Text(
                   titleCard,
                   style: blackTextBold.copyWith(
                     fontSize: 14,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: Text(
-                  '5\nJawaban',
-                  textAlign: TextAlign.center,
-                  style: pinkText.copyWith(
-                    fontSize: 14,
-                  ),
+                collapsed: Container(),
+                expanded: Container(
+                  height: 200,
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),
