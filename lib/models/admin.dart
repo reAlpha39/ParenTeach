@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:parenteach/models/status.dart';
+
 class Admin {
   Admin({
     this.nip,
@@ -24,7 +26,7 @@ class Admin {
   String? jenisKelamin;
   String? namaAdmin;
   String? foto;
-  String? status;
+  Status? status;
   String? password;
 
   factory Admin.fromJson(String str) => Admin.fromMap(json.decode(str));
@@ -40,7 +42,9 @@ class Admin {
             json["jenisKelamin"] == null ? null : json["jenisKelamin"],
         namaAdmin: json["namaAdmin"] == null ? null : json["namaAdmin"],
         foto: json["foto"] == null ? null : json["foto"],
-        status: json["status"] == null ? null : json["status"],
+        status: json["status"] == null
+            ? null
+            : statusTypeValues.map![json["status"]],
         password: json["password"] == null ? null : json["password"],
       );
 
@@ -52,7 +56,7 @@ class Admin {
         "jenisKelamin": jenisKelamin == null ? null : jenisKelamin,
         "namaAdmin": namaAdmin == null ? null : namaAdmin,
         "foto": foto == null ? null : foto,
-        "status": status == null ? null : status,
+        "status": status == null ? null : statusTypeValues.reverse[status],
         "password": password == null ? null : password,
       };
 }
