@@ -20,7 +20,7 @@ class RemindingPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 30),
                     child: Image.asset(
-                      'assets/reminding_illustration.png',
+                      'assets/Reminding_bg',
                       fit: BoxFit.cover,
                     ),
                   ),
