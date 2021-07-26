@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:parenteach/views/admin/admin_add_reminding.dart';
 import 'package:parenteach/views/admin/admin_home_page.dart';
+import 'package:parenteach/views/admin/admin_reminding_page.dart';
 import '../views/rapot_page.dart';
 
 import '../views/reminding_page.dart';
@@ -45,6 +47,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINHOMEPAGE]!,
       page: () => AdminHomePage(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.ADMINREMINDINGPAGE]!,
+      page: () => AdminRemindingPage(),
     ),
   ];
 }

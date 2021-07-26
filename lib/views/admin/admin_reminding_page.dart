@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icon.dart';
+import 'package:parenteach/widgets/custom_appbar.dart';
 
 import '../../utils/utils.dart';
 import '../../widgets/favorite_reminding_card.dart';
 import '../../widgets/pilih_reminding_card.dart';
 import '../../widgets/reminding_page_textfield.dart';
 
-class RemindingPage extends StatelessWidget {
+class AdminRemindingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,17 +35,52 @@ class RemindingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 24,
+                      height: 20,
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Reminding Page',
-                        style: whiteTextBold.copyWith(fontSize: 24),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () => Get.back(),
+                              child: Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: pinkColor,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Reminding',
+                              style: whiteTextBold,
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            LineIcon.plus(
+                              color: Colors.white,
+                            ),
+                            Icon(
+                              Icons.more_vert,
+                              color: Colors.white,
+                            )
+                          ],
+                        )
+                      ],
                     ),
                     SizedBox(
-                      height: 70,
+                      height: 50,
                     ),
                     Text(
                       'Reminding Favorite',

@@ -35,7 +35,7 @@ class AdminHomePage extends StatelessWidget {
                             style: blackTextBold2.copyWith(fontSize: 12),
                           ),
                           Text(
-                            'Muhammad M',
+                            'Admin ',
                             style: blackTextBold2.copyWith(fontSize: 24),
                           ),
                         ],
@@ -93,7 +93,7 @@ class AdminHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       HomeFiturCard(
-                        route: RouteName.REMINDINGPAGE,
+                        route: RouteName.ADMINREMINDINGPAGE,
                         imageAsset: 'assets/reminding_menu_icon.png',
                         titleCard: 'Reminding',
                       ),

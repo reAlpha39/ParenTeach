@@ -27,10 +27,9 @@ class HomeFiturCard extends StatelessWidget {
             ),
             child: Container(
               padding: const EdgeInsets.all(8),
-              height: 80,
-              width: 80,
+              height: 100,
+              width: 100,
               decoration: BoxDecoration(
-                color: pinkColor,
                 borderRadius: BorderRadius.all(
                   Radius.circular(8),
                 ),
