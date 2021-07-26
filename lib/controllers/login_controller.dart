@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/models/user_type.dart';
+import 'package:parenteach/models/users.dart';
 
 import '../repositories/database_provider.dart';
 import '../routes/route_name.dart';
@@ -11,7 +13,9 @@ class LoginController extends GetxController {
   TextEditingController? username;
   TextEditingController? password;
 
+  Rx<Users> user = Users().obs;
   RxBool isLoading = false.obs;
+  RxBool isValidate = false.obs;
 
   @override
   void onInit() {
@@ -29,16 +33,57 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void initializeFirestore() async {
+  void userLogin() async {
     isLoading.value = true;
     try {
-      await _databaseProvider.initializeFirebase();
-      isLoading.value = false;
-      Get.offAndToNamed(
-        routeName.reverse[RouteName.ADMINHOMEPAGE]!,
-      );
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        await _databaseProvider.initializeFirebase();
+        Users? value = await _databaseProvider.validateUser(username!.text);
+        if (value != null) {
+          user.value = value;
+          _validateUserPass();
+          isLoading.value = false;
+          if (isValidate.value) {
+            switch (user.value.type) {
+              case UserType.ADMIN:
+                Get.offAndToNamed(
+                  routeName.reverse[RouteName.ADMINHOMEPAGE]!,
+                );
+                break;
+              case UserType.ORANGTUA:
+                Get.offAndToNamed(
+                  routeName.reverse[RouteName.HOMEPAGE]!,
+                );
+                break;
+              default:
+            }
+          } else {
+            _showDialog(
+              title: 'Login Gagal',
+              middleText: 'Username atau password salah!',
+            );
+          }
+        } else {
+          isLoading.value = false;
+          _showDialog(
+            title: 'Login Gagal',
+            middleText: 'Username tidak ditemukan!',
+          );
+        }
+      }
     } catch (e) {
+      isLoading.value = false;
       _showDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
+  }
+
+  void _validateUserPass() {
+    if (username!.text == user.value.username &&
+        password!.text == user.value.password) {
+      isValidate.value = true;
+    } else {
+      isValidate.value = false;
     }
   }
 

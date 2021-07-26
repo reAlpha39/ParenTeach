@@ -166,8 +166,7 @@ class LoginPage extends StatelessWidget {
             child: _buttonState(),
           ),
         ),
-        onPressed:
-            isEnabled ? () => _loginController.initializeFirestore() : null,
+        onPressed: isEnabled ? () => _loginController.userLogin() : null,
       ),
     );
   }
