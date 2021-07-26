@@ -72,9 +72,9 @@ class AdminHomePage extends StatelessWidget {
                         top: 30,
                         right: 10,
                         child: Container(
-                          height: 170,
-                          width: 170,
-                          child: Image.asset('assets/reading.png'),
+                          height: 130,
+                          width: 130,
+                          child: Image.asset('assets/Slack.png'),
                         ),
                       ),
                     ],
@@ -94,17 +94,17 @@ class AdminHomePage extends StatelessWidget {
                     children: [
                       HomeFiturCard(
                         route: RouteName.ADMINREMINDINGPAGE,
-                        imageAsset: 'assets/reminding_menu_icon.png',
+                        imageAsset: 'assets/Alarm.png',
                         titleCard: 'Reminding',
                       ),
                       HomeFiturCard(
                         route: RouteName.ACTIVITIESPAGE,
-                        imageAsset: 'assets/activities_menu_icon.png',
-                        titleCard: 'Activities',
+                        imageAsset: 'assets/Presensi.png',
+                        titleCard: 'Presensi',
                       ),
                       HomeFiturCard(
                         route: RouteName.PLAYGROUNDPAGE,
-                        imageAsset: 'assets/playground_menu_icon.png',
+                        imageAsset: 'assets/Playground.png',
                         titleCard: 'Playground',
                       ),
                     ],
@@ -114,21 +114,41 @@ class AdminHomePage extends StatelessWidget {
                     children: [
                       HomeFiturCard(
                         route: RouteName.RAPOTPAGE,
-                        imageAsset: 'assets/rapot_menu_icon.png',
+                        imageAsset: 'assets/Rapot.png',
                         titleCard: 'Rapot',
                       ),
                       HomeFiturCard(
                         route: RouteName.QNAPAGE,
-                        imageAsset: 'assets/qna_menu_icon.png',
+                        imageAsset: 'assets/Qna.png',
                         titleCard: 'QnA',
                       ),
                       HomeFiturCard(
                         route: RouteName.BLOGPAGE,
-                        imageAsset: 'assets/blog_menu_icon.png',
+                        imageAsset: 'assets/Blog.png',
                         titleCard: 'Blog',
                       ),
                     ],
-                  )
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      HomeFiturCard(
+                        route: RouteName.RAPOTPAGE,
+                        imageAsset: 'assets/Siswa.png',
+                        titleCard: 'Siswa',
+                      ),
+                      HomeFiturCard(
+                        route: RouteName.QNAPAGE,
+                        imageAsset: 'assets/Guru.png',
+                        titleCard: 'Guru',
+                      ),
+                      HomeFiturCard(
+                        route: RouteName.BLOGPAGE,
+                        imageAsset: 'assets/Tahun.png',
+                        titleCard: 'Tahun',
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
