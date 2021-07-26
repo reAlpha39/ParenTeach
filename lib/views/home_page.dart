@@ -141,17 +141,17 @@ class HomePage extends StatelessWidget {
                     children: [
                       HomeFiturCard(
                         route: RouteName.REMINDINGPAGE,
-                        imageAsset: 'assets/reminding_menu_icon.png',
+                        imageAsset: 'assets/Alarm.png',
                         titleCard: 'Reminding',
                       ),
                       HomeFiturCard(
                         route: RouteName.ACTIVITIESPAGE,
-                        imageAsset: 'assets/activities_menu_icon.png',
+                        imageAsset: 'assets/Presensi.png',
                         titleCard: 'Activities',
                       ),
                       HomeFiturCard(
                         route: RouteName.PLAYGROUNDPAGE,
-                        imageAsset: 'assets/playground_menu_icon.png',
+                        imageAsset: 'assets/Playground.png',
                         titleCard: 'Playground',
                       ),
                     ],
@@ -161,17 +161,17 @@ class HomePage extends StatelessWidget {
                     children: [
                       HomeFiturCard(
                         route: RouteName.RAPOTPAGE,
-                        imageAsset: 'assets/rapot_menu_icon.png',
+                        imageAsset: 'assets/Rapot.png',
                         titleCard: 'Rapot',
                       ),
                       HomeFiturCard(
                         route: RouteName.QNAPAGE,
-                        imageAsset: 'assets/qna_menu_icon.png',
+                        imageAsset: 'assets/Qna.png',
                         titleCard: 'QnA',
                       ),
                       HomeFiturCard(
                         route: RouteName.BLOGPAGE,
-                        imageAsset: 'assets/blog_menu_icon.png',
+                        imageAsset: 'assets/Blog.png',
                         titleCard: 'Blog',
                       ),
                     ],
