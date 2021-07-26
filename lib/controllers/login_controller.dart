@@ -35,7 +35,7 @@ class LoginController extends GetxController {
       await _databaseProvider.initializeFirebase();
       isLoading.value = false;
       Get.offAndToNamed(
-        routeName.reverse[RouteName.HOMEPAGE]!,
+        routeName.reverse[RouteName.ADMINHOMEPAGE]!,
       );
     } catch (e) {
       _showDialog(title: 'Error', middleText: "Error: " + e.toString());
