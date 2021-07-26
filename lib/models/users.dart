@@ -9,7 +9,7 @@ import 'package:parenteach/models/user_type.dart';
 class Users {
   Users({
     this.idUsers,
-    this.usersname,
+    this.username,
     this.password,
     this.nama,
     this.noHp,
@@ -18,7 +18,7 @@ class Users {
   });
 
   String? idUsers;
-  String? usersname;
+  String? username;
   String? password;
   String? nama;
   String? noHp;
@@ -31,7 +31,7 @@ class Users {
 
   factory Users.fromMap(Map<String, dynamic> json) => Users(
         idUsers: json["idUsers"] == null ? null : json["idUsers"],
-        usersname: json["usersname"] == null ? null : json["usersname"],
+        username: json["usersname"] == null ? null : json["usersname"],
         password: json["password"] == null ? null : json["password"],
         nama: json["nama"] == null ? null : json["nama"],
         noHp: json["noHp"] == null ? null : json["noHp"],
@@ -41,7 +41,7 @@ class Users {
 
   Map<String, dynamic> toMap() => {
         "idUsers": idUsers == null ? null : idUsers,
-        "usersname": usersname == null ? null : usersname,
+        "usersname": username == null ? null : username,
         "password": password == null ? null : password,
         "nama": nama == null ? null : nama,
         "noHp": noHp == null ? null : noHp,
