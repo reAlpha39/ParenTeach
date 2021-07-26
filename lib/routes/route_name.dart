@@ -1,6 +1,7 @@
 enum RouteName {
   LOGINPAGE,
   HOMEPAGE,
+  ADMINHOMEPAGE,
   PLAYGROUNDPAGE,
   ACTIVITIESPAGE,
   BLOGPAGE,
@@ -12,6 +13,7 @@ enum RouteName {
 final routeName = EnumValues({
   '/login_page': RouteName.LOGINPAGE,
   '/home_page': RouteName.HOMEPAGE,
+  '/admin_home_page': RouteName.ADMINHOMEPAGE,
   '/playground_page': RouteName.PLAYGROUNDPAGE,
   '/activities_page': RouteName.ACTIVITIESPAGE,
   '/blog_page': RouteName.BLOGPAGE,
