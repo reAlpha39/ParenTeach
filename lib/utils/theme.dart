@@ -10,7 +10,7 @@ const blackColor2 = Color(0xFF353535);
 const pinkColor = Color(0xFFFF5976);
 const blueColor = Color(0xFF3EB6C1);
 const yellowAccentColor = Color(0xFFFBBB00);
-const greyBackgroundColor = Color(0xFFE5E5E5);
+const greyBackgroundColor = Color(0xFFF1F3F6);
 
 /// Black Text Style
 /// Gunakan method copyWith() untuk mengubah propertinya

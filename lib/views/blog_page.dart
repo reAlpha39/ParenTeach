@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import '../utils/theme.dart';
 
 class BlogPage extends StatelessWidget {
-  const BlogPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
