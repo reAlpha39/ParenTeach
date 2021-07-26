@@ -138,7 +138,7 @@ class AdminHomePage extends StatelessWidget {
                         titleCard: 'Siswa',
                       ),
                       HomeFiturCard(
-                        route: RouteName.QNAPAGE,
+                        route: RouteName.DAFTARGURUPAGE,
                         imageAsset: 'assets/Guru.png',
                         titleCard: 'Guru',
                       ),

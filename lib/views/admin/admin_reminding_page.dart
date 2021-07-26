@@ -83,7 +83,7 @@ class AdminRemindingPage extends StatelessWidget {
                               color: Colors.white,
                             )
                           ],
-                        )
+                        ),
                       ],
                     ),
                     SizedBox(
