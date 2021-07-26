@@ -104,7 +104,7 @@ class AdminHomePage extends StatelessWidget {
                       ),
                       HomeFiturCard(
                         route: RouteName.PLAYGROUNDPAGE,
-                        imageAsset: 'assets/Playground.png',
+                        imageAsset: 'assets/playground.png',
                         titleCard: 'Playground',
                       ),
                     ],
@@ -119,7 +119,7 @@ class AdminHomePage extends StatelessWidget {
                       ),
                       HomeFiturCard(
                         route: RouteName.QNAPAGE,
-                        imageAsset: 'assets/Qna.png',
+                        imageAsset: 'assets/qna.png',
                         titleCard: 'QnA',
                       ),
                       HomeFiturCard(

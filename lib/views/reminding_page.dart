@@ -16,12 +16,16 @@ class RemindingPage extends StatelessWidget {
                 Container(
                   height: 250,
                   width: Get.width,
+                  padding: EdgeInsets.all(30),
                   decoration: BoxDecoration(color: pinkColor),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 30),
-                    child: Image.asset(
-                      'assets/Reminding_bg',
-                      fit: BoxFit.cover,
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/Reminding_bg.png',
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -53,14 +57,7 @@ class RemindingPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 170,
-                  ),
-                  Text(
-                    'Reminding',
-                    style: whiteTextBold.copyWith(fontSize: 24),
-                  ),
-                  SizedBox(
-                    height: 10,
+                    height: 230,
                   ),
                   Container(
                     height: 70,
