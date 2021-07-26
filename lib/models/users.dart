@@ -31,7 +31,7 @@ class Users {
 
   factory Users.fromMap(Map<String, dynamic> json) => Users(
         idUsers: json["idUsers"] == null ? null : json["idUsers"],
-        username: json["usersname"] == null ? null : json["usersname"],
+        username: json["usersname"] == null ? null : json["username"],
         password: json["password"] == null ? null : json["password"],
         nama: json["nama"] == null ? null : json["nama"],
         noHp: json["noHp"] == null ? null : json["noHp"],
