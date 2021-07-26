@@ -46,25 +46,25 @@ class AdminAddReminding extends StatelessWidget {
                         labelStyle: blackText.copyWith(fontSize: 16)),
                   ),
                   ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStateProperty.all<double>(0),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                    style: ButtonStyle(
+                      elevation: MaterialStateProperty.all<double>(0),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Center(
-                          child: Text(
-                            'Simpan',
-                            style: whiteText,
-                          ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Center(
+                        child: Text(
+                          'Simpan',
+                          style: whiteText,
                         ),
                       ),
-                      onPressed: () {}),
+                    ),
+                    onPressed: () {},
+                  ),
                 ],
               ),
             )

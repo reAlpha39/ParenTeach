@@ -4,7 +4,7 @@ import 'package:parenteach/widgets/custom_appbar.dart';
 import 'package:parenteach/widgets/search_guru_siswa.dart';
 import 'package:parenteach/widgets/tabel_daftar.dart';
 
-class DaftarGuruPage extends StatelessWidget {
+class DaftarSiswaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController? cariController;
@@ -12,7 +12,7 @@ class DaftarGuruPage extends StatelessWidget {
       backgroundColor: greyBackgroundColor,
       appBar: CustomAppBar(
           enableLeading: true,
-          title: 'Daftar Guru',
+          title: 'Daftar Siswa',
           enableNotifIcon: true,
           backgroundColor: pinkColor,
           foregroundColor: greyBackgroundColor),

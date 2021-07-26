@@ -133,7 +133,7 @@ class AdminHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       HomeFiturCard(
-                        route: RouteName.RAPOTPAGE,
+                        route: RouteName.DAFTARSISWAPAGE,
                         imageAsset: 'assets/Siswa.png',
                         titleCard: 'Siswa',
                       ),
