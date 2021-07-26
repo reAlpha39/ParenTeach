@@ -104,32 +104,6 @@ class HomePage extends StatelessWidget {
                     height: 15,
                   ),
                   Text(
-                    'Apa itu parenting?',
-                    style: blackTextBold.copyWith(fontSize: 15),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: dummyText, style: blackText),
-                        TextSpan(
-                          text: ' Read More...',
-                          style: blackTextBold,
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Get.toNamed(
-                                  routeName.reverse[RouteName.BLOGPAGE]!);
-                            },
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text(
                     'Fitur Kita',
                     style: blackTextBold.copyWith(fontSize: 15),
                   ),
@@ -175,7 +149,18 @@ class HomePage extends StatelessWidget {
                         titleCard: 'Blog',
                       ),
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Apa itu parenting?',
+                    style: blackTextBold.copyWith(fontSize: 15),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(dummyText, style: blackText),
                 ],
               ),
             ),
