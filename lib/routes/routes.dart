@@ -52,5 +52,9 @@ class Routes {
       name: routeName.reverse[RouteName.ADMINREMINDINGPAGE]!,
       page: () => AdminRemindingPage(),
     ),
+    GetPage(
+      name: routeName.reverse[RouteName.ADMINTAMBAHREMINDINGPAGE]!,
+      page: () => AdminAddReminding(),
+    ),
   ];
 }
