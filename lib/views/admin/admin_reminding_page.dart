@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
 import '../../utils/utils.dart';
@@ -68,8 +69,14 @@ class AdminRemindingPage extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            LineIcon.plus(
-                              color: Colors.white,
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(routeName.reverse[
+                                    RouteName.ADMINTAMBAHREMINDINGPAGE]!);
+                              },
+                              child: LineIcon.plus(
+                                color: Colors.white,
+                              ),
                             ),
                             Icon(
                               Icons.more_vert,
