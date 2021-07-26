@@ -5,29 +5,21 @@
 import 'dart:convert';
 
 import 'package:parenteach/models/status.dart';
+import 'package:parenteach/models/users.dart';
 
-class Admin {
+class Admin extends Users {
   Admin({
     this.nip,
-    this.username,
-    this.noHp,
-    this.email,
+    this.idUser,
     this.jenisKelamin,
-    this.namaAdmin,
     this.foto,
     this.status,
-    this.password,
   });
-
+  String? idUser;
   String? nip;
-  String? username;
-  String? noHp;
-  String? email;
   String? jenisKelamin;
-  String? namaAdmin;
   String? foto;
   Status? status;
-  String? password;
 
   factory Admin.fromJson(String str) => Admin.fromMap(json.decode(str));
 
@@ -35,28 +27,20 @@ class Admin {
 
   factory Admin.fromMap(Map<String, dynamic> json) => Admin(
         nip: json["nip"] == null ? null : json["nip"],
-        username: json["username"] == null ? null : json["username"],
-        noHp: json["noHp"] == null ? null : json["noHp"],
-        email: json["email"] == null ? null : json["email"],
+        idUser: json["idUser"] == null ? null : json["idUser"],
         jenisKelamin:
             json["jenisKelamin"] == null ? null : json["jenisKelamin"],
-        namaAdmin: json["namaAdmin"] == null ? null : json["namaAdmin"],
         foto: json["foto"] == null ? null : json["foto"],
         status: json["status"] == null
             ? null
             : statusTypeValues.map![json["status"]],
-        password: json["password"] == null ? null : json["password"],
       );
 
   Map<String, dynamic> toMap() => {
         "nip": nip == null ? null : nip,
-        "username": username == null ? null : username,
-        "noHp": noHp == null ? null : noHp,
-        "email": email == null ? null : email,
+        "idUser": idUser == null ? null : idUser,
         "jenisKelamin": jenisKelamin == null ? null : jenisKelamin,
-        "namaAdmin": namaAdmin == null ? null : namaAdmin,
         "foto": foto == null ? null : foto,
         "status": status == null ? null : statusTypeValues.reverse[status],
-        "password": password == null ? null : password,
       };
 }
