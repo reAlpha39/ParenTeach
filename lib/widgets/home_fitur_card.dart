@@ -30,6 +30,10 @@ class HomeFiturCard extends StatelessWidget {
               height: 100,
               width: 100,
               decoration: BoxDecoration(
+                border: Border.all(
+                  color: pinkColor,
+                  width: 1,
+                ),
                 borderRadius: BorderRadius.all(
                   Radius.circular(8),
                 ),
@@ -46,7 +50,10 @@ class HomeFiturCard extends StatelessWidget {
             ),
             child: Text(
               titleCard!,
-              style: blackText.copyWith(fontSize: 12),
+              style: blackText.copyWith(
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
