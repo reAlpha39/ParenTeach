@@ -1,3 +1,5 @@
+import 'package:parenteach/utils/utils.dart';
+
 enum Status {
   ADMIN,
   TU,
@@ -11,17 +13,3 @@ final statusTypeValues = EnumValues({
   "guruKelas": Status.GURUKELAS,
   "bk": Status.BK,
 });
-
-class EnumValues<T> {
-  Map<String, T>? map;
-  Map<T, String>? reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map!.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap!;
-  }
-}
