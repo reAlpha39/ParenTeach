@@ -31,7 +31,7 @@ class QnaPage extends StatelessWidget {
               _loginController.user.value.type == UserType.ADMIN ? true : false,
           backgroundColor: pinkColor,
           foregroundColor: Colors.white,
-          route: RouteName.ADMINQNAPAGE,
+          route: RouteName.ADMINADDQNAPAGE,
         ),
         body: Stack(
           children: [
