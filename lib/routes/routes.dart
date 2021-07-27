@@ -5,6 +5,7 @@ import 'package:parenteach/views/admin/admin_home_page.dart';
 import 'package:parenteach/views/admin/admin_qna_page.dart';
 import 'package:parenteach/views/admin/admin_reminding_page.dart';
 import 'package:parenteach/views/admin/admin_tambah_guru.dart';
+import 'package:parenteach/views/admin/admin_tambah_nilai_rapot.dart';
 import 'package:parenteach/views/admin/daftar_guru.dart';
 import 'package:parenteach/views/admin/daftar_siswa.dart';
 import '../views/rapot_page.dart';
@@ -80,6 +81,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHGURUPAGE]!,
       page: () => AdminTambahGuru(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.ADMINTAMBAHNILAIRAPOTPAGE]!,
+      page: () => AdminTambahNilaiRapot(),
     ),
   ];
 }
