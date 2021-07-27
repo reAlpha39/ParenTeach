@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:parenteach/views/admin/admin_add_qna.dart';
 import 'package:parenteach/views/admin/admin_add_reminding.dart';
 import 'package:parenteach/views/admin/admin_home_page.dart';
+import 'package:parenteach/views/admin/admin_qna_page.dart';
 import 'package:parenteach/views/admin/admin_reminding_page.dart';
 import 'package:parenteach/views/admin/daftar_guru.dart';
 import 'package:parenteach/views/admin/daftar_siswa.dart';
@@ -65,6 +67,14 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.DAFTARSISWAPAGE]!,
       page: () => DaftarSiswaPage(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.ADMINQNAPAGE]!,
+      page: () => AdminQnaPage(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.ADMINADDQNAPAGE]!,
+      page: () => AdminAddQna(),
     ),
   ];
 }
