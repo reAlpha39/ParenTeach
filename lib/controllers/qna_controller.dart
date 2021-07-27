@@ -59,6 +59,7 @@ class QnaController extends GetxController {
         data.jawaban = qnaAnswer!.text;
         bool isSuccess = await _databaseProvider.addQna(data);
         if (isSuccess) {
+          _getQnaData();
           _showDialog(
             title: 'Success',
             middleText: 'QnA berhasil ditambahkan',
