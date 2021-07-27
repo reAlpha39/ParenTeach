@@ -15,7 +15,7 @@ class AdminTambahGuru extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
-        title: 'Tambah Pertanyaan',
+        title: 'Tambah Guru',
         isAdmin: false,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
