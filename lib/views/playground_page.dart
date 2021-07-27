@@ -15,7 +15,7 @@ class PlaygroundPage extends StatelessWidget {
       appBar: CustomAppBar(
         enableLeading: true,
         title: 'Playground',
-        enableNotifIcon: false,
+        isAdmin: false,
         backgroundColor: pinkColor,
         foregroundColor: Colors.white,
       ),

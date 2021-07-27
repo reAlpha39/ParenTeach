@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/login_controller.dart';
+import 'package:parenteach/models/user_type.dart';
+import 'package:parenteach/routes/route_name.dart';
 
 import '../utils/utils.dart';
 import '../widgets/custom_appbar.dart';
 import '../widgets/qna_card.dart';
 
 class QnaPage extends StatelessWidget {
-  const QnaPage({Key? key}) : super(key: key);
+  QnaPage({Key? key}) : super(key: key);
+  final LoginController _loginController = Get.find();
   static List<String> dummyText = [
     'Bagaimana membangun sifat anak yang baik?',
     'Sikap yang baik itu seperti apa?',
@@ -23,9 +27,11 @@ class QnaPage extends StatelessWidget {
         appBar: CustomAppBar(
           enableLeading: true,
           title: 'QnA',
-          enableNotifIcon: false,
+          isAdmin:
+              _loginController.user.value.type == UserType.ADMIN ? true : false,
           backgroundColor: pinkColor,
           foregroundColor: Colors.white,
+          route: RouteName.QNAPAGE,
         ),
         body: Stack(
           children: [

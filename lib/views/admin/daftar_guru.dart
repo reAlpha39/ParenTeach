@@ -13,7 +13,7 @@ class DaftarGuruPage extends StatelessWidget {
       appBar: CustomAppBar(
           enableLeading: true,
           title: 'Daftar Guru',
-          enableNotifIcon: true,
+          isAdmin: true,
           backgroundColor: pinkColor,
           foregroundColor: greyBackgroundColor),
       body: SingleChildScrollView(

@@ -13,7 +13,7 @@ class DaftarSiswaPage extends StatelessWidget {
       appBar: CustomAppBar(
           enableLeading: true,
           title: 'Daftar Siswa',
-          enableNotifIcon: true,
+          isAdmin: true,
           backgroundColor: pinkColor,
           foregroundColor: greyBackgroundColor),
       body: SingleChildScrollView(

@@ -10,7 +10,7 @@ class AdminAddReminding extends StatelessWidget {
       appBar: CustomAppBar(
           enableLeading: true,
           title: 'Tambah Reminding',
-          enableNotifIcon: false,
+          isAdmin: false,
           backgroundColor: pinkColor,
           foregroundColor: greyBackgroundColor),
       backgroundColor: greyBackgroundColor,

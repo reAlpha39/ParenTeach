@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/routes/route_name.dart';
 
 import '../utils/utils.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool enableLeading;
   final String title;
-  final bool enableNotifIcon;
   final double height;
   final Color backgroundColor;
   final Color foregroundColor;
+  final bool isAdmin;
+  final RouteName? route;
 
   const CustomAppBar({
     Key? key,
     required this.enableLeading,
     required this.title,
-    required this.enableNotifIcon,
     required this.backgroundColor,
     required this.foregroundColor,
+    this.route,
+    this.isAdmin = false,
     this.height = kToolbarHeight,
   }) : super(key: key);
 
@@ -53,14 +56,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             )
           : Container(),
-      actions: enableNotifIcon
+      actions: isAdmin
           ? [
+              IconButton(
+                onPressed: () => Get.toNamed(routeName.reverse[route]!),
+                icon: Icon(
+                  Icons.add,
+                  color: foregroundColor,
+                  size: 28,
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: IconButton(
                   onPressed: () {},
                   icon: Icon(
-                    Icons.notifications_rounded,
+                    Icons.more_vert_rounded,
                     color: foregroundColor,
                     size: 28,
                   ),
