@@ -36,7 +36,7 @@ class QnaPage extends StatelessWidget {
                 ? Container()
                 : Container(
                     width: Get.width,
-                    height: 160,
+                    height: 200,
                     child: Container(
                       color: pinkColor,
                       alignment: Alignment.topCenter,
@@ -45,7 +45,7 @@ class QnaPage extends StatelessWidget {
                       ),
                       width: 200,
                       child: Image.asset(
-                        'assets/qna_illustration.png',
+                        'assets/Qna_bg.png',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -65,6 +65,7 @@ class QnaPage extends StatelessWidget {
                         horizontal: 12,
                         vertical: 14,
                       ),
+                      margin: EdgeInsets.only(top: 20),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8),
@@ -138,7 +139,11 @@ class QnaPage extends StatelessWidget {
                               answer: _qnaController.listQna[index].jawaban!,
                               idQna: _qnaController.listQna[index].idQna!,
                             ),
-                          ),
+                          )..insert(
+                              0,
+                              SizedBox(
+                                height: 20,
+                              )),
                         ),
                       ),
               ),
