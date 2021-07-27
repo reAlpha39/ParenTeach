@@ -11,6 +11,8 @@ class QnaController extends GetxController {
   TextEditingController? qnaAnswer;
   Rx<Qna> qna = Qna().obs;
   RxBool isUpdate = false.obs;
+  RxBool isLoading = true.obs;
+  RxList<Qna> listQna = RxList<Qna>();
 
   void onInit() {
     qnaQuestion = TextEditingController();
@@ -18,10 +20,34 @@ class QnaController extends GetxController {
     super.onInit();
   }
 
+  void onReady() {
+    _getQnaData();
+    super.onReady();
+  }
+
   void onClose() {
     qnaQuestion?.dispose();
     qnaAnswer?.dispose();
     super.onClose();
+  }
+
+  void _getQnaData() async {
+    isLoading.value = true;
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        listQna.value = await _databaseProvider.getListQna();
+        listQna.refresh();
+        isLoading.value = false;
+      } else {
+        _showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
+      }
+    } catch (e) {
+      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
   }
 
   void addQna() async {

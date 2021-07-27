@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/login_controller.dart';
+import 'package:parenteach/controllers/qna_controller.dart';
 import 'package:parenteach/models/user_type.dart';
 import 'package:parenteach/routes/route_name.dart';
 
@@ -11,12 +12,7 @@ import '../widgets/qna_card.dart';
 class QnaPage extends StatelessWidget {
   QnaPage({Key? key}) : super(key: key);
   final LoginController _loginController = Get.find();
-  static List<String> dummyText = [
-    'Bagaimana membangun sifat anak yang baik?',
-    'Sikap yang baik itu seperti apa?',
-    'Apa peran orang tua agar anak dapat berkelakuan baik?',
-    'Bagaimana membangun sifat anak yang baik?',
-  ];
+  final QnaController _qnaController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -125,50 +121,24 @@ class QnaPage extends StatelessWidget {
                       left: 32,
                       right: 32,
                     ),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: List<Widget>.generate(
-                    dummyText.length,
-                    (index) => QnaCard(
-                      titleCard: dummyText[index],
-                    ),
-                  )
-                    ..insert(
-                      0,
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Sikap',
-                          style: pinkText.copyWith(
-                            fontSize: 18,
+              child: Obx(
+                () => _qnaController.isLoading.value
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        child: Column(
+                          children: List<Widget>.generate(
+                            _qnaController.listQna.length,
+                            (index) => QnaCard(
+                              titleCard:
+                                  _qnaController.listQna[index].pertanyaan!,
+                              answer: _qnaController.listQna[index].jawaban!,
+                            ),
                           ),
                         ),
                       ),
-                    )
-                    ..add(
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Bakat Siswa',
-                          style: pinkText.copyWith(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    )
-                    ..addAll([
-                      QnaCard(
-                        titleCard: dummyText[0],
-                      ),
-                      QnaCard(
-                        titleCard: dummyText[1],
-                      ),
-                      QnaCard(
-                        titleCard: dummyText[2],
-                      ),
-                    ]),
-                ),
               ),
             ),
           ],

@@ -65,4 +65,20 @@ class DatabaseProvider {
     id = int.tryParse(data);
     return id;
   }
+
+  Future<List<Qna>> getListQna() async {
+    List<Qna> temp = [];
+    try {
+      CollectionReference collection =
+          mainCollection().doc('qna').collection('qna');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(
+            Qna.fromMap(querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
+  }
 }

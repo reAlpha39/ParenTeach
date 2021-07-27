@@ -1,16 +1,17 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../utils/theme.dart';
 
 class QnaCard extends StatelessWidget {
   final String titleCard;
+  final String? answer;
 
   const QnaCard({
     Key? key,
     required this.titleCard,
+    this.answer,
   }) : super(key: key);
 
   @override
@@ -48,7 +49,13 @@ class QnaCard extends StatelessWidget {
                 ),
                 collapsed: Container(),
                 expanded: Container(
-                  height: 200,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                  ),
+                  child: Text(
+                    answer == null ? "" : answer!,
+                    overflow: TextOverflow.clip,
+                  ),
                 ),
               ),
             ),
