@@ -43,7 +43,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.center,
               child: GestureDetector(
                 onTap: () {
-                  additionalLeadingFunction!();
+                  if (additionalLeadingFunction != null) {
+                    additionalLeadingFunction!();
+                  }
                   Get.back();
                 },
                 child: Container(
