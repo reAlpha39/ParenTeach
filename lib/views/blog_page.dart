@@ -1,137 +1,172 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/routes/route_name.dart';
 
-import '../utils/theme.dart';
+import '../utils/utils.dart';
+import '../widgets/custom_appbar.dart';
 
 class BlogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
+    return GestureDetector(
+      onTap: () =>
+          WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
+      child: Scaffold(
+        appBar: CustomAppBar(
+          enableLeading: true,
+          title: 'Blog',
+          isAdmin: false,
+          backgroundColor: pinkColor,
+          foregroundColor: Colors.white,
+          route: RouteName.ADMINADDQNAPAGE,
+        ),
+        backgroundColor: greyBackgroundColor,
+        body: Stack(
           children: [
             Container(
-              height: Get.height / 2,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(
-                        'https://imgx.parapuan.co/file/parapuan/mobile/crop/0x0:0x0/360x240/photo/2021/04/04/pexels-alexander-suhorucov-64575-20210404075011.jpg'),
-                    fit: BoxFit.cover),
+              width: Get.width,
+              height: 160,
+              child: Container(
+                color: pinkColor,
+                alignment: Alignment.topCenter,
+                padding: const EdgeInsets.only(
+                  bottom: 12,
+                ),
+                child: Image.asset(
+                  'assets/Blog_bg.png',
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        color: pinkColor,
-                        borderRadius: BorderRadius.circular(10),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 135,
+                left: 32,
+                right: 32,
+              ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 14,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Icon(
+                            Icons.search_rounded,
+                            color: pinkColor,
+                          ),
+                        ),
+                        Container(
+                          width: 250,
+                          height: 20,
+                          child: TextField(
+                            decoration: InputDecoration.collapsed(
+                              hintText: 'Cari blog di sini',
+                              hintStyle: blackText.copyWith(
+                                  color: Colors.grey, fontSize: 13),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Color(0xff909090),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.only(
+                top: 190,
+                left: 20,
+                right: 20,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  // Masih dummy
+                  children: List.generate(
+                    10,
+                    (index) => buildBlogTile(
+                      'ahsiausaushahsu ahsbauhs asbabs ba shbahsa s hasbhas a hasi',
+                      '23 September 2020',
                     ),
                   ),
                 ),
               ),
             ),
-            Container(
-              height: Get.height / 2 + 150,
-              margin: EdgeInsets.only(top: Get.height / 2 - 150),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(20),
-                ),
-              ),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Apa itu parenting?',
-                        style: blackTextBold,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Tanggal',
-                        style: blackTextBold,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.',
-                        style: blackText,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.',
-                        style: blackText,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.',
-                        style: blackText,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.',
-                        style: blackText,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.',
-                        style: blackText,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.',
-                        style: blackText,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Parenting adalah cara mengasuh dan mendidik anak. Anda tentu sudah sangat sering mendengar istilah ini kehidupan sehari-hari. Namun, sudah tepatkah pemahaman Anda tentang konsep parenting itu sendiri? Berikut penjelasan singkat tentang pengertian parenting beserta jenis-jenisnya.',
-                        style: blackText,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        elevation: 0,
-        backgroundColor: pinkColor,
-        child: Container(
-            width: 30, height: 30, child: Image.asset('assets/send.png')),
+    );
+  }
+
+  Widget buildBlogTile(String? title, String? date) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(
+                      'https://static.wikia.nocookie.net/onepiece/images/f/ff/Marshall_D._Teach_Anime_Post_Timeskip_Infobox.png/revision/latest?cb=20200112104542'),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadiusDirectional.horizontal(
+                start: Radius.circular(10),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title!,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: blackTextBold,
+                ),
+                Text(
+                  date!,
+                  style: blackText.copyWith(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
       ),
     );
   }
