@@ -62,7 +62,7 @@ class AdminAddQna extends StatelessWidget {
                     ),
                     maxLines: null,
                     keyboardType: TextInputType.multiline,
-                    controller: addRemindingController,
+                    controller: addQnaController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
