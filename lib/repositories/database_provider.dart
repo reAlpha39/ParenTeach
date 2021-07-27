@@ -95,4 +95,18 @@ class DatabaseProvider {
     }
     return isSuccess;
   }
+
+  Future<bool> deleteQna(String idQna) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('qna').collection('qna');
+      await collection.doc(idQna).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
 }

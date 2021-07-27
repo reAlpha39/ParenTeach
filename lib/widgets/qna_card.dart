@@ -74,18 +74,37 @@ class QnaCard extends StatelessWidget {
                             top: 8,
                             right: 8,
                           ),
-                          child: GestureDetector(
-                            onTap: () {
-                              _qnaController.loadText(titleCard, answer!);
-                              Get.toNamed(
-                                routeName.reverse[RouteName.ADMINADDQNAPAGE]!,
-                                arguments: idQna,
-                              );
-                            },
-                            child: Text(
-                              "Edit",
-                              style: pinkText,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _qnaController.loadText(titleCard, answer!);
+                                    Get.toNamed(
+                                      routeName
+                                          .reverse[RouteName.ADMINADDQNAPAGE]!,
+                                      arguments: idQna,
+                                    );
+                                  },
+                                  child: Text(
+                                    "Edit",
+                                    style: pinkText,
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () =>
+                                    _qnaController.confirmDeleteQna(idQna),
+                                child: Text(
+                                  "Delete",
+                                  style: pinkText,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

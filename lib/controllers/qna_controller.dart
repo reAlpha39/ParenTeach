@@ -89,6 +89,42 @@ class QnaController extends GetxController {
     }
   }
 
+  void _deleteQna(String idQna) async {
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        bool isSuccess = await _databaseProvider.deleteQna(idQna);
+        if (isSuccess) {
+          _showDialog(
+            title: 'Sukses',
+            middleText: 'Data Berhasil terhapus',
+          );
+          _getQnaData();
+        } else {
+          _showDialog(
+            title: 'Gagal',
+            middleText:
+                'Tidak bisa menghapus data QnA, coba beberapa saat lagi',
+          );
+        }
+      } else {
+        _showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
+      }
+    } catch (e) {
+      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
+  }
+
+  void confirmDeleteQna(String idQna) {
+    _deleteConfirmationDialog(
+        title: "Hapus",
+        middleText: "Apakah anda yakin ingin menghapus QnA ini?",
+        idQna: idQna);
+  }
+
   void clearText() {
     isUpdate.value = false;
     qnaQuestion!.clear();
@@ -113,6 +149,30 @@ class QnaController extends GetxController {
       buttonColor: pinkColor,
       confirmTextColor: Colors.white,
       onConfirm: () {
+        Navigator.of(Get.overlayContext!).pop();
+      },
+    );
+  }
+
+  _deleteConfirmationDialog({
+    required String title,
+    required String middleText,
+    required String idQna,
+  }) {
+    Get.defaultDialog(
+      barrierDismissible: false,
+      titleStyle: blackText.copyWith(fontSize: 24),
+      middleTextStyle: blackText.copyWith(fontSize: 18),
+      title: title,
+      middleText: middleText,
+      textCancel: 'Cancel',
+      textConfirm: 'OK',
+      radius: 17,
+      buttonColor: pinkColor,
+      confirmTextColor: Colors.white,
+      onCancel: () => Navigator.of(Get.overlayContext!).pop(),
+      onConfirm: () {
+        _deleteQna(idQna);
         Navigator.of(Get.overlayContext!).pop();
       },
     );
