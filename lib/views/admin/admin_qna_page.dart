@@ -27,7 +27,7 @@ class AdminQnaPage extends StatelessWidget {
           title: 'QnA',
           isAdmin: true,
           // Masih Dummy belum bisa masuk ya
-          route: RouteName.PLAYGROUNDPAGE,
+          route: RouteName.ADMINADDQNAPAGE,
         ),
         body: SingleChildScrollView(
           child: Column(

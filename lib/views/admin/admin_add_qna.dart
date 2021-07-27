@@ -8,11 +8,12 @@ class AdminAddQna extends StatelessWidget {
     TextEditingController? addRemindingController;
     return Scaffold(
       appBar: CustomAppBar(
-          enableLeading: true,
-          title: 'Tambah Reminding',
-          isAdmin: false,
-          backgroundColor: pinkColor,
-          foregroundColor: greyBackgroundColor),
+        enableLeading: true,
+        title: 'Tambah Pertanyaan',
+        isAdmin: false,
+        backgroundColor: pinkColor,
+        foregroundColor: greyBackgroundColor,
+      ),
       backgroundColor: greyBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
@@ -45,29 +46,60 @@ class AdminAddQna extends StatelessWidget {
                         labelText: 'Tulis Pertanyaan Di Sini',
                         labelStyle: blackText.copyWith(fontSize: 16)),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all<double>(0),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Jawaban',
+                    style: blackTextBold.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    style: blackText.copyWith(
+                      fontSize: 14,
+                    ),
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    controller: addRemindingController,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Center(
-                        child: Text(
-                          'Simpan',
-                          style: whiteText,
+                        labelText: 'Tulis Jawaban Di Sini',
+                        labelStyle: blackText.copyWith(fontSize: 16)),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: 130,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all<double>(0),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
                       ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Center(
+                          child: Text(
+                            'Simpan',
+                            style: whiteText,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
                     ),
-                    onPressed: () {},
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
