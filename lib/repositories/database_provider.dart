@@ -81,4 +81,18 @@ class DatabaseProvider {
     }
     return temp;
   }
+
+  Future<bool> updateQna(Qna data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('qna').collection('qna');
+      await collection.doc(data.idQna).set(data.toMap());
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
 }

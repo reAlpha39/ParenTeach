@@ -1,16 +1,22 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:parenteach/controllers/qna_controller.dart';
+import 'package:parenteach/routes/route_name.dart';
 
 import '../utils/theme.dart';
 
 class QnaCard extends StatelessWidget {
+  final QnaController _qnaController = Get.find();
   final String titleCard;
   final String? answer;
+  final String idQna;
 
-  const QnaCard({
+  QnaCard({
     Key? key,
     required this.titleCard,
+    required this.idQna,
     this.answer,
   }) : super(key: key);
 
@@ -52,9 +58,38 @@ class QnaCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     vertical: 8,
                   ),
-                  child: Text(
-                    answer == null ? "" : answer!,
-                    overflow: TextOverflow.clip,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          answer == null ? "" : answer!,
+                          overflow: TextOverflow.clip,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 8,
+                            right: 8,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              _qnaController.loadText(titleCard, answer!);
+                              Get.toNamed(
+                                routeName.reverse[RouteName.ADMINADDQNAPAGE]!,
+                                arguments: idQna,
+                              );
+                            },
+                            child: Text(
+                              "Edit",
+                              style: pinkText,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

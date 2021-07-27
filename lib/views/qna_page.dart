@@ -28,6 +28,7 @@ class QnaPage extends StatelessWidget {
           backgroundColor: pinkColor,
           foregroundColor: Colors.white,
           route: RouteName.ADMINADDQNAPAGE,
+          additionalLeadingFunction: () => _qnaController.clearText(),
         ),
         body: Stack(
           children: [
@@ -135,6 +136,7 @@ class QnaPage extends StatelessWidget {
                               titleCard:
                                   _qnaController.listQna[index].pertanyaan!,
                               answer: _qnaController.listQna[index].jawaban!,
+                              idQna: _qnaController.listQna[index].idQna!,
                             ),
                           ),
                         ),

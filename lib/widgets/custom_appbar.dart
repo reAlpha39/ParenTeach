@@ -66,7 +66,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: isAdmin
           ? [
               IconButton(
-                onPressed: () => Get.toNamed(routeName.reverse[route]!),
+                onPressed: () {
+                  additionalLeadingFunction!();
+                  Get.toNamed(routeName.reverse[route]!);
+                },
                 icon: Icon(
                   Icons.add,
                   color: foregroundColor,

@@ -50,25 +50,37 @@ class QnaController extends GetxController {
     }
   }
 
-  void addQna() async {
+  void addQna({String? idQna}) async {
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
         Qna data = Qna();
         data.pertanyaan = qnaQuestion!.text;
         data.jawaban = qnaAnswer!.text;
-        bool isSuccess = await _databaseProvider.addQna(data);
+        if (idQna != null) {
+          data.idQna = idQna;
+          isUpdate.value = true;
+        } else {
+          isUpdate.value = false;
+        }
+        bool isSuccess = isUpdate.value
+            ? await _databaseProvider.updateQna(data)
+            : await _databaseProvider.addQna(data);
         if (isSuccess) {
           _getQnaData();
           _showDialog(
             title: 'Success',
-            middleText: 'QnA berhasil ditambahkan',
+            middleText: isUpdate.value
+                ? 'QnA berhasil diperbaharui'
+                : 'QnA berhasil ditambahkan',
           );
           clearText();
         } else {
           _showDialog(
             title: 'Gagal',
-            middleText: 'QnA gagal ditambahkan, mohon coba lagi',
+            middleText: isUpdate.value
+                ? 'QnA gagal diperbaharui, mohon coba lagi'
+                : 'QnA gagal ditambahkan, mohon coba lagi',
           );
         }
       }
@@ -78,8 +90,15 @@ class QnaController extends GetxController {
   }
 
   void clearText() {
+    isUpdate.value = false;
     qnaQuestion!.clear();
     qnaAnswer!.clear();
+  }
+
+  void loadText(String question, String answer) {
+    isUpdate.value = true;
+    qnaQuestion!.text = question;
+    qnaAnswer!.text = answer;
   }
 
   _showDialog({required String title, required String middleText}) {
