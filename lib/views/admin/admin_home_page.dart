@@ -1,13 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icon.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/shared_methods.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/home_fitur_card.dart';
 
 class AdminHomePage extends StatelessWidget {
+  final LoginController _loginController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -40,9 +42,37 @@ class AdminHomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Icon(
-                        Icons.more_vert,
-                        size: 30,
+                      GestureDetector(
+                        onTap: () {
+                          Get.defaultDialog(
+                            radius: 17,
+                            title: 'Logout',
+                            content: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 4,
+                                horizontal: 12,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Apakah anda ingin logout?',
+                                  style: blackText,
+                                ),
+                              ),
+                            ),
+                            textConfirm: 'OK',
+                            textCancel: 'Batal',
+                            buttonColor: pinkColor,
+                            cancelTextColor: Colors.black87,
+                            confirmTextColor: Colors.white,
+                            onConfirm: () => _loginController.userLogout(),
+                            onCancel: () => Get.toNamed(
+                                routeName.reverse[RouteName.ADMINHOMEPAGE]!),
+                          ).then((value) => value = false);
+                        },
+                        child: Icon(
+                          Icons.more_vert,
+                          size: 30,
+                        ),
                       ),
                     ],
                   ),

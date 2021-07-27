@@ -98,7 +98,8 @@ class HomePage extends StatelessWidget {
                                     confirmTextColor: Colors.white,
                                     onConfirm: () =>
                                         _loginController.userLogout(),
-                                    onCancel: () => Get.back(),
+                                    onCancel: () => Get.toNamed(
+                                        routeName.reverse[RouteName.HOMEPAGE]!),
                                   ).then((value) => value = false);
                                 },
                                 style: ElevatedButton.styleFrom(
