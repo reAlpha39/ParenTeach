@@ -7,6 +7,11 @@ class AdminTambahGuru extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late TextEditingController namaController = TextEditingController();
+    late TextEditingController nipController = TextEditingController();
+    late TextEditingController usernameController = TextEditingController();
+    late TextEditingController passwordController = TextEditingController();
+    late TextEditingController confirmPasswordController =
+        TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
@@ -30,9 +35,17 @@ class AdminTambahGuru extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   buildGuruTextField(
-                      namaController, 'Nama', 'Tulis nama di sini'),
+                    namaController,
+                    'Nama',
+                    'Tulis nama di sini',
+                    false,
+                  ),
                   buildGuruTextField(
-                      namaController, 'NIP', 'Tulis nik di sini'),
+                    nipController,
+                    'NIP',
+                    'Tulis nik di sini',
+                    false,
+                  ),
                   buildDropDown(
                     'Jenis Kelamin',
                     'Pilih Jenis Kelamin',
@@ -41,14 +54,41 @@ class AdminTambahGuru extends StatelessWidget {
                       buildDropdownMenuItem('Perempuan', 2),
                     ],
                   ),
-                  // buildDropDown('Status', 'Pilih Status'),
-                  // buildDropDown('Wali Kelas', 'Pilih Kelas Di Sini'),
-                  buildGuruTextField(namaController, 'Username', 'Username'),
-                  buildGuruTextField(namaController, 'Password', 'Password'),
+                  buildDropDown(
+                    'Status',
+                    'Pilih Status',
+                    [
+                      buildDropdownMenuItem('ADMIN', 1),
+                      buildDropdownMenuItem('TU', 2),
+                      buildDropdownMenuItem('GURU KELAS', 3),
+                      buildDropdownMenuItem('BK', 4),
+                    ],
+                  ),
+                  buildDropDown(
+                    'Wali Kelas',
+                    'Pilih Kelas Di Sini',
+                    [
+                      buildDropdownMenuItem('7', 1),
+                      buildDropdownMenuItem('8', 2),
+                      buildDropdownMenuItem('9', 3),
+                    ],
+                  ),
                   buildGuruTextField(
-                      namaController, 'Ulangi Password', 'Ulangi Password'),
+                    usernameController,
+                    'Username',
+                    'Username',
+                    false,
+                  ),
                   buildGuruTextField(
-                      namaController, 'Upload Foto', 'Tulis nama di sini'),
+                    passwordController,
+                    'Password',
+                    'Password',
+                    true,
+                  ),
+                  buildGuruTextField(confirmPasswordController,
+                      'Ulangi Password', 'Ulangi Password', true),
+                  // buildGuruTextField(namaController, 'Upload Foto',
+                  //     'Tulis nama di sini', false),
                   Container(
                     width: 130,
                     child: ElevatedButton(
@@ -84,13 +124,20 @@ class AdminTambahGuru extends StatelessWidget {
   }
 
   Widget buildGuruTextField(
-      TextEditingController namaController, String title, String label) {
+    TextEditingController namaController,
+    String? title,
+    String? label,
+    bool? isObscure,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title,
+          title!,
           style: blackTextBold.copyWith(fontSize: 16),
+        ),
+        SizedBox(
+          height: 10,
         ),
         Container(
           height: 50,
@@ -98,12 +145,13 @@ class AdminTambahGuru extends StatelessWidget {
             style: blackText.copyWith(
               fontSize: 14,
             ),
+            obscureText: isObscure!,
             controller: namaController,
             decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                labelText: label,
+                labelText: label!,
                 labelStyle: blackText.copyWith(fontSize: 16)),
           ),
         ),
