@@ -28,32 +28,22 @@ class PlaygroundPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: Get.width,
+                  width: 210,
                   child: Image.asset(
-                    'assets/playground.png',
+                    'assets/Playground_bg.png',
                     fit: BoxFit.cover,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 72,
-                      left: 32,
-                    ),
-                    child: Text(
-                      'Ayo Bermain Bunda',
-                      style: whiteText.copyWith(fontSize: 20),
-                    ),
-                  ),
-                ),
+                SizedBox(
+                  height: 100,
+                )
               ],
             ),
           ),
           Container(
             alignment: Alignment.topCenter,
             padding: const EdgeInsets.only(
-              top: 280,
+              top: 250,
               left: 32,
               right: 32,
             ),
