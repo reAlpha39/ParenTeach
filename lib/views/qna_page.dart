@@ -31,88 +31,100 @@ class QnaPage extends StatelessWidget {
               _loginController.user.value.type == UserType.ADMIN ? true : false,
           backgroundColor: pinkColor,
           foregroundColor: Colors.white,
-          route: RouteName.QNAPAGE,
+          route: RouteName.ADMINQNAPAGE,
         ),
         body: Stack(
           children: [
-            Container(
-              width: Get.width,
-              height: 160,
-              child: Container(
-                color: pinkColor,
-                alignment: Alignment.topCenter,
-                padding: const EdgeInsets.only(
-                  bottom: 12,
-                ),
-                width: 200,
-                child: Image.asset(
-                  'assets/qna_illustration.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 135,
-                left: 32,
-                right: 32,
-              ),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 14,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: Icon(
-                            Icons.search_rounded,
-                            color: pinkColor,
-                          ),
-                        ),
-                        Container(
-                          width: 250,
-                          height: 20,
-                          child: TextField(
-                            decoration: InputDecoration.collapsed(
-                              hintText: 'Cari pertanyaan disini',
-                              hintStyle: blackText.copyWith(
-                                  color: Colors.grey, fontSize: 13),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.keyboard_arrow_down,
-                          color: Color(0xff909090),
-                        ),
+            _loginController.user.value.type == UserType.ADMIN
+                ? Container()
+                : Container(
+                    width: Get.width,
+                    height: 160,
+                    child: Container(
+                      color: pinkColor,
+                      alignment: Alignment.topCenter,
+                      padding: const EdgeInsets.only(
+                        bottom: 12,
+                      ),
+                      width: 200,
+                      child: Image.asset(
+                        'assets/qna_illustration.png',
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ],
-                ),
-              ),
+                  ),
+            Padding(
+              padding: _loginController.user.value.type == UserType.ADMIN
+                  ? EdgeInsets.only(top: 12)
+                  : EdgeInsets.only(
+                      top: 135,
+                      left: 32,
+                      right: 32,
+                    ),
+              child: _loginController.user.value.type == UserType.ADMIN
+                  ? Container()
+                  : Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 14,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                                child: Icon(
+                                  Icons.search_rounded,
+                                  color: pinkColor,
+                                ),
+                              ),
+                              Container(
+                                width: 250,
+                                height: 20,
+                                child: TextField(
+                                  decoration: InputDecoration.collapsed(
+                                    hintText: 'Cari pertanyaan disini',
+                                    hintStyle: blackText.copyWith(
+                                        color: Colors.grey, fontSize: 13),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.keyboard_arrow_down,
+                                color: Color(0xff909090),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
             ),
             Container(
               alignment: Alignment.topCenter,
-              padding: const EdgeInsets.only(
-                top: 190,
-                left: 32,
-                right: 32,
-              ),
+              padding: _loginController.user.value.type == UserType.ADMIN
+                  ? EdgeInsets.only(
+                      top: 20,
+                      left: 32,
+                      right: 32,
+                    )
+                  : EdgeInsets.only(
+                      top: 190,
+                      left: 32,
+                      right: 32,
+                    ),
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Column(
