@@ -87,8 +87,46 @@ class AdminTambahGuru extends StatelessWidget {
                   ),
                   buildGuruTextField(confirmPasswordController,
                       'Ulangi Password', 'Ulangi Password', true),
-                  // buildGuruTextField(namaController, 'Upload Foto',
-                  //     'Tulis nama di sini', false),
+                  Text(
+                    'Pilih Foto',
+                    style: blackTextBold.copyWith(fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: Get.width,
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () {
+                          // TODO: Pick Image
+                        },
+                        child: Container(
+                          width: Get.width / 3,
+                          height: 37,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Pilih Foto',
+                              style: blackText,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     width: 130,
                     child: ElevatedButton(
