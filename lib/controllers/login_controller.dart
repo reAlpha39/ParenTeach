@@ -87,6 +87,11 @@ class LoginController extends GetxController {
     }
   }
 
+  void userLogout() async {
+    await _databaseProvider.signOut();
+    Get.toNamed(routeName.reverse[RouteName.LOGINPAGE]!);
+  }
+
   _showDialog({required String title, required String middleText}) {
     Get.defaultDialog(
       barrierDismissible: false,

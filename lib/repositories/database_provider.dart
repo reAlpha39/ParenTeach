@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:parenteach/models/qna.dart';
 import 'package:parenteach/models/users.dart';
@@ -36,6 +37,11 @@ class DatabaseProvider {
       print(e);
     }
     return user;
+  }
+
+  Future<void> signOut() async {
+    final FirebaseAuth user = FirebaseAuth.instance;
+    await user.signOut();
   }
 
   Future<bool> addQna(Qna data) async {

@@ -1,6 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 
 import '../routes/route_name.dart';
 import '../utils/shared_methods.dart';
@@ -8,6 +8,7 @@ import '../utils/theme.dart';
 import '../widgets/home_fitur_card.dart';
 
 class HomePage extends StatelessWidget {
+  final LoginController _loginController = Get.find();
   @override
   Widget build(BuildContext context) {
     String dummyText =
@@ -74,13 +75,38 @@ class HomePage extends StatelessWidget {
                                 style: whiteTextBold.copyWith(fontSize: 18),
                               ),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.defaultDialog(
+                                    radius: 17,
+                                    title: 'Logout',
+                                    content: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 4,
+                                        horizontal: 12,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'Apakah anda ingin logout?',
+                                          style: blackText,
+                                        ),
+                                      ),
+                                    ),
+                                    textConfirm: 'OK',
+                                    textCancel: 'Batal',
+                                    buttonColor: pinkColor,
+                                    cancelTextColor: Colors.black87,
+                                    confirmTextColor: Colors.white,
+                                    onConfirm: () =>
+                                        _loginController.userLogout(),
+                                    onCancel: () => Get.back(),
+                                  ).then((value) => value = false);
+                                },
                                 style: ElevatedButton.styleFrom(
                                     padding: EdgeInsets.all(5),
                                     primary: Colors.white,
                                     elevation: 0),
                                 child: Text(
-                                  'Explore',
+                                  'Logout',
                                   style: pinkText.copyWith(fontSize: 12),
                                 ),
                               ),
@@ -88,7 +114,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Illustrasi (Belum tau responsive apa belum)
                       Positioned(
                         top: 30,
                         right: 10,
