@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
 class AdminTambahGuru extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    TextEditingController? addRemindingController;
+    late TextEditingController namaController = TextEditingController();
+    late TextEditingController nipController = TextEditingController();
+    late TextEditingController usernameController = TextEditingController();
+    late TextEditingController passwordController = TextEditingController();
+    late TextEditingController confirmPasswordController =
+        TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
-        title: 'Tambah Pertanyaan',
+        title: 'Tambah Guru',
         isAdmin: false,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
@@ -28,47 +34,95 @@ class AdminTambahGuru extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Pertanyaan',
-                    style: blackTextBold.copyWith(fontSize: 18),
+                  buildGuruTextField(
+                    namaController,
+                    'Nama',
+                    'Tulis nama di sini',
+                    false,
                   ),
-                  TextFormField(
-                    style: blackText.copyWith(
-                      fontSize: 14,
-                    ),
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    controller: addRemindingController,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        labelText: 'Tulis Pertanyaan Di Sini',
-                        labelStyle: blackText.copyWith(fontSize: 16)),
+                  buildGuruTextField(
+                    nipController,
+                    'NIP',
+                    'Tulis nik di sini',
+                    false,
+                  ),
+                  buildDropDown(
+                    'Jenis Kelamin',
+                    'Pilih Jenis Kelamin',
+                    [
+                      buildDropdownMenuItem('Laki-laki', 1),
+                      buildDropdownMenuItem('Perempuan', 2),
+                    ],
+                  ),
+                  buildDropDown(
+                    'Status',
+                    'Pilih Status',
+                    [
+                      buildDropdownMenuItem('ADMIN', 1),
+                      buildDropdownMenuItem('TU', 2),
+                      buildDropdownMenuItem('GURU KELAS', 3),
+                      buildDropdownMenuItem('BK', 4),
+                    ],
+                  ),
+                  buildDropDown(
+                    'Wali Kelas',
+                    'Pilih Kelas Di Sini',
+                    [
+                      buildDropdownMenuItem('7', 1),
+                      buildDropdownMenuItem('8', 2),
+                      buildDropdownMenuItem('9', 3),
+                    ],
+                  ),
+                  buildGuruTextField(
+                    usernameController,
+                    'Username',
+                    'Username',
+                    false,
+                  ),
+                  buildGuruTextField(
+                    passwordController,
+                    'Password',
+                    'Password',
+                    true,
+                  ),
+                  buildGuruTextField(confirmPasswordController,
+                      'Ulangi Password', 'Ulangi Password', true),
+                  Text(
+                    'Pilih Foto',
+                    style: blackTextBold.copyWith(fontSize: 16),
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    'Jawaban',
-                    style: blackTextBold.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextFormField(
-                    style: blackText.copyWith(
-                      fontSize: 14,
+                  Container(
+                    width: Get.width,
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey),
                     ),
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    controller: addRemindingController,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () {
+                          // TODO: Pick Image
+                        },
+                        child: Container(
+                          width: Get.width / 3,
+                          height: 37,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Pilih Foto',
+                              style: blackText,
+                            ),
+                          ),
                         ),
-                        labelText: 'Tulis Jawaban Di Sini',
-                        labelStyle: blackText.copyWith(fontSize: 16)),
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: 10,
@@ -77,6 +131,7 @@ class AdminTambahGuru extends StatelessWidget {
                     width: 130,
                     child: ElevatedButton(
                       style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(blueColor),
                         elevation: MaterialStateProperty.all<double>(0),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -103,6 +158,86 @@ class AdminTambahGuru extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildGuruTextField(
+    TextEditingController namaController,
+    String? title,
+    String? label,
+    bool? isObscure,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title!,
+          style: blackTextBold.copyWith(fontSize: 16),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 50,
+          child: TextFormField(
+            style: blackText.copyWith(
+              fontSize: 14,
+            ),
+            obscureText: isObscure!,
+            controller: namaController,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                labelText: label!,
+                labelStyle: blackText.copyWith(fontSize: 16)),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
+  Widget buildDropDown(
+      String? title, String? label, List<DropdownMenuItem<int>>? items) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title!,
+          style: blackTextBold.copyWith(fontSize: 16),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          width: Get.width,
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.grey),
+          ),
+          child: DropdownButton(
+            underline: SizedBox(),
+            isExpanded: true,
+            items: items,
+            onChanged: (value) {},
+            hint: Text(label!),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
+  DropdownMenuItem<int> buildDropdownMenuItem(String item, int value) {
+    return DropdownMenuItem(
+      child: Text(item),
+      value: value,
     );
   }
 }
