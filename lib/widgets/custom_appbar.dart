@@ -12,6 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color foregroundColor;
   final bool isAdmin;
   final RouteName? route;
+  final VoidCallback? additionalLeadingFunction;
 
   const CustomAppBar({
     Key? key,
@@ -19,6 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     required this.backgroundColor,
     required this.foregroundColor,
+    this.additionalLeadingFunction,
     this.route,
     this.isAdmin = false,
     this.height = kToolbarHeight,
@@ -40,7 +42,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               alignment: Alignment.center,
               child: GestureDetector(
-                onTap: () => Get.back(),
+                onTap: () {
+                  additionalLeadingFunction!();
+                  Get.back();
+                },
                 child: Container(
                   height: 30,
                   width: 30,
