@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
-class AdminAddQna extends StatelessWidget {
+class AdminTambahGuru extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    TextEditingController? addQnaController;
+    TextEditingController? addRemindingController;
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
@@ -38,7 +38,7 @@ class AdminAddQna extends StatelessWidget {
                     ),
                     maxLines: null,
                     keyboardType: TextInputType.multiline,
-                    controller: addQnaController,
+                    controller: addRemindingController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
