@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 import 'package:parenteach/widgets/search_guru_siswa.dart';
@@ -11,11 +12,13 @@ class DaftarGuruPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: greyBackgroundColor,
       appBar: CustomAppBar(
-          enableLeading: true,
-          title: 'Daftar Guru',
-          isAdmin: true,
-          backgroundColor: pinkColor,
-          foregroundColor: greyBackgroundColor),
+        enableLeading: true,
+        title: 'Daftar Guru',
+        isAdmin: true,
+        backgroundColor: pinkColor,
+        foregroundColor: greyBackgroundColor,
+        route: RouteName.ADMINTAMBAHGURUPAGE,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
