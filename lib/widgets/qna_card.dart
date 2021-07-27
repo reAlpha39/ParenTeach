@@ -2,12 +2,15 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import 'package:parenteach/controllers/qna_controller.dart';
+import 'package:parenteach/models/user_type.dart';
 import 'package:parenteach/routes/route_name.dart';
 
 import '../utils/theme.dart';
 
 class QnaCard extends StatelessWidget {
+  final LoginController _loginController = Get.find();
   final QnaController _qnaController = Get.find();
   final String titleCard;
   final String? answer;
@@ -67,47 +70,50 @@ class QnaCard extends StatelessWidget {
                           overflow: TextOverflow.clip,
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 8,
-                            right: 8,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 24,
+                      _loginController.user.value.type == UserType.ADMIN
+                          ? Align(
+                              alignment: Alignment.bottomRight,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 8,
+                                  right: 8,
                                 ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    _qnaController.loadText(titleCard, answer!);
-                                    Get.toNamed(
-                                      routeName
-                                          .reverse[RouteName.ADMINADDQNAPAGE]!,
-                                      arguments: idQna,
-                                    );
-                                  },
-                                  child: Text(
-                                    "Edit",
-                                    style: pinkText,
-                                  ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 24,
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          _qnaController.loadText(
+                                              titleCard, answer!);
+                                          Get.toNamed(
+                                            routeName.reverse[
+                                                RouteName.ADMINADDQNAPAGE]!,
+                                            arguments: idQna,
+                                          );
+                                        },
+                                        child: Text(
+                                          "Edit",
+                                          style: pinkText,
+                                        ),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () => _qnaController
+                                          .confirmDeleteQna(idQna),
+                                      child: Text(
+                                        "Delete",
+                                        style: pinkText,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () =>
-                                    _qnaController.confirmDeleteQna(idQna),
-                                child: Text(
-                                  "Delete",
-                                  style: pinkText,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                            )
+                          : Container(),
                     ],
                   ),
                 ),
