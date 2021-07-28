@@ -18,6 +18,7 @@ class SiswaController extends GetxController {
   RxBool isLoading = false.obs;
   Rx<File> image = File("").obs;
   RxString fileName = "".obs;
+  RxList<Siswa> listSiswa = RxList<Siswa>();
 
   final List<String> jenisKelamins = ['Laki-Laki', 'Perempuan'];
   final List<String> kelass = ['7', '8', '9'];
@@ -26,6 +27,11 @@ class SiswaController extends GetxController {
     namaController = TextEditingController();
     nipController = TextEditingController();
     super.onInit();
+  }
+
+  void onReady() {
+    _getSiswaData();
+    super.onReady();
   }
 
   void onClose() {
@@ -44,6 +50,25 @@ class SiswaController extends GetxController {
       fileName.value = file.name;
     } else {
       print('No image selected');
+    }
+  }
+
+  void _getSiswaData() async {
+    isLoading.value = true;
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        listSiswa.value = await _databaseProvider.getSiswaList();
+        listSiswa.refresh();
+        isLoading.value = false;
+      } else {
+        _showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
+      }
+    } catch (e) {
+      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
     }
   }
 

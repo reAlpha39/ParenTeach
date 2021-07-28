@@ -154,4 +154,21 @@ class DatabaseProvider {
     }
     return isSuccess;
   }
+
+  Future<List<Siswa>> getSiswaList() async {
+    List<Siswa> siswas = [];
+    try {
+      CollectionReference collection =
+          mainCollection().doc('siswa').collection('siswa');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        siswas.add(
+          Siswa.fromMap(querySnapshot.docs[i].data() as Map<String, dynamic>),
+        );
+      }
+    } catch (e) {
+      print(e);
+    }
+    return siswas;
+  }
 }

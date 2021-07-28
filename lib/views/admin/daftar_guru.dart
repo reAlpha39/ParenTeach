@@ -3,7 +3,7 @@ import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 import 'package:parenteach/widgets/search_guru_siswa.dart';
-import 'package:parenteach/widgets/tabel_daftar.dart';
+import 'package:parenteach/widgets/tabel_daftar_siswa.dart';
 
 class DaftarGuruPage extends StatelessWidget {
   @override
@@ -39,7 +39,7 @@ class DaftarGuruPage extends StatelessWidget {
                 ],
               ),
             ),
-            TabelDaftar()
+            TabelDaftarSiswa()
           ],
         ),
       ),

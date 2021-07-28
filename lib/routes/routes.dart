@@ -72,6 +72,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.DAFTARSISWAPAGE]!,
       page: () => DaftarSiswaPage(),
+      binding: SiswaBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADMINADDQNAPAGE]!,
