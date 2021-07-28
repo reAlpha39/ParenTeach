@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:parenteach/routes/qna_binding.dart';
+import 'package:parenteach/routes/reminding_binding.dart';
 import 'package:parenteach/routes/siswa_binding.dart';
 import 'package:parenteach/views/admin/admin_add_qna.dart';
 import 'package:parenteach/views/admin/admin_add_reminding.dart';
@@ -64,6 +65,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHREMINDINGPAGE]!,
       page: () => AdminAddReminding(),
+      binding: RemindingBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.DAFTARGURUPAGE]!,

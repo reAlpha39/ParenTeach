@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:parenteach/controllers/reminding_controller.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
 class AdminAddReminding extends StatelessWidget {
+  final RemindingController remindingController = Get.find();
   @override
   Widget build(BuildContext context) {
-    TextEditingController? addRemindingController;
     return Scaffold(
       appBar: CustomAppBar(
           enableLeading: true,
-          title: 'Tambah Reminding',
+          title: remindingController.isUpdate.value
+              ? "Update Reminding"
+              : "Tambah Reminding",
           isAdmin: false,
           backgroundColor: pinkColor,
           foregroundColor: greyBackgroundColor),
@@ -37,7 +41,7 @@ class AdminAddReminding extends StatelessWidget {
                     ),
                     maxLines: null,
                     keyboardType: TextInputType.multiline,
-                    controller: addRemindingController,
+                    controller: remindingController.remindingTextField,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -63,7 +67,9 @@ class AdminAddReminding extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () => remindingController.addOrUpdateReminding(
+                      idReminding: Get.arguments,
+                    ),
                   ),
                 ],
               ),

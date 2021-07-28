@@ -57,3 +57,20 @@ Future<void> confirmPopup(Function? confirm) {
     onCancel: () => Get.back(),
   ).then((value) => value = false);
 }
+
+showDialog({required String title, required String middleText}) {
+  Get.defaultDialog(
+    barrierDismissible: false,
+    titleStyle: blackText.copyWith(fontSize: 24),
+    middleTextStyle: blackText.copyWith(fontSize: 18),
+    title: title,
+    middleText: middleText,
+    textConfirm: 'OK',
+    radius: 17,
+    buttonColor: pinkColor,
+    confirmTextColor: Colors.white,
+    onConfirm: () {
+      Navigator.of(Get.overlayContext!).pop();
+    },
+  );
+}
