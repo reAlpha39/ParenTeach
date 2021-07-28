@@ -146,7 +146,7 @@ class AdminTambahSiswa extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () => _siswaController.saveSiswaData(),
                       ),
                     ),
                   ],

@@ -1,15 +1,20 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:parenteach/models/qna.dart';
+import 'package:parenteach/models/siswa.dart';
 import 'package:parenteach/models/users.dart';
 
 class DatabaseProvider {
   late FirebaseFirestore firestore;
+  String sekolah = 'sekolahA';
 
   CollectionReference mainCollection() {
     firestore = FirebaseFirestore.instance;
-    CollectionReference collection = firestore.collection('sekolahA');
+    CollectionReference collection = firestore.collection(sekolah);
     return collection;
   }
 
@@ -108,6 +113,40 @@ class DatabaseProvider {
       CollectionReference collection =
           mainCollection().doc('qna').collection('qna');
       await collection.doc(idQna).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future<String> uploadImage(
+    File image,
+    String filename,
+    String folderName,
+  ) async {
+    String downloadUrl = "";
+    try {
+      if (image.existsSync()) {
+        var task = await firebase_storage.FirebaseStorage.instance
+            .ref(sekolah + "/" + folderName)
+            .child(filename)
+            .putFile(image);
+        downloadUrl = await task.ref.getDownloadURL();
+      }
+    } catch (e) {
+      print(e);
+    }
+    return downloadUrl;
+  }
+
+  Future<bool> addSiswa(Siswa data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('siswa').collection('siswa');
+      await collection.doc(data.nis).set(data.toMap());
       isSuccess = true;
     } catch (e) {
       isSuccess = false;
