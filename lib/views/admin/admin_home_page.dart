@@ -143,7 +143,7 @@ class AdminHomePage extends StatelessWidget {
                         titleCard: 'Guru',
                       ),
                       HomeFiturCard(
-                        route: RouteName.BLOGPAGE,
+                        route: RouteName.KALENDERPAGE,
                         imageAsset: 'assets/Tahun.png',
                         titleCard: 'Tahun',
                       ),
