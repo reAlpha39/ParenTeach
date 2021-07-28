@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/siswa_controllrer.dart';
+import 'package:parenteach/controllers/siswa_controller.dart';
 
 class SiswaBinding extends Bindings {
   void dependencies() {

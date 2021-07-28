@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/siswa_controllrer.dart';
+import 'package:parenteach/controllers/siswa_controller.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
