@@ -43,6 +43,10 @@ class Routes {
       page: () => RemindingPage(),
     ),
     GetPage(
+      name: routeName.reverse[RouteName.KALENDERPAGE]!,
+      page: () => KalenderPage(),
+    ),
+    GetPage(
       name: routeName.reverse[RouteName.QNAPAGE]!,
       page: () => QnaPage(),
       binding: QnaBinding(),
