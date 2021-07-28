@@ -67,9 +67,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? [
               IconButton(
                 onPressed: () {
-                  if (additionalLeadingFunction != null) {
-                    additionalLeadingFunction!();
-                  }
                   Get.toNamed(routeName.reverse[route]!);
                 },
                 icon: Icon(
