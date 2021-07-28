@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:parenteach/routes/qna_binding.dart';
+import 'package:parenteach/routes/siswa_binding.dart';
 import 'package:parenteach/views/admin/admin_add_qna.dart';
 import 'package:parenteach/views/admin/admin_add_reminding.dart';
 import 'package:parenteach/views/admin/admin_home_page.dart';
@@ -87,6 +88,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHSISWAPAGE]!,
       page: () => AdminTambahSiswa(),
+      binding: SiswaBinding(),
     ),
   ];
 }
