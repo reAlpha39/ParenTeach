@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import '../utils/utils.dart';
 
 class PilihRemindingCard extends StatelessWidget {
-  const PilihRemindingCard({
-    Key? key,
-  }) : super(key: key);
+  final String? reminding;
+
+  const PilihRemindingCard({Key? key, this.reminding}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class PilihRemindingCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Text(
-                  'Sudahkah anda menjadi teladan yang baik?',
+                  reminding!,
                   style: blackTextBold,
                 ),
               ),
