@@ -11,7 +11,7 @@ class Siswa {
     this.fotoSiswa,
     this.idKelas,
     this.kelas,
-    this.namaKelas,
+    this.nama,
   });
 
   String? jenisKelamin;
@@ -19,7 +19,7 @@ class Siswa {
   String? fotoSiswa;
   String? idKelas;
   String? kelas;
-  String? namaKelas;
+  String? nama;
 
   factory Siswa.fromJson(String str) => Siswa.fromMap(json.decode(str));
 
@@ -32,7 +32,7 @@ class Siswa {
         fotoSiswa: json["fotoSiswa"] == null ? null : json["fotoSiswa"],
         idKelas: json["idKelas"] == null ? null : json["idKelas"],
         kelas: json["kelas"] == null ? null : json["kelas"],
-        namaKelas: json["namaKelas"] == null ? null : json["namaKelas"],
+        nama: json["nama"] == null ? null : json["nama"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -41,6 +41,6 @@ class Siswa {
         "fotoSiswa": fotoSiswa == null ? null : fotoSiswa,
         "idKelas": idKelas == null ? null : idKelas,
         "kelas": kelas == null ? null : kelas,
-        "namaKelas": namaKelas == null ? null : namaKelas,
+        "nama": nama == null ? null : nama,
       };
 }
