@@ -88,7 +88,7 @@ class LoginController extends GetxController {
   }
 
   void userLogout() async {
-    await _databaseProvider.signOut();
+    user.value = Users();
     Get.toNamed(routeName.reverse[RouteName.LOGINPAGE]!);
   }
 
