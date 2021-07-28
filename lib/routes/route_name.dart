@@ -16,6 +16,7 @@ enum RouteName {
   ADMINADDQNAPAGE,
   ADMINTAMBAHGURUPAGE,
   ADMINTAMBAHNILAIRAPOTPAGE,
+  ADMINTAMBAHSISWAPAGE,
 }
 
 final routeName = EnumValues({
@@ -36,6 +37,7 @@ final routeName = EnumValues({
   '/admin_add_qna_page': RouteName.ADMINADDQNAPAGE,
   '/admin_tambah_guru_page': RouteName.ADMINTAMBAHGURUPAGE,
   '/admin_nilai_rapot_page': RouteName.ADMINTAMBAHNILAIRAPOTPAGE,
+  '/admin_tambah_siswa_page': RouteName.ADMINTAMBAHSISWAPAGE,
 });
 
 class EnumValues<T> {

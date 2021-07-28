@@ -17,7 +17,7 @@ class DaftarSiswaPage extends StatelessWidget {
         isAdmin: true,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
-        route: RouteName.ADMINTAMBAHNILAIRAPOTPAGE,
+        route: RouteName.ADMINTAMBAHSISWAPAGE,
       ),
       body: SingleChildScrollView(
         child: Column(
