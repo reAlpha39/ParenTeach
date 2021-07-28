@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/siswa_controllrer.dart';
 import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
 class AdminTambahSiswa extends StatelessWidget {
+  final SiswaController _siswaController = Get.find();
+
+  _showDialogList(String type) {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Pilih salah satu',
+      content: Selector(
+        type: type,
+      ),
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    late TextEditingController namaController = TextEditingController();
-    late TextEditingController nipController = TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
@@ -34,34 +49,20 @@ class AdminTambahSiswa extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     buildTextField(
-                      namaController,
+                      _siswaController.namaController!,
                       'Nama',
                       'Tulis nama di sini',
                       false,
                     ),
                     buildTextField(
-                      nipController,
+                      _siswaController.nipController!,
                       'NIP',
                       'Tulis nik di sini',
                       false,
                     ),
                     buildDropDown(
-                      'Jenis Kelamin',
-                      'Pilih Jenis Kelamin',
-                      [
-                        buildDropdownMenuItem('Laki-laki', 1),
-                        buildDropdownMenuItem('Perempuan', 2),
-                      ],
-                    ),
-                    buildDropDown(
-                      'Kelas',
-                      'Pilih Kelas Di Sini',
-                      [
-                        buildDropdownMenuItem('7', 1),
-                        buildDropdownMenuItem('8', 2),
-                        buildDropdownMenuItem('9', 3),
-                      ],
-                    ),
+                        'Jenis Kelamin', 'Pilih Jenis Kelamin', 'jenisKelamin'),
+                    buildDropDown('Kelas', 'Pilih Kelas Di Sini', 'kelas'),
                     Container(
                       margin: const EdgeInsets.only(
                         top: 12,
@@ -83,21 +84,39 @@ class AdminTambahSiswa extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: GestureDetector(
                           onTap: () {
-                            // TODO: Pick Image
+                            _siswaController.imageFromGallery();
                           },
-                          child: Container(
-                            width: 120,
-                            height: 37,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Pilih Foto',
-                                style: blackText,
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(right: 8),
+                                width: 120,
+                                height: 37,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Center(
+                                  child: Obx(
+                                    () => Text(
+                                      _siswaController.fileName.value == ''
+                                          ? 'Pilih Foto'
+                                          : 'Ganti Foto',
+                                      style: blackText,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
+                              Flexible(
+                                child: Obx(
+                                  () => Text(
+                                    _siswaController.fileName.value,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.clip,
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),
@@ -181,7 +200,10 @@ class AdminTambahSiswa extends StatelessWidget {
   }
 
   Widget buildDropDown(
-      String? title, String? label, List<DropdownMenuItem<int>>? items) {
+    String title,
+    String label,
+    String type,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -191,33 +213,94 @@ class AdminTambahSiswa extends StatelessWidget {
             bottom: 4,
           ),
           child: Text(
-            title!,
+            title,
             style: blackTextBold.copyWith(fontSize: 16),
           ),
         ),
-        Container(
-          width: Get.width,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.grey),
-          ),
-          child: DropdownButton(
-            underline: SizedBox(),
-            isExpanded: true,
-            items: items,
-            onChanged: (value) {},
-            hint: Text(label!),
+        InkWell(
+          onTap: () => _showDialogList(type),
+          child: Container(
+            width: Get.width,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.grey),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Obx(
+                    () => Text(
+                      type == 'jenisKelamin'
+                          ? _siswaController.jenisKelamin.value == ''
+                              ? label
+                              : _siswaController.jenisKelamin.value
+                          : _siswaController.kelas.value == ''
+                              ? label
+                              : _siswaController.kelas.value,
+                      style: blackText.copyWith(
+                        fontSize: 16,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ),
+                Icon(Icons.keyboard_arrow_down),
+              ],
+            ),
           ),
         ),
       ],
     );
   }
+}
 
-  DropdownMenuItem<int> buildDropdownMenuItem(String item, int value) {
-    return DropdownMenuItem(
-      child: Text(item),
-      value: value,
+class Selector extends StatelessWidget {
+  final String type;
+  final SiswaController controller = Get.find();
+
+  Selector({Key? key, required this.type}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(
+        minHeight: 100,
+        maxHeight: 500,
+        minWidth: 300,
+        maxWidth: 300,
+      ),
+      padding: const EdgeInsets.all(8.0),
+      child: ScrollConfiguration(
+        behavior: CustomScrollBehavior(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: List<Widget>.generate(
+              type == 'jenisKelamin'
+                  ? controller.jenisKelamins.length
+                  : controller.kelass.length,
+              (index) => ListTile(
+                title: Text(
+                  type == 'jenisKelamin'
+                      ? controller.jenisKelamins[index]
+                      : controller.kelass[index],
+                  style: blackText,
+                ),
+                onTap: () {
+                  if (type == 'jenisKelamin') {
+                    controller.jenisKelamin.value =
+                        controller.jenisKelamins[index];
+                  } else {
+                    controller.kelas.value = controller.kelass[index];
+                  }
+                  Get.back(closeOverlays: false);
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
