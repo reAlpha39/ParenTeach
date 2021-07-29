@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/siswa_controller.dart';
+import 'package:parenteach/routes/route_name.dart';
+import 'package:parenteach/views/profil_siswa_page.dart';
 
 class TabelDaftarSiswa extends StatelessWidget {
   final SiswaController _siswaController = Get.find();
@@ -20,6 +22,7 @@ class TabelDaftarSiswa extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 )
               : DataTable(
+                  showCheckboxColumn: false,
                   columnSpacing: 8,
                   columns: [
                     DataColumn(label: Text("No")),
@@ -28,16 +31,29 @@ class TabelDaftarSiswa extends StatelessWidget {
                   ],
                   rows: _siswaController.listSiswa
                       .map(
-                        (e) => DataRow(
+                        (siswa) => DataRow(
+                          onSelectChanged: (e) {
+                            Get.to(
+                              ProfilSiswaPage(),
+                              arguments: siswa,
+                            );
+                            // Get.toNamed(
+                            //   routeName.reverse[RouteName.PROFILSISWAPAGE]!,
+                            //   arguments: siswa,
+                            // );
+                          },
                           cells: [
                             DataCell(
-                              Text((_siswaController.listSiswa.indexWhere(
-                                          (element) => element.nis == e.nis) +
-                                      1)
-                                  .toString()),
+                              Text(
+                                (_siswaController.listSiswa.indexWhere(
+                                            (element) =>
+                                                element.nis == siswa.nis) +
+                                        1)
+                                    .toString(),
+                              ),
                             ),
-                            DataCell(Text(e.nama!)),
-                            DataCell(Text(e.nis!)),
+                            DataCell(Text(siswa.nama!)),
+                            DataCell(Text(siswa.nis!)),
                           ],
                         ),
                       )
