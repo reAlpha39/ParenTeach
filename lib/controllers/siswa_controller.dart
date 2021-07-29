@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parenteach/models/siswa.dart';
 import 'package:parenteach/repositories/database_provider.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/utils.dart';
 
 class SiswaController extends GetxController {
@@ -101,6 +102,38 @@ class SiswaController extends GetxController {
             middleText: 'Data siswa gagal ditambahkan, mohon coba lagi',
           );
         }
+      }
+    } catch (e) {
+      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
+  }
+
+  void deleteSiswa(String nis) async {
+    isLoading.value = true;
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        bool isSuccess = await _databaseProvider.deleteSiswa(nis);
+        if (isSuccess) {
+          if (isSuccess) {
+            _showDialog(
+              title: 'Sukses',
+              middleText: 'Data Berhasil terhapus',
+            );
+            _getSiswaData();
+          } else {
+            _showDialog(
+              title: 'Gagal',
+              middleText:
+                  'Tidak bisa menghapus data data siswa, coba beberapa saat lagi',
+            );
+          }
+        }
+      } else {
+        _showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
       }
     } catch (e) {
       _showDialog(title: 'Error', middleText: "Error: " + e.toString());

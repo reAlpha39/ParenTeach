@@ -223,4 +223,18 @@ class DatabaseProvider {
     }
     return siswas;
   }
+
+  Future<bool> deleteSiswa(String nis) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('siswa').collection('siswa');
+      await collection.doc(nis).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
 }

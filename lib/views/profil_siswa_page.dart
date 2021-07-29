@@ -111,9 +111,15 @@ class ProfilSiswaPage extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      Text(
-                        'Delete Siswa',
-                        style: blackTextBold,
+                      GestureDetector(
+                        onTap: () {
+                          siswaController.deleteSiswa(
+                              siswaController.listSiswa[index].nis!);
+                        },
+                        child: Text(
+                          'Delete Siswa',
+                          style: blackTextBold,
+                        ),
                       ),
                       SizedBox(
                         height: 20,
