@@ -173,6 +173,20 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  Future<bool> deleteReminding(String idReminding) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('reminding').collection('reminding');
+      await collection.doc(idReminding).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
   Future<String> uploadImage(
     File image,
     String filename,

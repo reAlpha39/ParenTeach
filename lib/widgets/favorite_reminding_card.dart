@@ -42,11 +42,15 @@ class FavoriteRemindingCard extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text(
-              reminding!,
-              style: blackTextBold,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                reminding!,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: blackTextBold,
+              ),
             ),
           ),
           Align(

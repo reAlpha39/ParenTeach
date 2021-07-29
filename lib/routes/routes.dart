@@ -46,6 +46,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.REMINDINGPAGE]!,
       page: () => RemindingPage(),
+      binding: RemindingBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.KALENDERPAGE]!,

@@ -134,7 +134,7 @@ class AdminRemindingPage extends StatelessWidget {
                                 children: remindingController.listReminding
                                     .map(
                                       (e) => PilihRemindingCard(
-                                        reminding: e.pertanyaan,
+                                        reminding: e,
                                       ),
                                     )
                                     .toList(),

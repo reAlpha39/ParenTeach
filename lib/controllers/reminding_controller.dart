@@ -84,4 +84,33 @@ class RemindingController extends GetxController {
       showDialog(title: 'Error', middleText: "Error: " + e.toString());
     }
   }
+
+  void deleteReminding(String idReminding) async {
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        bool isSuccess = await _databaseProvider.deleteReminding(idReminding);
+        if (isSuccess) {
+          showDialog(
+            title: 'Sukses',
+            middleText: 'Data Berhasil terhapus',
+          );
+          getRemindingData();
+        } else {
+          showDialog(
+            title: 'Gagal',
+            middleText:
+                'Tidak bisa menghapus data Reminding, coba beberapa saat lagi',
+          );
+        }
+      } else {
+        showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
+      }
+    } catch (e) {
+      showDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
+  }
 }
