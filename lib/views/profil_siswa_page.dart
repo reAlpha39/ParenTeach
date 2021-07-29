@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/siswa_controller.dart';
-import 'package:parenteach/models/siswa.dart';
-// import 'package:parenteach/controllers/siswa_controller.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
@@ -48,7 +47,12 @@ class ProfilSiswaPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(
+                            routeName.reverse[RouteName.RAPOTPAGE]!,
+                            arguments: index,
+                          );
+                        },
                       ),
                       Container(
                         color: Colors.white,

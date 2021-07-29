@@ -59,6 +59,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.RAPOTPAGE]!,
       page: () => RapotPage(),
+      binding: SiswaBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADMINHOMEPAGE]!,

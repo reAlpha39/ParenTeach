@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/siswa_controller.dart';
+import 'package:parenteach/widgets/custom_appbar.dart';
 import '../utils/theme.dart';
 import '../widgets/card_nilai_raport.dart';
 
 class RapotPage extends StatelessWidget {
+  final SiswaController siswaController = Get.find();
   @override
   Widget build(BuildContext context) {
+    int index = Get.arguments;
     return Scaffold(
+      appBar: CustomAppBar(
+        enableLeading: true,
+        backgroundColor: pinkColor,
+        foregroundColor: greyBackgroundColor,
+        title: 'Rapot dari ${siswaController.listSiswa[index].nama!}',
+        isAdmin: true,
+      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -20,59 +31,64 @@ class RapotPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: pinkColor,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'Raport',
-                        style: whiteTextBold.copyWith(fontSize: 24),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // TODO: Add TabBar To Change Raport Type
                   SizedBox(
-                    height: 75,
+                    height: 30,
+                  ),
+                  Text(
+                    siswaController.listSiswa[index].nama!,
+                    style: whiteText.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      buildDropDown(
-                          height: 50,
-                          width: Get.width / 2,
-                          hint: '2018 / 2019'),
-                      SizedBox(
-                        width: 10,
+                      Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Tahun Ajaran',
+                                style: whiteText,
+                              ),
+                              buildDropDown(
+                                  height: 50,
+                                  width: Get.width / 2,
+                                  hint: '2018 / 2019'),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Semester',
+                                style: whiteText,
+                              ),
+                              buildDropDown(height: 50, width: 61, hint: '2'),
+                            ],
+                          ),
+                        ],
                       ),
-                      buildDropDown(height: 50, width: 61, hint: '2'),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'Nilai Harian',
+                          style: whiteText,
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(
