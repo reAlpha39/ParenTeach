@@ -130,7 +130,6 @@ class AdminRemindingPage extends StatelessWidget {
                                       ),
                                     )
                                     .toList(),
-                                //
                               ),
                             ),
                           ),

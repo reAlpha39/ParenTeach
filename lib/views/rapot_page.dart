@@ -66,7 +66,9 @@ class RapotPage extends StatelessWidget {
                   Row(
                     children: [
                       buildDropDown(
-                          height: 50, width: 120, hint: '2018 / 2019'),
+                          height: 50,
+                          width: Get.width / 2,
+                          hint: '2018 / 2019'),
                       SizedBox(
                         width: 10,
                       ),
