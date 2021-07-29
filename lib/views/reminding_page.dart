@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/reminding_controller.dart';
+import 'package:parenteach/widgets/pilih_reminding_card.dart';
 
 import '../utils/utils.dart';
-import '../widgets/pilih_reminding_card.dart';
 
 class RemindingPage extends StatelessWidget {
+  final RemindingController remindingController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,6 +100,25 @@ class RemindingPage extends StatelessWidget {
                           ),
                           SizedBox(
                             height: 15,
+                          ),
+                          Obx(
+                            () => remindingController.isLoading.value
+                                ? Center(child: CircularProgressIndicator())
+                                : Expanded(
+                                    child: SingleChildScrollView(
+                                      physics: BouncingScrollPhysics(),
+                                      child: Column(
+                                        children:
+                                            remindingController.listReminding
+                                                .map(
+                                                  (e) => PilihRemindingCard(
+                                                    reminding: e,
+                                                  ),
+                                                )
+                                                .toList(),
+                                      ),
+                                    ),
+                                  ),
                           ),
                         ],
                       ),
