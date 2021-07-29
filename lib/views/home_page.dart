@@ -8,7 +8,7 @@ import '../utils/theme.dart';
 import '../widgets/home_fitur_card.dart';
 
 class HomePage extends StatelessWidget {
-  final LoginController _loginController = Get.find();
+  final LoginController loginController = Get.find();
   @override
   Widget build(BuildContext context) {
     String dummyText =
@@ -36,18 +36,28 @@ class HomePage extends StatelessWidget {
                             'Hello,',
                             style: blackTextBold2.copyWith(fontSize: 12),
                           ),
-                          Text(
-                            'Muhammad M',
-                            style: blackTextBold2.copyWith(fontSize: 24),
+                          Obx(
+                            () => loginController.isLoading.value
+                                ? Text('')
+                                : Text(
+                                    loginController.user.value.nama!,
+                                    style:
+                                        blackTextBold2.copyWith(fontSize: 24),
+                                  ),
                           ),
                         ],
                       ),
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: pinkColor,
-                          borderRadius: BorderRadius.circular(10),
+                      Obx(
+                        () => Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pict-b.sindonews.net/dyn/620/pena/news/2021/01/16/158/303838/begini-poster-teaser-drama-sejarah-jisoo-blackpink-zry.jpg'),
+                                fit: BoxFit.cover),
+                          ),
                         ),
                       ),
                     ],
@@ -97,7 +107,7 @@ class HomePage extends StatelessWidget {
                                     cancelTextColor: Colors.black87,
                                     confirmTextColor: Colors.white,
                                     onConfirm: () =>
-                                        _loginController.userLogout(),
+                                        loginController.userLogout(),
                                     onCancel: () => Get.toNamed(
                                         routeName.reverse[RouteName.HOMEPAGE]!),
                                   ).then((value) => value = false);

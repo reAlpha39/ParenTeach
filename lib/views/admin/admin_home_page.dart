@@ -8,7 +8,7 @@ import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/home_fitur_card.dart';
 
 class AdminHomePage extends StatelessWidget {
-  final LoginController _loginController = Get.find();
+  final LoginController loginController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +36,14 @@ class AdminHomePage extends StatelessWidget {
                             'Hello,',
                             style: blackTextBold2.copyWith(fontSize: 12),
                           ),
-                          Text(
-                            'Admin ',
-                            style: blackTextBold2.copyWith(fontSize: 24),
+                          Obx(
+                            () => loginController.isLoading.value
+                                ? Text('')
+                                : Text(
+                                    loginController.user.value.nama!,
+                                    style:
+                                        blackTextBold2.copyWith(fontSize: 24),
+                                  ),
                           ),
                         ],
                       ),
@@ -64,7 +69,7 @@ class AdminHomePage extends StatelessWidget {
                             buttonColor: pinkColor,
                             cancelTextColor: Colors.black87,
                             confirmTextColor: Colors.white,
-                            onConfirm: () => _loginController.userLogout(),
+                            onConfirm: () => loginController.userLogout(),
                             onCancel: () => Get.toNamed(
                                 routeName.reverse[RouteName.ADMINHOMEPAGE]!),
                           ).then((value) => value = false);

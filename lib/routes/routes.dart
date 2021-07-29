@@ -28,6 +28,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.HOMEPAGE]!,
       page: () => HomePage(),
+      binding: LoginBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.PLAYGROUNDPAGE]!,
