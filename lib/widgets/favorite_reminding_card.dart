@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../utils/utils.dart';
 
 class FavoriteRemindingCard extends StatelessWidget {
-  const FavoriteRemindingCard({
-    Key? key,
-  }) : super(key: key);
+  final String? reminding;
+
+  const FavoriteRemindingCard({Key? key, this.reminding}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 195,
+      height: 150,
       width: 152,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -45,7 +45,7 @@ class FavoriteRemindingCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Text(
-              'Sudahkah anda mengapresiasi anak anda hari ini?',
+              reminding!,
               style: blackTextBold,
             ),
           ),

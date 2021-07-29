@@ -95,12 +95,20 @@ class AdminRemindingPage extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      FavoriteRemindingCard(),
-                      FavoriteRemindingCard(),
-                    ],
+                  Obx(
+                    () => remindingController.isLoading.value
+                        ? CircularProgressIndicator()
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: remindingController.listReminding
+                                .map(
+                                  (e) => FavoriteRemindingCard(
+                                    reminding: e.pertanyaan,
+                                  ),
+                                )
+                                .take(2)
+                                .toList(),
+                          ),
                   ),
                   SizedBox(
                     height: 15,
@@ -118,7 +126,7 @@ class AdminRemindingPage extends StatelessWidget {
                   ),
                   Obx(
                     () => remindingController.isLoading.value
-                        ? CircularProgressIndicator()
+                        ? Center(child: CircularProgressIndicator())
                         : Expanded(
                             child: SingleChildScrollView(
                               physics: BouncingScrollPhysics(),
