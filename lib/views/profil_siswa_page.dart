@@ -57,12 +57,29 @@ class ProfilSiswaPage extends StatelessWidget {
                             children: [
                               Container(
                                 height: 200,
-                                color: pinkColor,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(siswaController
+                                          .listSiswa[0].fotoSiswa!),
+                                      fit: BoxFit.cover),
+                                ),
                               ),
-                              buldDataSiswa('Nama Lengkap', 'hbhabh'),
-                              buldDataSiswa('NIS', '362368236'),
-                              buldDataSiswa('Jenis Kelamin', 'L'),
-                              buldDataSiswa('KElas', 'as'),
+                              buldDataSiswa(
+                                'Nama Lengkap',
+                                siswaController.listSiswa[0].nama,
+                              ),
+                              buldDataSiswa(
+                                'NIS',
+                                siswaController.listSiswa[0].nis,
+                              ),
+                              buldDataSiswa(
+                                'Jenis Kelamin',
+                                siswaController.listSiswa[0].jenisKelamin,
+                              ),
+                              buldDataSiswa(
+                                'Kelas',
+                                siswaController.listSiswa[0].kelas,
+                              ),
                             ],
                           ),
                         ),
