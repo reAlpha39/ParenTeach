@@ -35,11 +35,13 @@ class TabelDaftarSiswa extends StatelessWidget {
                           onSelectChanged: (e) {
                             Get.to(
                               ProfilSiswaPage(),
-                              arguments: siswa,
+                              arguments: _siswaController.listSiswa.indexWhere(
+                                  (element) => element.nis == siswa.nis),
                             );
                             // Get.toNamed(
                             //   routeName.reverse[RouteName.PROFILSISWAPAGE]!,
-                            //   arguments: siswa,
+                            //   arguments: _siswaController.listSiswa.indexWhere(
+                            //       (element) => element.nis == siswa.nis),
                             // );
                           },
                           cells: [

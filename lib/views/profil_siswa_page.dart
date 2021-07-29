@@ -10,6 +10,7 @@ class ProfilSiswaPage extends StatelessWidget {
   final SiswaController siswaController = Get.find();
   @override
   Widget build(BuildContext context) {
+    int index = Get.arguments;
     return Scaffold(
       appBar: CustomAppBar(
         backgroundColor: pinkColor,
@@ -28,7 +29,7 @@ class ProfilSiswaPage extends StatelessWidget {
                     children: [
                       Center(
                         child: Text(
-                          siswaController.listSiswa[0].nama!,
+                          siswaController.listSiswa[index].nama!,
                           style: blackText.copyWith(
                               fontSize: 24, fontWeight: FontWeight.bold),
                         ),
@@ -60,25 +61,25 @@ class ProfilSiswaPage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(siswaController
-                                          .listSiswa[0].fotoSiswa!),
+                                          .listSiswa[index].fotoSiswa!),
                                       fit: BoxFit.cover),
                                 ),
                               ),
                               buldDataSiswa(
                                 'Nama Lengkap',
-                                siswaController.listSiswa[0].nama,
+                                siswaController.listSiswa[index].nama,
                               ),
                               buldDataSiswa(
                                 'NIS',
-                                siswaController.listSiswa[0].nis,
+                                siswaController.listSiswa[index].nis,
                               ),
                               buldDataSiswa(
                                 'Jenis Kelamin',
-                                siswaController.listSiswa[0].jenisKelamin,
+                                siswaController.listSiswa[index].jenisKelamin,
                               ),
                               buldDataSiswa(
                                 'Kelas',
-                                siswaController.listSiswa[0].kelas,
+                                siswaController.listSiswa[index].kelas,
                               ),
                             ],
                           ),
