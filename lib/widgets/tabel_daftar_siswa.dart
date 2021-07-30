@@ -33,16 +33,11 @@ class TabelDaftarSiswa extends StatelessWidget {
                       .map(
                         (siswa) => DataRow(
                           onSelectChanged: (e) {
-                            Get.to(
-                              ProfilSiswaPage(),
+                            Get.toNamed(
+                              routeName.reverse[RouteName.PROFILSISWAPAGE]!,
                               arguments: _siswaController.listSiswa.indexWhere(
                                   (element) => element.nis == siswa.nis),
                             );
-                            // Get.toNamed(
-                            //   routeName.reverse[RouteName.PROFILSISWAPAGE]!,
-                            //   arguments: _siswaController.listSiswa.indexWhere(
-                            //       (element) => element.nis == siswa.nis),
-                            // );
                           },
                           cells: [
                             DataCell(
