@@ -5,10 +5,16 @@ import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/views/admin/admin_tambah_siswa.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
-class TambahNilaiHarian extends StatelessWidget {
+class TambahNilaiHarian extends StatefulWidget {
   final NilaiHarianController nilaiHarianController = Get.find();
   @override
+  _TambahNilaiHarianState createState() => _TambahNilaiHarianState();
+}
+
+class _TambahNilaiHarianState extends State<TambahNilaiHarian> {
+  @override
   Widget build(BuildContext context) {
+    String? _chosenValue;
     return Scaffold(
       appBar: CustomAppBar(
         backgroundColor: pinkColor,
@@ -22,13 +28,144 @@ class TambahNilaiHarian extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+              ),
               child: Column(
-                children: [],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 12,
+                      bottom: 4,
+                    ),
+                    child: Text(
+                      'Nama Mata Pelajaran',
+                      style: blackTextBold.copyWith(fontSize: 16),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    child: DropdownButton<String>(
+                      elevation: 0,
+                      underline: SizedBox(),
+                      isExpanded: true,
+                      value: _chosenValue,
+                      style: whiteText,
+                      iconEnabledColor: Colors.black,
+                      items: <String>[
+                        'Koding',
+                        'Koding  Koding',
+                        'Koding  als',
+                        'Koding  alasas',
+                        'Koding  alasaas',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        );
+                      }).toList(),
+                      hint: Text("Pilih Mata Pelajaran", style: blackText),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _chosenValue = value;
+                          widget.nilaiHarianController.mataPelajaran.value =
+                              value!;
+                          print(_chosenValue);
+                        });
+                      },
+                    ),
+                  ),
+                  buildTextField(
+                      widget
+                          .nilaiHarianController.namaKegiatanHarianController!,
+                      'Nama Kegiatan',
+                      'Tulis nama kegiatan'),
+                  buildTextField(
+                      widget.nilaiHarianController.nilaiKegiatanController!,
+                      'Nilai Kegiatan',
+                      'Nilai kegiatan'),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    width: Get.width / 2.5,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(blueColor),
+                        elevation: MaterialStateProperty.all<double>(0),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Center(
+                          child: Text(
+                            'Simpan',
+                            style: whiteText,
+                          ),
+                        ),
+                      ),
+                      onPressed: () => widget.nilaiHarianController.coba(),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildTextField(
+    TextEditingController namaController,
+    String? title,
+    String? label,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(
+            top: 12,
+            bottom: 4,
+          ),
+          child: Text(
+            title!,
+            style: blackTextBold.copyWith(fontSize: 16),
+          ),
+        ),
+        Container(
+          height: 50,
+          child: TextFormField(
+            style: blackText.copyWith(
+              fontSize: 14,
+            ),
+            controller: namaController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              labelText: label!,
+              labelStyle: blackText.copyWith(fontSize: 16),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

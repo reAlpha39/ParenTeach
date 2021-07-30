@@ -62,7 +62,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.RAPOTPAGE]!,
       page: () => RapotPage(),
-      binding: SiswaBinding(),
+      bindings: [
+        SiswaBinding(),
+        NilaiHarianBinding(),
+      ],
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADMINHOMEPAGE]!,
@@ -102,6 +105,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.TAMBAHNILAIHARIANPAGE]!,
       page: () => TambahNilaiHarian(),
+      binding: NilaiHarianBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHSISWAPAGE]!,
@@ -112,11 +116,6 @@ class Routes {
       name: routeName.reverse[RouteName.PROFILSISWAPAGE]!,
       page: () => ProfilSiswaPage(),
       binding: SiswaBinding(),
-    ),
-    GetPage(
-      name: routeName.reverse[RouteName.TAMBAHNILAIHARIANPAGE]!,
-      page: () => TambahNilaiHarian(),
-      binding: NilaiHarianBinding(),
     ),
   ];
 }

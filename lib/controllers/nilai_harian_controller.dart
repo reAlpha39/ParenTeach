@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/repositories/database_provider.dart';
@@ -29,6 +27,10 @@ class NilaiHarianController extends GetxController {
   void onClose() {
     namaKegiatanHarianController?.dispose();
     nilaiKegiatanController?.dispose();
+  }
+
+  void coba() {
+    print(mataPelajaran.value);
   }
 
   void _getNilaiHarian() async {
