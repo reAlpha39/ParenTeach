@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:parenteach/routes/nilai_harian_binding.dart';
 import 'package:parenteach/routes/qna_binding.dart';
 import 'package:parenteach/routes/reminding_binding.dart';
 import 'package:parenteach/routes/siswa_binding.dart';
@@ -11,6 +12,7 @@ import 'package:parenteach/views/admin/admin_tambah_nilai_rapot.dart';
 import 'package:parenteach/views/admin/admin_tambah_siswa.dart';
 import 'package:parenteach/views/admin/daftar_guru.dart';
 import 'package:parenteach/views/admin/daftar_siswa.dart';
+import 'package:parenteach/views/admin/tambah_nilai_harian.dart';
 import 'package:parenteach/views/profil_siswa_page.dart';
 import '../views/rapot_page.dart';
 
@@ -98,6 +100,10 @@ class Routes {
       page: () => AdminTambahNilaiRapot(),
     ),
     GetPage(
+      name: routeName.reverse[RouteName.TAMBAHNILAIHARIANPAGE]!,
+      page: () => TambahNilaiHarian(),
+    ),
+    GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHSISWAPAGE]!,
       page: () => AdminTambahSiswa(),
       binding: SiswaBinding(),
@@ -106,6 +112,11 @@ class Routes {
       name: routeName.reverse[RouteName.PROFILSISWAPAGE]!,
       page: () => ProfilSiswaPage(),
       binding: SiswaBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.TAMBAHNILAIHARIANPAGE]!,
+      page: () => TambahNilaiHarian(),
+      binding: NilaiHarianBinding(),
     ),
   ];
 }

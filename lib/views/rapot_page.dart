@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/siswa_controller.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 import '../utils/theme.dart';
 import '../widgets/card_nilai_raport.dart';
@@ -17,6 +18,7 @@ class RapotPage extends StatelessWidget {
         foregroundColor: greyBackgroundColor,
         title: 'Rapot dari ${siswaController.listSiswa[index].nama!}',
         isAdmin: true,
+        route: RouteName.TAMBAHNILAIHARIANPAGE,
       ),
       body: SafeArea(
         child: Stack(
@@ -63,7 +65,7 @@ class RapotPage extends StatelessWidget {
                               ),
                               buildDropDown(
                                   height: 50,
-                                  width: Get.width / 2,
+                                  width: Get.width / 2.5,
                                   hint: '2018 / 2019'),
                             ],
                           ),
