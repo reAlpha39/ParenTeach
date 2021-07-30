@@ -327,20 +327,15 @@ class Selector extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: List<Widget>.generate(
-              type == 'jenisKelamin'
-                  ? jenisKelamins.length
-                  : kelass.length,
+              type == 'jenisKelamin' ? jenisKelamins.length : kelass.length,
               (index) => ListTile(
                 title: Text(
-                  type == 'jenisKelamin'
-                      ? jenisKelamins[index]
-                      : kelass[index],
+                  type == 'jenisKelamin' ? jenisKelamins[index] : kelass[index],
                   style: blackText,
                 ),
                 onTap: () {
                   if (type == 'jenisKelamin') {
-                    controller.jenisKelamin.value =
-                        jenisKelamins[index];
+                    controller.jenisKelamin.value = jenisKelamins[index];
                   } else {
                     controller.kelas.value = kelass[index];
                   }
