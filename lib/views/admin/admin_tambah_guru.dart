@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/guru_controller.dart';
+import 'package:parenteach/models/constant.dart';
 import 'package:parenteach/utils/theme.dart';
+import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
 class AdminTambahGuru extends StatelessWidget {
   final GuruController _guruController = Get.find();
+
+  _showDialogList(String type) {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Pilih salah satu',
+      content: Selector(
+        type: type,
+      ),
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,58 +46,43 @@ class AdminTambahGuru extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildGuruTextField(
+                  buildTextField(
                     _guruController.namaController!,
                     'Nama',
                     'Tulis nama di sini',
                     false,
                   ),
-                  buildGuruTextField(
+                  buildTextField(
                     _guruController.nipController!,
                     'NIP',
                     'Tulis nik di sini',
                     false,
                   ),
                   buildDropDown(
-                    'Jenis Kelamin',
-                    'Pilih Jenis Kelamin',
-                    [
-                      buildDropdownMenuItem('Laki-laki', 1),
-                      buildDropdownMenuItem('Perempuan', 2),
-                    ],
-                  ),
+                      'Jenis Kelamin', 'Pilih Jenis Kelamin', 'jenisKelamin'),
                   buildDropDown(
                     'Status',
                     'Pilih Status',
-                    [
-                      buildDropdownMenuItem('ADMIN', 1),
-                      buildDropdownMenuItem('TU', 2),
-                      buildDropdownMenuItem('GURU KELAS', 3),
-                      buildDropdownMenuItem('BK', 4),
-                    ],
+                    'status',
                   ),
                   buildDropDown(
                     'Wali Kelas',
                     'Pilih Kelas Di Sini',
-                    [
-                      buildDropdownMenuItem('7', 1),
-                      buildDropdownMenuItem('8', 2),
-                      buildDropdownMenuItem('9', 3),
-                    ],
+                    'waliKelas',
                   ),
-                  buildGuruTextField(
+                  buildTextField(
                     _guruController.usernameController!,
                     'Username',
                     'Username',
                     false,
                   ),
-                  buildGuruTextField(
+                  buildTextField(
                     _guruController.passwordController!,
                     'Password',
                     'Password',
                     true,
                   ),
-                  buildGuruTextField(
+                  buildTextField(
                     _guruController.confirmPasswordController!,
                     'Ulangi Password',
                     'Ulangi Password',
@@ -104,9 +105,7 @@ class AdminTambahGuru extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(
-                        onTap: () {
-                          // TODO: Pick Image
-                        },
+                        onTap: () {},
                         child: Container(
                           width: Get.width / 3,
                           height: 37,
@@ -161,7 +160,7 @@ class AdminTambahGuru extends StatelessWidget {
     );
   }
 
-  Widget buildGuruTextField(
+  Widget buildTextField(
     TextEditingController namaController,
     String? title,
     String? label,
@@ -170,12 +169,15 @@ class AdminTambahGuru extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title!,
-          style: blackTextBold.copyWith(fontSize: 16),
-        ),
-        SizedBox(
-          height: 10,
+        Container(
+          margin: const EdgeInsets.only(
+            top: 12,
+            bottom: 4,
+          ),
+          child: Text(
+            title!,
+            style: blackTextBold.copyWith(fontSize: 16),
+          ),
         ),
         Container(
           height: 50,
@@ -186,58 +188,125 @@ class AdminTambahGuru extends StatelessWidget {
             obscureText: isObscure!,
             controller: namaController,
             decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                labelText: label!,
-                labelStyle: blackText.copyWith(fontSize: 16)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              labelText: label!,
+              labelStyle: blackText.copyWith(fontSize: 16),
+            ),
           ),
-        ),
-        SizedBox(
-          height: 10,
         ),
       ],
     );
   }
 
   Widget buildDropDown(
-      String? title, String? label, List<DropdownMenuItem<int>>? items) {
+    String title,
+    String label,
+    String type,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title!,
-          style: blackTextBold.copyWith(fontSize: 16),
-        ),
-        SizedBox(
-          height: 10,
-        ),
         Container(
-          width: Get.width,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.grey),
+          margin: const EdgeInsets.only(
+            top: 12,
+            bottom: 4,
           ),
-          child: DropdownButton(
-            underline: SizedBox(),
-            isExpanded: true,
-            items: items,
-            onChanged: (value) {},
-            hint: Text(label!),
+          child: Text(
+            title,
+            style: blackTextBold.copyWith(fontSize: 16),
           ),
         ),
-        SizedBox(
-          height: 10,
+        InkWell(
+          onTap: () => _showDialogList(type),
+          child: Container(
+            width: Get.width,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.grey),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Obx(
+                    () => Text(
+                      type == 'jenisKelamin'
+                          ? _guruController.jenisKelamin.value == ''
+                              ? label
+                              : _guruController.jenisKelamin.value
+                          : type == 'status'
+                              ? _guruController.status.value == ''
+                                  ? label
+                                  : _guruController.status.value
+                              : _guruController.waliKelas.value == ''
+                                  ? label
+                                  : _guruController.waliKelas.value,
+                      style: blackText.copyWith(
+                        fontSize: 16,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ),
+                Icon(Icons.keyboard_arrow_down),
+              ],
+            ),
+          ),
         ),
       ],
     );
   }
+}
 
-  DropdownMenuItem<int> buildDropdownMenuItem(String item, int value) {
-    return DropdownMenuItem(
-      child: Text(item),
-      value: value,
+class Selector extends StatelessWidget {
+  final String type;
+  final GuruController _guruController = Get.find();
+
+  Selector({Key? key, required this.type}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(
+        minHeight: 100,
+        maxHeight: 500,
+        minWidth: 300,
+        maxWidth: 300,
+      ),
+      padding: const EdgeInsets.all(8.0),
+      child: ScrollConfiguration(
+        behavior: CustomScrollBehavior(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: List<Widget>.generate(
+              type == 'jenisKelamin' ? jenisKelamins.length : kelass.length,
+              (index) => ListTile(
+                title: Text(
+                  type == 'jenisKelamin'
+                      ? jenisKelamins[index]
+                      : type == 'status'
+                          ? status[index]
+                          : kelass[index],
+                  style: blackText,
+                ),
+                onTap: () {
+                  if (type == 'jenisKelamin') {
+                    _guruController.jenisKelamin.value = jenisKelamins[index];
+                  } else if (type == 'status') {
+                    _guruController.status.value = status[index];
+                  } else {
+                    _guruController.waliKelas.value = kelass[index];
+                  }
+                  Get.back(closeOverlays: false);
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

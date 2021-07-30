@@ -8,6 +8,9 @@ class GuruController extends GetxController {
   TextEditingController? usernameController;
   TextEditingController? passwordController;
   TextEditingController? confirmPasswordController;
+  RxString jenisKelamin = "".obs;
+  RxString status = "".obs;
+  RxString waliKelas = "".obs;
 
   void onInit() {
     searchGuruTEC = TextEditingController();
