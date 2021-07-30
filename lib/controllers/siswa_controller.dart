@@ -21,9 +21,6 @@ class SiswaController extends GetxController {
   RxString fileName = "".obs;
   RxList<Siswa> listSiswa = RxList<Siswa>();
 
-  final List<String> jenisKelamins = ['Laki-Laki', 'Perempuan'];
-  final List<String> kelass = ['7', '8', '9'];
-
   void onInit() {
     namaController = TextEditingController();
     nipController = TextEditingController();

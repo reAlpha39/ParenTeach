@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/siswa_controller.dart';
+import 'package:parenteach/models/constant.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
@@ -327,21 +328,21 @@ class Selector extends StatelessWidget {
           child: Column(
             children: List<Widget>.generate(
               type == 'jenisKelamin'
-                  ? controller.jenisKelamins.length
-                  : controller.kelass.length,
+                  ? jenisKelamins.length
+                  : kelass.length,
               (index) => ListTile(
                 title: Text(
                   type == 'jenisKelamin'
-                      ? controller.jenisKelamins[index]
-                      : controller.kelass[index],
+                      ? jenisKelamins[index]
+                      : kelass[index],
                   style: blackText,
                 ),
                 onTap: () {
                   if (type == 'jenisKelamin') {
                     controller.jenisKelamin.value =
-                        controller.jenisKelamins[index];
+                        jenisKelamins[index];
                   } else {
-                    controller.kelas.value = controller.kelass[index];
+                    controller.kelas.value = kelass[index];
                   }
                   Get.back(closeOverlays: false);
                 },
