@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/guru_controller.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
 class AdminTambahGuru extends StatelessWidget {
+  final GuruController _guruController = Get.find();
   @override
   Widget build(BuildContext context) {
-    late TextEditingController namaController = TextEditingController();
-    late TextEditingController nipController = TextEditingController();
-    late TextEditingController usernameController = TextEditingController();
-    late TextEditingController passwordController = TextEditingController();
-    late TextEditingController confirmPasswordController =
-        TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
@@ -35,13 +31,13 @@ class AdminTambahGuru extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   buildGuruTextField(
-                    namaController,
+                    _guruController.namaController!,
                     'Nama',
                     'Tulis nama di sini',
                     false,
                   ),
                   buildGuruTextField(
-                    nipController,
+                    _guruController.nipController!,
                     'NIP',
                     'Tulis nik di sini',
                     false,
@@ -74,19 +70,23 @@ class AdminTambahGuru extends StatelessWidget {
                     ],
                   ),
                   buildGuruTextField(
-                    usernameController,
+                    _guruController.usernameController!,
                     'Username',
                     'Username',
                     false,
                   ),
                   buildGuruTextField(
-                    passwordController,
+                    _guruController.passwordController!,
                     'Password',
                     'Password',
                     true,
                   ),
-                  buildGuruTextField(confirmPasswordController,
-                      'Ulangi Password', 'Ulangi Password', true),
+                  buildGuruTextField(
+                    _guruController.confirmPasswordController!,
+                    'Ulangi Password',
+                    'Ulangi Password',
+                    true,
+                  ),
                   Text(
                     'Pilih Foto',
                     style: blackTextBold.copyWith(fontSize: 16),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:parenteach/routes/guru_binding.dart';
 import 'package:parenteach/routes/nilai_harian_binding.dart';
 import 'package:parenteach/routes/qna_binding.dart';
 import 'package:parenteach/routes/reminding_binding.dart';
@@ -84,6 +85,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.DAFTARGURUPAGE]!,
       page: () => DaftarGuruPage(),
+      binding: GuruBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.DAFTARSISWAPAGE]!,
@@ -97,6 +99,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHGURUPAGE]!,
       page: () => AdminTambahGuru(),
+      binding: GuruBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHNILAIRAPOTPAGE]!,

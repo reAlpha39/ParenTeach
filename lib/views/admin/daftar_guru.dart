@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:parenteach/controllers/guru_controller.dart';
 import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 import 'package:parenteach/widgets/search_guru_siswa.dart';
 
 class DaftarGuruPage extends StatelessWidget {
+  final GuruController _guruController = Get.find();
   @override
   Widget build(BuildContext context) {
-    TextEditingController? cariController;
     return Scaffold(
       backgroundColor: greyBackgroundColor,
       appBar: CustomAppBar(
@@ -32,7 +34,7 @@ class DaftarGuruPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SearchGuruSiswa(
-                    cariController: cariController,
+                    cariController: _guruController.searchGuruTEC,
                     textFieldLabel: 'Cari Guru Di Sini',
                   )
                 ],
