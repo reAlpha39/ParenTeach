@@ -93,21 +93,28 @@ class ProfilSiswaPage extends StatelessWidget {
                         height: 20,
                       ),
                       ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(pinkColor),
-                          elevation: MaterialStateProperty.all<double>(0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Center(
-                            child: Text(
-                              'Edit Siswa',
-                              style: blackText,
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(pinkColor),
+                            elevation: MaterialStateProperty.all<double>(0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Center(
+                              child: Text(
+                                'Edit Siswa',
+                                style: blackText,
+                              ),
                             ),
                           ),
-                        ),
-                        onPressed: () {},
-                      ),
+                          onPressed: () {
+                            siswaController.loadSiswaState(index);
+                            Get.toNamed(
+                              routeName
+                                  .reverse[RouteName.ADMINTAMBAHSISWAPAGE]!,
+                              arguments: index,
+                            );
+                          }),
                       SizedBox(
                         height: 20,
                       ),
@@ -152,3 +159,5 @@ class ProfilSiswaPage extends StatelessWidget {
     );
   }
 }
+
+

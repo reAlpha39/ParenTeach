@@ -4,6 +4,7 @@ import 'package:parenteach/controllers/siswa_controller.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
+import 'package:parenteach/widgets/image_preview.dart';
 
 class AdminTambahSiswa extends StatelessWidget {
   final SiswaController _siswaController = Get.find();
@@ -26,7 +27,7 @@ class AdminTambahSiswa extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
-        title: 'Tambah Siswa',
+        title: Get.arguments == null ? 'Tambah Siswa' : 'Edit Siswa',
         isAdmin: false,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
@@ -63,6 +64,54 @@ class AdminTambahSiswa extends StatelessWidget {
                     buildDropDown(
                         'Jenis Kelamin', 'Pilih Jenis Kelamin', 'jenisKelamin'),
                     buildDropDown('Kelas', 'Pilih Kelas Di Sini', 'kelas'),
+                    Container(
+                      margin: const EdgeInsets.only(
+                        top: 12,
+                        bottom: 4,
+                      ),
+                      child: Text(
+                        'Pratinjau foto',
+                        style: blackTextBold.copyWith(fontSize: 16),
+                      ),
+                    ),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: 100,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          border: Border.all(color: Colors.black38),
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                        child: Obx(
+                          () => _siswaController.fileName.value != ""
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(17),
+                                  ),
+                                  child: Image.file(
+                                    _siswaController.image.value,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              : _siswaController.imageUrl.value != ""
+                                  ? ImagePreview(
+                                      pathPicture:
+                                          _siswaController.imageUrl.value,
+                                    )
+                                  : Center(
+                                      child: Text(
+                                        'Tidak ada pratinjau foto tersedia',
+                                        style: blackText.copyWith(
+                                          fontSize: 16,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                    ),
+                        ),
+                      ),
+                    ),
                     Container(
                       margin: const EdgeInsets.only(
                         top: 12,

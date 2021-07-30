@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parenteach/models/siswa.dart';
 import 'package:parenteach/repositories/database_provider.dart';
-import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/utils.dart';
 
 class SiswaController extends GetxController {
@@ -18,6 +17,7 @@ class SiswaController extends GetxController {
   RxBool isPicked = false.obs;
   RxBool isLoading = false.obs;
   Rx<File> image = File("").obs;
+  RxString imageUrl = "".obs;
   RxString fileName = "".obs;
   RxList<Siswa> listSiswa = RxList<Siswa>();
 
@@ -140,12 +140,24 @@ class SiswaController extends GetxController {
     }
   }
 
+  void loadSiswaState(int index) {
+    resetState();
+    namaController!.text = listSiswa[index].nama!;
+    nipController!.text = listSiswa[index].nis!;
+    jenisKelamin.value = listSiswa[index].jenisKelamin!;
+    kelas.value = listSiswa[index].kelas!;
+    imageUrl.value = listSiswa[index].fotoSiswa!;
+  }
+
   void resetState() {
     try {
       namaController!.clear();
       nipController!.clear();
       jenisKelamin.value = '';
       kelas.value = '';
+      imageUrl.value = '';
+      fileName.value = '';
+      image.value = File("");
       isPicked.value = false;
       if (image.value.existsSync()) {
         image.value.delete();
