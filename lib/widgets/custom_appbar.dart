@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isAdmin;
   final RouteName? route;
   final VoidCallback? additionalLeadingFunction;
+  final VoidCallback? additionalAddIconFunction;
 
   const CustomAppBar({
     Key? key,
@@ -21,6 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.backgroundColor,
     required this.foregroundColor,
     this.additionalLeadingFunction,
+    this.additionalAddIconFunction,
     this.route,
     this.isAdmin = false,
     this.height = kToolbarHeight,
@@ -67,6 +69,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? [
               IconButton(
                 onPressed: () {
+                  if (additionalAddIconFunction != null) {
+                    additionalAddIconFunction!();
+                  }
                   Get.toNamed(routeName.reverse[route]!);
                 },
                 icon: Icon(
