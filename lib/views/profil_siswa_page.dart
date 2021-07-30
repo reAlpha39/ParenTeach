@@ -120,8 +120,7 @@ class ProfilSiswaPage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          siswaController.deleteSiswa(
-                              siswaController.listSiswa[index].nis!);
+                          siswaController.deleteSiswa(index);
                         },
                         child: Text(
                           'Delete Siswa',
@@ -159,5 +158,3 @@ class ProfilSiswaPage extends StatelessWidget {
     );
   }
 }
-
-

@@ -238,11 +238,16 @@ class DatabaseProvider {
     return siswas;
   }
 
-  Future<bool> deleteSiswa(String nis) async {
+  Future<bool> deleteSiswa(String nis, String imageUrl) async {
     bool isSuccess = false;
     try {
       CollectionReference collection =
           mainCollection().doc('siswa').collection('siswa');
+      if (imageUrl != '') {
+        await firebase_storage.FirebaseStorage.instance
+            .refFromURL(imageUrl)
+            .delete();
+      }
       await collection.doc(nis).delete();
       isSuccess = true;
     } catch (e) {

@@ -73,7 +73,7 @@ class SiswaController extends GetxController {
     }
   }
 
-  void saveSiswaData() async {
+  void saveSiswaData({bool isEdit = false}) async {
     bool isSuccess = false;
     try {
       bool isConnected = await connectivityChecker();
@@ -84,22 +84,32 @@ class SiswaController extends GetxController {
         data.jenisKelamin = jenisKelamin.value;
         data.kelas = kelas.value;
         data.idKelas = '';
-        String getDownloadUrl = await _databaseProvider.uploadImage(
-            image.value, data.nis!, 'siswa');
+        String getDownloadUrl = '';
+        if (fileName.value != '') {
+          getDownloadUrl = await _databaseProvider.uploadImage(
+              image.value, data.nis!, 'siswa');
+        } else {
+          getDownloadUrl = data.fotoSiswa!;
+        }
         if (getDownloadUrl != '') {
           data.fotoSiswa = getDownloadUrl;
           isSuccess = await _databaseProvider.addSiswa(data);
         }
         if (isSuccess) {
+          _getSiswaData();
           _showDialog(
             title: 'Success',
-            middleText: 'Data siswa berhasil ditambahkan',
+            middleText: isEdit
+                ? 'Data siswa berhasil diperbaharui'
+                : 'Data siswa berhasil ditambahkan',
           );
           resetState();
         } else {
           _showDialog(
             title: 'Gagal',
-            middleText: 'Data siswa gagal ditambahkan, mohon coba lagi',
+            middleText: isEdit
+                ? 'Data siswa gagal diperbaharui, mohon coba lagi'
+                : 'Data siswa gagal ditambahkan, mohon coba lagi',
           );
         }
       }
@@ -108,12 +118,12 @@ class SiswaController extends GetxController {
     }
   }
 
-  void deleteSiswa(String nis) async {
+  void deleteSiswa(int index) async {
     isLoading.value = true;
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
-        bool isSuccess = await _databaseProvider.deleteSiswa(nis);
+        bool isSuccess = await _databaseProvider.deleteSiswa(listSiswa[index].nis!, listSiswa[index].fotoSiswa!);
         if (isSuccess) {
           if (isSuccess) {
             _showDialog(
