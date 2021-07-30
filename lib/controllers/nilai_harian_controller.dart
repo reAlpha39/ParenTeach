@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/repositories/database_provider.dart';
 import 'package:parenteach/utils/utils.dart';
 
 class NilaiHarianController extends GetxController {
-  final DatabaseProvider _databaseProvider = DatabaseProvider();
   TextEditingController? namaKegiatanHarianController;
   TextEditingController? nilaiKegiatanController;
   RxString mataPelajaran = "".obs;
@@ -33,22 +31,22 @@ class NilaiHarianController extends GetxController {
     print(mataPelajaran.value);
   }
 
-  void _getNilaiHarian() async {
-    isLoading.value = true;
-    try {
-      bool isConnected = await connectivityChecker();
-      if (isConnected) {
-        isLoading.value = false;
-      } else {
-        _showDialog(
-          title: 'Gagal',
-          middleText: 'Tidak bisa terhubung ke internet',
-        );
-      }
-    } catch (e) {
-      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
-    }
-  }
+  // void _getNilaiHarian() async {
+  //   isLoading.value = true;
+  //   try {
+  //     bool isConnected = await connectivityChecker();
+  //     if (isConnected) {
+  //       isLoading.value = false;
+  //     } else {
+  //       _showDialog(
+  //         title: 'Gagal',
+  //         middleText: 'Tidak bisa terhubung ke internet',
+  //       );
+  //     }
+  //   } catch (e) {
+  //     _showDialog(title: 'Error', middleText: "Error: " + e.toString());
+  //   }
+  // }
 
   void addQna({String? idNilaiHarian}) async {
     try {

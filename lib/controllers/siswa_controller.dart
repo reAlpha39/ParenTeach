@@ -120,7 +120,8 @@ class SiswaController extends GetxController {
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
-        bool isSuccess = await _databaseProvider.deleteSiswa(listSiswa[index].nis!, listSiswa[index].fotoSiswa!);
+        bool isSuccess = await _databaseProvider.deleteSiswa(
+            listSiswa[index].nis!, listSiswa[index].fotoSiswa!);
         if (isSuccess) {
           if (isSuccess) {
             _showDialog(

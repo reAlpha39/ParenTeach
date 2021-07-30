@@ -39,7 +39,6 @@ class RapotPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // TODO: Add TabBar To Change Raport Type
                   SizedBox(
                     height: 30,
                   ),
