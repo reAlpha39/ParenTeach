@@ -16,9 +16,9 @@ class RapotPage extends StatelessWidget {
         enableLeading: true,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
-        title: 'Rapot dari ${siswaController.listSiswa[index].nama!}',
+        title: 'Rapot Page',
         isAdmin: true,
-        route: RouteName.TAMBAHNILAIHARIANPAGE,
+        route: RouteName.ADMINTAMBAHNILAIRAPOTPAGE,
       ),
       body: SafeArea(
         child: Stack(
@@ -84,7 +84,8 @@ class RapotPage extends StatelessWidget {
                         ],
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () => Get.toNamed(
+                            routeName.reverse[RouteName.NILAIHARIANPAGE]!),
                         child: Text(
                           'Nilai Harian',
                           style: whiteText,
@@ -105,7 +106,9 @@ class RapotPage extends StatelessWidget {
                       child: Column(
                         children: List.generate(
                           10,
-                          (index) => CardNilaiRaport(),
+                          (index) => CardNilaiRaport(
+                            isPengetahuan: true,
+                          ),
                         )
                           ..insert(
                             0,

@@ -108,4 +108,37 @@ class LoginController extends GetxController {
       },
     );
   }
+
+  handleThreeDots(int item) {
+    switch (item) {
+      case 0:
+        Get.defaultDialog(
+          radius: 17,
+          title: 'Logout',
+          content: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 4,
+              horizontal: 12,
+            ),
+            child: Center(
+              child: Text(
+                'Apakah anda ingin logout?',
+                style: blackText,
+              ),
+            ),
+          ),
+          textConfirm: 'OK',
+          textCancel: 'Batal',
+          buttonColor: pinkColor,
+          cancelTextColor: Colors.black87,
+          confirmTextColor: Colors.white,
+          onConfirm: () => userLogout(),
+          onCancel: () =>
+              Get.toNamed(routeName.reverse[RouteName.ADMINHOMEPAGE]!),
+        ).then((value) => value = false);
+        break;
+      case 1:
+        break;
+    }
+  }
 }

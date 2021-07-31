@@ -49,27 +49,8 @@ class AdminAddReminding extends StatelessWidget {
                         labelText: 'Tulis Pertanyaan Di Sini',
                         labelStyle: blackText.copyWith(fontSize: 16)),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all<double>(0),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Center(
-                        child: Text(
-                          'Simpan',
-                          style: whiteText,
-                        ),
-                      ),
-                    ),
-                    onPressed: () => remindingController.addOrUpdateReminding(
-                      idReminding: Get.arguments,
-                    ),
+                  Obx(
+                    () => addReminding(),
                   ),
                 ],
               ),
@@ -78,5 +59,63 @@ class AdminAddReminding extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget addReminding() {
+    bool isEnabled = true;
+    if (remindingController.isLoading.value) {
+      isEnabled = false;
+    } else {
+      isEnabled = true;
+    }
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 8,
+      ),
+      child: Container(
+        width: Get.width / 3,
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(blueColor),
+            elevation: MaterialStateProperty.all<double>(0),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Center(
+              child: buttonState(),
+            ),
+          ),
+          onPressed: isEnabled
+              ? () => remindingController.addOrUpdateReminding(
+                    idReminding: Get.arguments,
+                  )
+              : null,
+        ),
+      ),
+    );
+  }
+
+  Widget buttonState() {
+    if (remindingController.isLoading.value) {
+      return SizedBox(
+        height: 24,
+        width: 24,
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(
+            Colors.white,
+          ),
+        ),
+      );
+    } else {
+      return Text(
+        "Tambah",
+        style: whiteText.copyWith(fontSize: 16),
+      );
+    }
   }
 }

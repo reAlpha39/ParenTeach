@@ -58,8 +58,8 @@ class AdminTambahSiswa extends StatelessWidget {
                     ),
                     buildTextField(
                       _siswaController.nipController!,
-                      'NIP',
-                      'Tulis nik di sini',
+                      'NIS',
+                      'Tulis nis di sini',
                       false,
                     ),
                     buildDropDown(

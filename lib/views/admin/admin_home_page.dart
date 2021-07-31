@@ -16,6 +16,48 @@ class AdminHomePage extends StatelessWidget {
         return onWillPop();
       },
       child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: greyBackgroundColor,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Hello,',
+                style: blackTextBold2.copyWith(fontSize: 13),
+              ),
+              Obx(
+                () => loginController.isLoading.value
+                    ? Text('')
+                    : Text(
+                        loginController.user.value.nama!,
+                        style: blackTextBold2.copyWith(fontSize: 24),
+                      ),
+              ),
+            ],
+          ),
+          actions: [
+            PopupMenuButton<int>(
+              icon: Icon(
+                Icons.more_vert,
+                color: blackColor,
+              ),
+              onSelected: (item) => loginController.handleThreeDots(item),
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: Text(
+                    'Logout',
+                    style: blackText,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
         backgroundColor: greyBackgroundColor,
         body: SafeArea(
           child: SingleChildScrollView(
@@ -25,64 +67,6 @@ class AdminHomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Hello,',
-                            style: blackTextBold2.copyWith(fontSize: 12),
-                          ),
-                          Obx(
-                            () => loginController.isLoading.value
-                                ? Text('')
-                                : Text(
-                                    loginController.user.value.nama!,
-                                    style:
-                                        blackTextBold2.copyWith(fontSize: 24),
-                                  ),
-                          ),
-                        ],
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.defaultDialog(
-                            radius: 17,
-                            title: 'Logout',
-                            content: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 4,
-                                horizontal: 12,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Apakah anda ingin logout?',
-                                  style: blackText,
-                                ),
-                              ),
-                            ),
-                            textConfirm: 'OK',
-                            textCancel: 'Batal',
-                            buttonColor: pinkColor,
-                            cancelTextColor: Colors.black87,
-                            confirmTextColor: Colors.white,
-                            onConfirm: () => loginController.userLogout(),
-                            onCancel: () => Get.toNamed(
-                                routeName.reverse[RouteName.ADMINHOMEPAGE]!),
-                          ).then((value) => value = false);
-                        },
-                        child: Icon(
-                          Icons.more_vert,
-                          size: 30,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
                   Stack(
                     children: [
                       Container(
@@ -149,7 +133,7 @@ class AdminHomePage extends StatelessWidget {
                       HomeFiturCard(
                         route: RouteName.RAPOTPAGE,
                         imageAsset: 'assets/Rapot.png',
-                        titleCard: 'Rapot',
+                        titleCard: 'Kelas',
                       ),
                       HomeFiturCard(
                         route: RouteName.QNAPAGE,

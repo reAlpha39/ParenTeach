@@ -47,8 +47,12 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Obx(
-                        () => Container(
+                      // Obx(
+                      //   () =>
+                      GestureDetector(
+                        onTap: () => Get.toNamed(
+                            routeName.reverse[RouteName.PROFILPAGE]!),
+                        child: Container(
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
@@ -60,6 +64,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // ),
                     ],
                   ),
                   SizedBox(
@@ -172,7 +177,7 @@ class HomePage extends StatelessWidget {
                       HomeFiturCard(
                         route: RouteName.RAPOTPAGE,
                         imageAsset: 'assets/Rapot.png',
-                        titleCard: 'Rapot',
+                        titleCard: 'Kelas',
                       ),
                       HomeFiturCard(
                         route: RouteName.QNAPAGE,
