@@ -21,6 +21,7 @@ enum RouteName {
   NILAIHARIANPAGE,
   TAMBAHNILAIHARIANPAGE,
   PROFILSISWAPAGE,
+  PROFILPAGE,
 }
 
 final routeName = EnumValues({
@@ -46,6 +47,7 @@ final routeName = EnumValues({
   '/nilai_harian_page': RouteName.NILAIHARIANPAGE,
   '/tambah_nilai_harian_page': RouteName.TAMBAHNILAIHARIANPAGE,
   '/profil_siswa_page': RouteName.PROFILSISWAPAGE,
+  '/profil_page': RouteName.PROFILPAGE,
 });
 
 class EnumValues<T> {

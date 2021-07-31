@@ -90,33 +90,37 @@ class RemindingPage extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            'Lakukan Reminding Berikut',
-                            style: blackTextBold,
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Obx(
-                            () => remindingController.isLoading.value
-                                ? CircularProgressIndicator()
-                                : SingleChildScrollView(
-                                    child: Column(
-                                      children: remindingController
-                                          .listReminding
-                                          .map((element) => PilihRemindingCard(
-                                              reminding: element))
-                                          .toList(),
-                                    ),
+                      child: Obx(
+                        () => remindingController.isLoading.value
+                            ? Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 15,
                                   ),
-                          )
-                        ],
+                                  Text(
+                                    'Lakukan Reminding Berikut',
+                                    style: blackTextBold,
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  SingleChildScrollView(
+                                    child: Column(
+                                      children:
+                                          remindingController.listReminding
+                                              .map(
+                                                (element) => PilihRemindingCard(
+                                                    reminding: element),
+                                              )
+                                              .toList(),
+                                    ),
+                                  )
+                                ],
+                              ),
                       ),
                     ),
                   ),

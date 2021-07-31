@@ -49,15 +49,19 @@ class HomePage extends StatelessWidget {
                       ),
                       // Obx(
                       //   () =>
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://pict-b.sindonews.net/dyn/620/pena/news/2021/01/16/158/303838/begini-poster-teaser-drama-sejarah-jisoo-blackpink-zry.jpg'),
-                              fit: BoxFit.cover),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(
+                            routeName.reverse[RouteName.PROFILPAGE]!),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pict-b.sindonews.net/dyn/620/pena/news/2021/01/16/158/303838/begini-poster-teaser-drama-sejarah-jisoo-blackpink-zry.jpg'),
+                                fit: BoxFit.cover),
+                          ),
                         ),
                       ),
                       // ),
