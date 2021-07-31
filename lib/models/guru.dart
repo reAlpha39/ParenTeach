@@ -14,6 +14,7 @@ class Guru extends Users {
     this.jenisKelamin,
     this.foto,
     this.status,
+    this.waliKelas,
   });
 
   String? nip;
@@ -21,6 +22,7 @@ class Guru extends Users {
   String? jenisKelamin;
   String? foto;
   Status? status;
+  String? waliKelas;
 
   factory Guru.fromJson(String str) => Guru.fromMap(json.decode(str));
 
@@ -35,6 +37,7 @@ class Guru extends Users {
         status: json["status"] == null
             ? null
             : statusTypeValues.map![json["status"]],
+        waliKelas: json["waliKelas"] == null ? null : json["waliKelas"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -43,5 +46,6 @@ class Guru extends Users {
         "jenisKelamin": jenisKelamin == null ? null : jenisKelamin,
         "foto": foto == null ? null : foto,
         "status": status == null ? null : statusTypeValues.reverse[status],
+        "waliKelas": waliKelas == null ? null : waliKelas,
       };
 }
