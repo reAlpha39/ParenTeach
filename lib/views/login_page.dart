@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../controllers/login_controller.dart';
 import '../utils/shared_methods.dart';
 import '../utils/utils.dart';
-import '../widgets/login_provider.dart';
 import '../widgets/login_textfield.dart';
 
 class LoginPage extends StatelessWidget {
@@ -34,14 +33,11 @@ class LoginPage extends StatelessWidget {
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 24.0),
-                          child: Text(
-                            'ParenTeach',
-                            style: pinkTextBold.copyWith(
-                              fontStyle: FontStyle.italic,
-                              fontSize: 36,
-                            ),
+                        Text(
+                          'ParenTeach',
+                          style: pinkTextBold.copyWith(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 36,
                           ),
                         ),
                         Container(
@@ -102,30 +98,6 @@ class LoginPage extends StatelessWidget {
                           ),
                           Obx(
                             () => _loginButton(),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      'Login With',
-                      style: blackTextBold2,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8.0,
-                      ),
-                      width: 220,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          LoginProvider(
-                            imageAsset: 'assets/google_logo.png',
-                          ),
-                          LoginProvider(
-                            imageAsset: 'assets/google_logo.png',
-                          ),
-                          LoginProvider(
-                            imageAsset: 'assets/google_logo.png',
                           ),
                         ],
                       ),
