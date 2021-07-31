@@ -46,6 +46,27 @@ class DatabaseProvider {
     return user;
   }
 
+  Future<String> addUser(Users data) async {
+    String userId = "";
+    try {
+      CollectionReference collection =
+          mainCollection().doc('users').collection('users');
+      var querySnapshot = await collection.get();
+      if (querySnapshot.size == 0) {
+        data.idUsers = '100000001';
+      } else {
+        int lastId = searchLastId(querySnapshot)!;
+        data.idUsers = (lastId + 1).toString();
+      }
+      userId = data.idUsers!;
+      await collection.doc(data.idUsers).set(data.toMap());
+    } catch (e) {
+      userId = "";
+      print(e);
+    }
+    return userId;
+  }
+
   Future<void> signOut() async {
     final FirebaseAuth user = FirebaseAuth.instance;
     await user.signOut();
