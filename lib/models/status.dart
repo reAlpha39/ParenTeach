@@ -8,8 +8,8 @@ enum Status {
 }
 
 final statusTypeValues = EnumValues({
-  "admin": Status.ADMIN,
-  "tu": Status.TU,
-  "guruKelas": Status.GURUKELAS,
-  "bk": Status.BK,
+  "Admin": Status.ADMIN,
+  "Tata Usaha": Status.TU,
+  "Guru Kelas": Status.GURUKELAS,
+  "Guru Bimbingan Konseling": Status.BK,
 });
