@@ -7,6 +7,7 @@ import '../utils/theme.dart';
 class PlaygroundCard extends StatelessWidget {
   final String imageAsset;
   final String titleCard;
+  final String url;
   final RouteName route;
 
   const PlaygroundCard({
@@ -14,12 +15,13 @@ class PlaygroundCard extends StatelessWidget {
     required this.imageAsset,
     required this.titleCard,
     required this.route,
+    required this.url,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.offAndToNamed(routeName.reverse[route]!),
+      onTap: () => Get.offAndToNamed(routeName.reverse[route]!, arguments: url),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),

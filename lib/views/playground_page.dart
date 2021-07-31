@@ -7,8 +7,6 @@ import '../widgets/custom_appbar.dart';
 import '../widgets/playground_card.dart';
 
 class PlaygroundPage extends StatelessWidget {
-  const PlaygroundPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,38 +53,44 @@ class PlaygroundPage extends StatelessWidget {
                   Column(
                     children: [
                       PlaygroundCard(
-                        route: RouteName.HOMEPAGE,
+                        route: RouteName.WEBVIEW,
                         titleCard: 'Melempar Bola',
                         imageAsset: 'assets/beach_ball_icon.png',
+                        url: 'https://kumparan.com/',
                       ),
                       PlaygroundCard(
-                        route: RouteName.HOMEPAGE,
+                        route: RouteName.WEBVIEW,
                         titleCard: 'Bermain Puzzle',
                         imageAsset: 'assets/puzzle_icon.png',
+                        url: 'https://kumparan.com/',
                       ),
                       PlaygroundCard(
-                        route: RouteName.HOMEPAGE,
+                        route: RouteName.WEBVIEW,
                         titleCard: 'Barbel',
                         imageAsset: 'assets/barbell_icon.png',
+                        url: 'https://kumparan.com/',
                       ),
                     ],
                   ),
                   Column(
                     children: [
                       PlaygroundCard(
-                        route: RouteName.HOMEPAGE,
+                        route: RouteName.WEBVIEW,
                         titleCard: 'Memasak',
                         imageAsset: 'assets/soup_icon.png',
+                        url: 'https://kumparan.com/',
                       ),
                       PlaygroundCard(
-                        route: RouteName.HOMEPAGE,
+                        route: RouteName.WEBVIEW,
                         titleCard: 'Bersepeda',
                         imageAsset: 'assets/bicycle_icon.png',
+                        url: 'https://kumparan.com/',
                       ),
                       PlaygroundCard(
-                        route: RouteName.HOMEPAGE,
+                        route: RouteName.WEBVIEW,
                         titleCard: 'Bermain Catur',
                         imageAsset: 'assets/chess_icon.png',
+                        url: 'https://kumparan.com/',
                       ),
                     ],
                   ),
