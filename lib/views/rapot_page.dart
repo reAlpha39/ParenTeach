@@ -16,7 +16,7 @@ class RapotPage extends StatelessWidget {
         enableLeading: true,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
-        title: 'Rapot dari ${siswaController.listSiswa[index].nama!}',
+        title: 'Rapot Page',
         isAdmin: true,
         route: RouteName.TAMBAHNILAIHARIANPAGE,
       ),
@@ -84,7 +84,8 @@ class RapotPage extends StatelessWidget {
                         ],
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () => Get.toNamed(
+                            routeName.reverse[RouteName.NILAIHARIANPAGE]!),
                         child: Text(
                           'Nilai Harian',
                           style: whiteText,

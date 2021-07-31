@@ -35,14 +35,14 @@ class CardNilaiRaport extends StatelessWidget {
             ),
             Row(
               children: [
-                Text(
-                  '80',
-                  style: blackTextBold.copyWith(color: blueColor, fontSize: 18),
-                ),
-                Text(
-                  ' : ',
-                  style: blackTextBold.copyWith(fontSize: 18),
-                ),
+                // Text(
+                //   '80',
+                //   style: blackTextBold.copyWith(color: blueColor, fontSize: 18),
+                // ),
+                // Text(
+                //   ' : ',
+                //   style: blackTextBold.copyWith(fontSize: 18),
+                // ),
                 Text(
                   '78',
                   style: blackTextBold.copyWith(
