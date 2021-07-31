@@ -5,6 +5,7 @@ import 'package:parenteach/models/constant.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
+import 'package:parenteach/widgets/image_preview.dart';
 
 class AdminTambahGuru extends StatelessWidget {
   final GuruController _guruController = Get.find();
@@ -88,12 +89,62 @@ class AdminTambahGuru extends StatelessWidget {
                     'Ulangi Password',
                     true,
                   ),
-                  Text(
-                    'Pilih Foto',
-                    style: blackTextBold.copyWith(fontSize: 16),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 12,
+                      bottom: 4,
+                    ),
+                    child: Text(
+                      'Pratinjau foto',
+                      style: blackTextBold.copyWith(fontSize: 16),
+                    ),
                   ),
-                  SizedBox(
-                    height: 10,
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: 100,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        border: Border.all(color: Colors.black38),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Obx(
+                        () => _guruController.fileName.value != ""
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                                child: Image.file(
+                                  _guruController.image.value,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : _guruController.imageUrl.value != ""
+                                ? ImagePreview(
+                                    pathPicture: _guruController.imageUrl.value,
+                                  )
+                                : Center(
+                                    child: Text(
+                                      'Tidak ada pratinjau foto tersedia',
+                                      style: blackText.copyWith(
+                                        fontSize: 16,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: 12,
+                      bottom: 4,
+                    ),
+                    child: Text(
+                      'Pilih Foto',
+                      style: blackTextBold.copyWith(fontSize: 16),
+                    ),
                   ),
                   Container(
                     width: Get.width,
@@ -105,28 +156,48 @@ class AdminTambahGuru extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width: Get.width / 3,
-                          height: 37,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Pilih Foto',
-                              style: blackText,
+                        onTap: () {
+                          _guruController.imageFromGallery();
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              width: 120,
+                              height: 37,
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Center(
+                                child: Obx(
+                                  () => Text(
+                                    _guruController.fileName.value == ''
+                                        ? 'Pilih Foto'
+                                        : 'Ganti Foto',
+                                    style: blackText,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                            Flexible(
+                              child: Obx(
+                                () => Text(
+                                  _guruController.fileName.value,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.clip,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   Container(
+                    margin: const EdgeInsets.only(
+                      top: 12,
+                    ),
                     width: 130,
                     child: ElevatedButton(
                       style: ButtonStyle(
