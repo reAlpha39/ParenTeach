@@ -106,9 +106,11 @@ class BlogPage extends StatelessWidget {
                   children: List.generate(
                     10,
                     (index) => buildBlogTile(
-                      'ahsiausaushahsu ahsbauhs asbabs ba shbahsa s hasbhas a hasi',
-                      '23 September 2020',
-                    ),
+                        'ahsiausaushahsu ahsbauhs asbabs ba shbahsa s hasbhas a hasi',
+                        '23 September 2020', () {
+                      Get.toNamed(routeName.reverse[RouteName.WEBVIEW]!,
+                          arguments: 'https://kumparan.com/');
+                    }),
                   ),
                 ),
               ),
@@ -119,54 +121,57 @@ class BlogPage extends StatelessWidget {
     );
   }
 
-  Widget buildBlogTile(String? title, String? date) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          Container(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                      'https://static.wikia.nocookie.net/onepiece/images/f/ff/Marshall_D._Teach_Anime_Post_Timeskip_Infobox.png/revision/latest?cb=20200112104542'),
-                  fit: BoxFit.cover),
-              borderRadius: BorderRadiusDirectional.horizontal(
-                start: Radius.circular(10),
+  Widget buildBlogTile(String? title, String? date, void Function()? url) {
+    return GestureDetector(
+      onTap: url,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            Container(
+              height: 100,
+              width: 100,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://static.wikia.nocookie.net/onepiece/images/f/ff/Marshall_D._Teach_Anime_Post_Timeskip_Infobox.png/revision/latest?cb=20200112104542'),
+                    fit: BoxFit.cover),
+                borderRadius: BorderRadiusDirectional.horizontal(
+                  start: Radius.circular(10),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title!,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: blackTextBold,
-                ),
-                Text(
-                  date!,
-                  style: blackText.copyWith(
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
+            SizedBox(
+              width: 10,
             ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-        ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title!,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: blackTextBold,
+                  ),
+                  Text(
+                    date!,
+                    style: blackText.copyWith(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

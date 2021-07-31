@@ -4,6 +4,7 @@ import 'package:parenteach/routes/nilai_harian_binding.dart';
 import 'package:parenteach/routes/qna_binding.dart';
 import 'package:parenteach/routes/reminding_binding.dart';
 import 'package:parenteach/routes/siswa_binding.dart';
+import 'package:parenteach/routes/webview_binding.dart';
 import 'package:parenteach/views/admin/admin_add_qna.dart';
 import 'package:parenteach/views/admin/admin_add_reminding.dart';
 import 'package:parenteach/views/admin/admin_home_page.dart';
@@ -17,6 +18,7 @@ import 'package:parenteach/views/admin/tambah_nilai_harian.dart';
 import 'package:parenteach/views/nilai_harian_page.dart';
 import 'package:parenteach/views/profil_page.dart';
 import 'package:parenteach/views/profil_siswa_page.dart';
+import 'package:parenteach/views/web_view_page.dart';
 import '../views/rapot_page.dart';
 
 import '../views/reminding_page.dart';
@@ -131,6 +133,11 @@ class Routes {
       name: routeName.reverse[RouteName.PROFILPAGE]!,
       page: () => ProfilPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.WEBVIEW]!,
+      page: () => WebviewPage(),
+      binding: WebviewBinding(),
     ),
   ];
 }
