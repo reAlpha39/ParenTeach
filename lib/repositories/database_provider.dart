@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:parenteach/models/guru.dart';
 import 'package:parenteach/models/qna.dart';
 import 'package:parenteach/models/reminding.dart';
 import 'package:parenteach/models/siswa.dart';
@@ -249,6 +250,20 @@ class DatabaseProvider {
             .delete();
       }
       await collection.doc(nis).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future<bool> addGuru(Guru data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('guru').collection('guru');
+      await collection.doc(data.nip).set(data.toMap());
       isSuccess = true;
     } catch (e) {
       isSuccess = false;

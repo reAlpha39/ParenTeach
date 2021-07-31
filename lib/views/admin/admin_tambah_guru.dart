@@ -219,7 +219,9 @@ class AdminTambahGuru extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _guruController.saveGuruData();
+                      },
                     ),
                   ),
                 ],
