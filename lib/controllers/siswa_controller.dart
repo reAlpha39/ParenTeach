@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parenteach/models/siswa.dart';
 import 'package:parenteach/repositories/database_provider.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/utils.dart';
 
 class SiswaController extends GetxController {
@@ -124,6 +125,7 @@ class SiswaController extends GetxController {
             listSiswa[index].nis!, listSiswa[index].fotoSiswa!);
         if (isSuccess) {
           if (isSuccess) {
+            Get.toNamed(routeName.reverse[RouteName.DAFTARSISWAPAGE]!);
             _showDialog(
               title: 'Sukses',
               middleText: 'Data Berhasil terhapus',
