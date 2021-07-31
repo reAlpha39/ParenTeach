@@ -30,9 +30,9 @@ class DatabaseProvider {
   Future<Users?> validateUser(String username) async {
     Users? user;
     try {
-      firestore = FirebaseFirestore.instance;
       late List<QueryDocumentSnapshot> dataUser;
-      await firestore
+      await mainCollection()
+          .doc('users')
           .collection('users')
           .where('username', isEqualTo: username)
           .get()
