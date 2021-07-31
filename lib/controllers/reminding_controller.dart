@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/models/reminding.dart';
 import 'package:parenteach/repositories/database_provider.dart';
+import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/shared_methods.dart';
 import 'package:parenteach/utils/utils.dart';
 
@@ -63,6 +64,7 @@ class RemindingController extends GetxController {
             ? await _databaseProvider.updateReminding(data)
             : await _databaseProvider.addReminding(data);
         if (isSuccess) {
+          Get.toNamed(routeName.reverse[RouteName.ADMINREMINDINGPAGE]!);
           getRemindingData();
           showDialog(
             title: 'Success',
@@ -70,7 +72,7 @@ class RemindingController extends GetxController {
                 ? 'Reminding berhasil diperbaharui'
                 : 'Reminding berhasil ditambahkan',
           );
-          // clearText();
+          clearText();
         } else {
           showDialog(
             title: 'Gagal',
@@ -112,5 +114,10 @@ class RemindingController extends GetxController {
     } catch (e) {
       showDialog(title: 'Error', middleText: "Error: " + e.toString());
     }
+  }
+
+  void clearText() {
+    isUpdate.value = false;
+    remindingTextField!.clear();
   }
 }
