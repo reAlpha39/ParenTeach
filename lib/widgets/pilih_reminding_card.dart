@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import 'package:parenteach/controllers/reminding_controller.dart';
 import 'package:parenteach/models/reminding.dart';
 
 import '../utils/utils.dart';
 
 class PilihRemindingCard extends StatelessWidget {
+  final LoginController loginController = Get.find();
   final RemindingController remindingController = Get.find();
   final Reminding reminding;
 
@@ -39,33 +41,9 @@ class PilihRemindingCard extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: Container(
-                  height: 20,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          'Edit',
-                          style: pinkText,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          remindingController
-                              .deleteReminding(reminding.idReminding!);
-                        },
-                        child: Text(
-                          'Delete',
-                          style: pinkText,
-                        ),
-                      ),
-                    ],
-                  )
-                  // Image.asset('assets/send_icon_pink.png'),
-                  ),
+                height: 20,
+                child: Image.asset('assets/send_icon_pink.png'),
+              ),
             ),
           ],
         ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import 'package:parenteach/controllers/reminding_controller.dart';
 import 'package:parenteach/widgets/pilih_reminding_card.dart';
 
 import '../utils/utils.dart';
 
 class RemindingPage extends StatelessWidget {
+  final LoginController loginController = Get.find();
   final RemindingController remindingController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -78,7 +80,7 @@ class RemindingPage extends StatelessWidget {
                               fontSize: 14, color: Colors.grey),
                         ),
                         Text(
-                          'Miftah',
+                          loginController.user.value.nama!,
                           style: blackTextBold.copyWith(
                               fontSize: 18, color: pinkColor),
                         ),
@@ -103,23 +105,17 @@ class RemindingPage extends StatelessWidget {
                           ),
                           Obx(
                             () => remindingController.isLoading.value
-                                ? Center(child: CircularProgressIndicator())
-                                : Expanded(
-                                    child: SingleChildScrollView(
-                                      physics: BouncingScrollPhysics(),
-                                      child: Column(
-                                        children:
-                                            remindingController.listReminding
-                                                .map(
-                                                  (e) => PilihRemindingCard(
-                                                    reminding: e,
-                                                  ),
-                                                )
-                                                .toList(),
-                                      ),
+                                ? CircularProgressIndicator()
+                                : SingleChildScrollView(
+                                    child: Column(
+                                      children: remindingController
+                                          .listReminding
+                                          .map((element) => PilihRemindingCard(
+                                              reminding: element))
+                                          .toList(),
                                     ),
                                   ),
-                          ),
+                          )
                         ],
                       ),
                     ),
