@@ -353,7 +353,11 @@ class Selector extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: List<Widget>.generate(
-              type == 'jenisKelamin' ? jenisKelamins.length : kelass.length,
+              type == 'jenisKelamin'
+                  ? jenisKelamins.length
+                  : type == 'status'
+                      ? status.length
+                      : kelass.length,
               (index) => ListTile(
                 title: Text(
                   type == 'jenisKelamin'
