@@ -18,7 +18,7 @@ class RapotPage extends StatelessWidget {
         foregroundColor: greyBackgroundColor,
         title: 'Rapot Page',
         isAdmin: true,
-        route: RouteName.TAMBAHNILAIHARIANPAGE,
+        route: RouteName.ADMINTAMBAHNILAIRAPOTPAGE,
       ),
       body: SafeArea(
         child: Stack(
