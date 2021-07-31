@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import 'package:parenteach/utils/theme.dart';
 import 'package:parenteach/widgets/custom_appbar.dart';
 
 class ProfilPage extends StatelessWidget {
+  final LoginController loginController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +30,46 @@ class ProfilPage extends StatelessWidget {
                   top: Radius.circular(10),
                 ),
               ),
+              child: Container(
+                margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  children: [
+                    buldDataUser(
+                        'Nama Lengkap', loginController.user.value.username),
+                    buldDataUser('No. Hp', loginController.user.value.noHp),
+                    buldDataUser('No. Hp', loginController.user.value.email),
+                  ],
+                ),
+              ),
             ),
           )
         ],
       ),
+    );
+  }
+
+  Column buldDataUser(String? label, String? data) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 20,
+        ),
+        Text(
+          label!,
+          style: blackText.copyWith(fontSize: 12, color: Colors.grey),
+        ),
+        Divider(),
+        Text(
+          data!,
+          style: blackText,
+        ),
+      ],
     );
   }
 }
