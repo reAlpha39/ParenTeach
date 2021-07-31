@@ -29,7 +29,9 @@ class NilaiHarianPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: List.generate(
                 10,
-                (index) => CardNilaiRaport(),
+                (index) => CardNilaiRaport(
+                  isPengetahuan: false,
+                ),
               )..add(
                   Container(
                     margin: EdgeInsets.only(

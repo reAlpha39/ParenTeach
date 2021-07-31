@@ -172,7 +172,7 @@ class HomePage extends StatelessWidget {
                       HomeFiturCard(
                         route: RouteName.RAPOTPAGE,
                         imageAsset: 'assets/Rapot.png',
-                        titleCard: 'Rapot',
+                        titleCard: 'Kelas',
                       ),
                       HomeFiturCard(
                         route: RouteName.QNAPAGE,

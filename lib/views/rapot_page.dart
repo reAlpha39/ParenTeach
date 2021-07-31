@@ -106,7 +106,9 @@ class RapotPage extends StatelessWidget {
                       child: Column(
                         children: List.generate(
                           10,
-                          (index) => CardNilaiRaport(),
+                          (index) => CardNilaiRaport(
+                            isPengetahuan: true,
+                          ),
                         )
                           ..insert(
                             0,
