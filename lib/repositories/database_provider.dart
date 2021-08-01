@@ -66,6 +66,20 @@ class DatabaseProvider {
     return userId;
   }
 
+  Future<bool> updateUser(Users data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('users').collection('users');
+      await collection.doc(data.idUsers).set(data.toMap());
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
   Future<bool> deleteUser(String idUser) async {
     bool isSuccess = false;
     try {
