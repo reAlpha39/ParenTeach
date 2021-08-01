@@ -67,6 +67,20 @@ class DatabaseProvider {
     return userId;
   }
 
+  Future<bool> deleteUser(String idUser) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('users').collection('users');
+      await collection.doc(idUser).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
   Future<void> signOut() async {
     final FirebaseAuth user = FirebaseAuth.instance;
     await user.signOut();
