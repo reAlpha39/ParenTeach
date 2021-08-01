@@ -301,6 +301,22 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  Future<List<Guru>> getGuruList() async {
+    List<Guru> temp = [];
+    try {
+      CollectionReference collection =
+          mainCollection().doc('guru').collection('guru');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(
+            Guru.fromMap(querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
+  }
+
   Future<bool> addGuru(Guru data) async {
     bool isSuccess = false;
     try {
