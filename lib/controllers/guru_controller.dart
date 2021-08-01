@@ -19,6 +19,8 @@ class GuruController extends GetxController {
   TextEditingController? usernameController;
   TextEditingController? passwordController;
   TextEditingController? confirmPasswordController;
+  TextEditingController? emailController;
+  TextEditingController? noHpController;
   RxString jenisKelamin = "".obs;
   RxString status = "".obs;
   RxString waliKelas = "".obs;
@@ -35,6 +37,8 @@ class GuruController extends GetxController {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();
+    emailController = TextEditingController();
+    noHpController = TextEditingController();
     super.onInit();
   }
 
@@ -45,6 +49,8 @@ class GuruController extends GetxController {
     usernameController?.dispose();
     passwordController?.dispose();
     confirmPasswordController?.dispose();
+    emailController?.dispose();
+    noHpController?.dispose();
     super.onClose();
   }
 
@@ -117,14 +123,16 @@ class GuruController extends GetxController {
     data.status = statusTypeValues.map![status.value];
     data.username = usernameController!.text;
     data.password = passwordController!.text;
+    data.email = emailController!.text;
+    data.noHp = noHpController!.text;
     return data;
   }
 
   Users _fillUserData(Guru data) {
     Users user = Users();
     user.nama = data.nama;
-    user.email = '';
-    user.noHp = '';
+    user.email = data.email;
+    user.noHp = data.noHp;
     user.password = data.password;
     user.type = userTypeValues.map![userTypeValues.reverse[UserType.GURU]];
     user.username = data.username;

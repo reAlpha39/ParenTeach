@@ -72,6 +72,18 @@ class AdminTambahGuru extends StatelessWidget {
                     'waliKelas',
                   ),
                   buildTextField(
+                    _guruController.emailController!,
+                    'Email',
+                    'Tulis email di sini',
+                    false,
+                  ),
+                  buildTextField(
+                    _guruController.noHpController!,
+                    'No Handphone',
+                    'Tulis no handphone di sini',
+                    false,
+                  ),
+                  buildTextField(
                     _guruController.usernameController!,
                     'Username',
                     'Username',
