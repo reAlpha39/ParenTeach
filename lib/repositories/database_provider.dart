@@ -330,4 +330,18 @@ class DatabaseProvider {
     }
     return isSuccess;
   }
+
+  Future<bool> deleteGuru(String idUser) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('guru').collection('guru');
+      await collection.doc(idUser).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
 }
