@@ -139,6 +139,32 @@ class GuruController extends GetxController {
     }
   }
 
+  void resetState() {
+    try {
+      namaController!.clear();
+      nipController!.clear();
+      nipController!.clear();
+      usernameController!.clear();
+      passwordController!.clear();
+      confirmPasswordController!.clear();
+      emailController!.clear();
+      noHpController!.clear();
+      jenisKelamin.value = '';
+      waliKelas.value = '';
+      imageUrl.value = '';
+      status.value = '';
+      fileName.value = '';
+      image.value = File("");
+      isPicked.value = false;
+      if (image.value.existsSync()) {
+        image.value.delete();
+        image.refresh();
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Guru _fillGuruData() {
     Guru data = Guru();
     data.nama = namaController!.text;
