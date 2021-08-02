@@ -29,6 +29,7 @@ class GuruController extends GetxController {
   Rx<File> image = File("").obs;
   RxString imageUrl = "".obs;
   RxString fileName = "".obs;
+  RxList<Guru> listGuru = RxList<Guru>();
 
   void onInit() {
     searchGuruTEC = TextEditingController();
@@ -40,6 +41,11 @@ class GuruController extends GetxController {
     emailController = TextEditingController();
     noHpController = TextEditingController();
     super.onInit();
+  }
+
+  void onReady() {
+    _getGuruData();
+    super.onReady();
   }
 
   void onClose() {
@@ -65,6 +71,25 @@ class GuruController extends GetxController {
       fileName.value = file.name;
     } else {
       print('No image selected');
+    }
+  }
+
+  void _getGuruData() async {
+    isLoading.value = true;
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        listGuru.value = await _databaseProvider.getGuruList();
+        listGuru.refresh();
+        isLoading.value = false;
+      } else {
+        _showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
+      }
+    } catch (e) {
+      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
     }
   }
 
