@@ -131,7 +131,7 @@ class AdminHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       HomeFiturCard(
-                        route: RouteName.RAPOTPAGE,
+                        route: RouteName.DAFTARKELAS,
                         imageAsset: 'assets/Rapot.png',
                         titleCard: 'Kelas',
                       ),

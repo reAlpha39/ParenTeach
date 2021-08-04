@@ -80,6 +80,7 @@ class LoginPage extends StatelessWidget {
                             ),
                             child: LoginTextField(
                               textEditingController: _loginController.password,
+                              isObsecure: true,
                               labelText: 'Password',
                             ),
                           ),

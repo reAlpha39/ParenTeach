@@ -23,6 +23,7 @@ enum RouteName {
   PROFILSISWAPAGE,
   PROFILPAGE,
   WEBVIEW,
+  DAFTARKELAS,
 }
 
 final routeName = EnumValues({
@@ -50,6 +51,7 @@ final routeName = EnumValues({
   '/profil_siswa_page': RouteName.PROFILSISWAPAGE,
   '/profil_page': RouteName.PROFILPAGE,
   '/webview': RouteName.WEBVIEW,
+  '/daftar_kelas': RouteName.DAFTARKELAS,
 });
 
 class EnumValues<T> {
