@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/routes/route_name.dart';
+import '../routes/route_name.dart';
 
 import '../utils/utils.dart';
 import '../widgets/custom_appbar.dart';

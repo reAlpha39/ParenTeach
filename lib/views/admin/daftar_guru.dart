@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/guru_controller.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/utils.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
-import 'package:parenteach/widgets/search_guru_siswa.dart';
-import 'package:parenteach/widgets/table_guru.dart';
+import '../../controllers/guru_controller.dart';
+import '../../routes/route_name.dart';
+import '../../utils/utils.dart';
+import '../../widgets/custom_appbar.dart';
+import '../../widgets/search_guru_siswa.dart';
+import '../../widgets/table_guru.dart';
 
 class DaftarGuruPage extends StatelessWidget {
   final GuruController _guruController = Get.find();

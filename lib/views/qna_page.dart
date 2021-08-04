@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/login_controller.dart';
-import 'package:parenteach/controllers/qna_controller.dart';
-import 'package:parenteach/models/user_type.dart';
-import 'package:parenteach/routes/route_name.dart';
+import '../controllers/login_controller.dart';
+import '../controllers/qna_controller.dart';
+import '../models/user_type.dart';
+import '../routes/route_name.dart';
 
 import '../utils/utils.dart';
 import '../widgets/custom_appbar.dart';

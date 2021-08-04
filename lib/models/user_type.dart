@@ -1,4 +1,4 @@
-import 'package:parenteach/utils/utils.dart';
+import '../utils/utils.dart';
 
 enum UserType { ORANGTUA, ADMIN, GURU }
 

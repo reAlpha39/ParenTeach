@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:parenteach/models/guru.dart';
-import 'package:parenteach/models/status.dart';
-import 'package:parenteach/models/user_type.dart';
-import 'package:parenteach/models/users.dart';
-import 'package:parenteach/repositories/database_provider.dart';
-import 'package:parenteach/utils/utils.dart';
+import '../models/guru.dart';
+import '../models/status.dart';
+import '../models/user_type.dart';
+import '../models/users.dart';
+import '../repositories/database_provider.dart';
+import '../utils/utils.dart';
 
 class GuruController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();

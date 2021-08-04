@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/login_controller.dart';
+import '../controllers/login_controller.dart';
 
 import '../routes/route_name.dart';
 import '../utils/shared_methods.dart';

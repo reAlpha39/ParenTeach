@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/login_controller.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/shared_methods.dart';
-import 'package:parenteach/utils/utils.dart';
-import 'package:parenteach/widgets/home_fitur_card.dart';
+import '../../controllers/login_controller.dart';
+import '../../routes/route_name.dart';
+import '../../utils/shared_methods.dart';
+import '../../utils/utils.dart';
+import '../../widgets/home_fitur_card.dart';
 
 class AdminHomePage extends StatelessWidget {
   final LoginController loginController = Get.find();

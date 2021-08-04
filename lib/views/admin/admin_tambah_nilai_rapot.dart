@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
+import '../../utils/theme.dart';
+import '../../widgets/custom_appbar.dart';
 
 class AdminTambahNilaiRapot extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/web_view_controller.dart';
+import '../controllers/web_view_controller.dart';
 
 class WebviewBinding extends Bindings {
   void dependencies() {

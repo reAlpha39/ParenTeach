@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/guru_controller.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
+import '../../controllers/guru_controller.dart';
+import '../../routes/route_name.dart';
+import '../../utils/theme.dart';
+import '../../widgets/custom_appbar.dart';
 
 class ProfilGuruPage extends StatelessWidget {
   final GuruController guruController = Get.find();
