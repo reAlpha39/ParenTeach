@@ -139,6 +139,21 @@ class GuruController extends GetxController {
     }
   }
 
+  void loadGuruState(int index) {
+    resetState();
+    namaController!.text = listGuru[index].nama!;
+    nipController!.text = listGuru[index].nip!;
+    usernameController!.text = listGuru[index].username!;
+    passwordController!.text = listGuru[index].password!;
+    confirmPasswordController!.text = listGuru[index].password!;
+    emailController!.text = listGuru[index].email!;
+    noHpController!.text = listGuru[index].noHp!;
+    jenisKelamin.value = listGuru[index].jenisKelamin!;
+    waliKelas.value = listGuru[index].waliKelas!;
+    status.value = statusTypeValues.reverse[listGuru[index].status!]!;
+    imageUrl.value = listGuru[index].foto!;
+  }
+
   void resetState() {
     try {
       namaController!.clear();
