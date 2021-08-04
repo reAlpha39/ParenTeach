@@ -33,7 +33,7 @@ class TabelGuru extends StatelessWidget {
                         (guru) => DataRow(
                           onSelectChanged: (e) {
                             Get.toNamed(
-                              routeName.reverse[RouteName.ADMINTAMBAHGURUPAGE]!,
+                              routeName.reverse[RouteName.PROFILGURUPAGE]!,
                               arguments: _guruController.listGuru.indexWhere(
                                   (element) => element.nip == guru.nip),
                             );

@@ -15,6 +15,7 @@ import 'package:parenteach/views/admin/admin_tambah_siswa.dart';
 import 'package:parenteach/views/admin/daftar_guru.dart';
 import 'package:parenteach/views/admin/daftar_kelas.dart';
 import 'package:parenteach/views/admin/daftar_siswa.dart';
+import 'package:parenteach/views/admin/profil_guru.dart';
 import 'package:parenteach/views/admin/tambah_nilai_harian.dart';
 import 'package:parenteach/views/nilai_harian_page.dart';
 import 'package:parenteach/views/profil_page.dart';
@@ -104,6 +105,11 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHGURUPAGE]!,
       page: () => AdminTambahGuru(),
+      binding: GuruBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.PROFILGURUPAGE]!,
+      page: () => ProfilGuruPage(),
       binding: GuruBinding(),
     ),
     GetPage(

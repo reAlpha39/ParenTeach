@@ -32,11 +32,12 @@ class KalenderPageAdmin extends StatelessWidget {
                 label2: 'Tahun Akhir',
                 isDouble: true,
               ),
+              // Yang set tahun belum
               buildTextField(
                 namaController: tahunAwal,
-                label1: 'asa',
+                label1: '2019/2020',
                 isDouble: false,
-                title: 'asas',
+                title: 'Hapus Tahun',
               ),
             ],
           ),
