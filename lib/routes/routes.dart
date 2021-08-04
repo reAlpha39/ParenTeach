@@ -58,7 +58,7 @@ class Routes {
     ),
     GetPage(
       name: routeName.reverse[RouteName.KALENDERPAGE]!,
-      page: () => KalenderPage(),
+      page: () => KalenderPageAdmin(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.QNAPAGE]!,
