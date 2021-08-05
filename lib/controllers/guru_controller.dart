@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:parenteach/routes/route_name.dart';
 import '../models/guru.dart';
 import '../models/status.dart';
 import '../models/user_type.dart';
@@ -133,6 +134,40 @@ class GuruController extends GetxController {
                 : 'Data guru gagal ditambahkan, mohon coba lagi',
           );
         }
+      }
+    } catch (e) {
+      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
+  }
+
+  void deleteGuru(int index) async {
+    isLoading.value = true;
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        bool isSuccess = await _databaseProvider.deleteGuru(
+            listGuru[index].idUser!, listGuru[index].foto!);
+        if (isSuccess) {
+          if (isSuccess) {
+            Get.toNamed(routeName.reverse[RouteName.DAFTARGURUPAGE]!);
+            _showDialog(
+              title: 'Sukses',
+              middleText: 'Data Berhasil terhapus',
+            );
+            _getGuruData();
+          } else {
+            _showDialog(
+              title: 'Gagal',
+              middleText:
+                  'Tidak bisa menghapus data data siswa, coba beberapa saat lagi',
+            );
+          }
+        }
+      } else {
+        _showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
       }
     } catch (e) {
       _showDialog(title: 'Error', middleText: "Error: " + e.toString());

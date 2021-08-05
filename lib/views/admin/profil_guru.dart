@@ -112,7 +112,9 @@ class ProfilGuruPage extends StatelessWidget {
                         height: 20,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          guruController.deleteGuru(index);
+                        },
                         child: Text(
                           'Delete Guru',
                           style: blackTextBold,
