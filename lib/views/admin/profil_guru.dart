@@ -104,8 +104,9 @@ class ProfilGuruPage extends StatelessWidget {
                         ),
                         onPressed: () {
                           guruController.loadGuruState(Get.arguments);
-                          Get.toNamed(routeName
-                              .reverse[RouteName.ADMINTAMBAHGURUPAGE]!);
+                          Get.toNamed(
+                              routeName.reverse[RouteName.ADMINTAMBAHGURUPAGE]!,
+                              arguments: Get.arguments);
                         },
                       ),
                       SizedBox(
