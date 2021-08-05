@@ -28,7 +28,7 @@ class AdminTambahGuru extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
-        title: 'Tambah Guru',
+        title: Get.arguments == null ? 'Tambah Guru' : 'Edit Guru',
         isAdmin: false,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
@@ -232,7 +232,11 @@ class AdminTambahGuru extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        _guruController.saveGuruData();
+                        if (Get.arguments == null) {
+                          _guruController.saveGuruData();
+                        } else {
+                          _guruController.saveGuruData(isEdit: true);
+                        }
                       },
                     ),
                   ),
