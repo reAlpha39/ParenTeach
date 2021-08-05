@@ -127,6 +127,9 @@ class GuruController extends GetxController {
           isSuccess = false;
         }
         if (isSuccess) {
+          Get.offNamed(routeName.reverse[RouteName.DAFTARGURUPAGE]!);
+          resetState();
+          _getGuruData();
           _showDialog(
             title: 'Success',
             middleText: isEdit
