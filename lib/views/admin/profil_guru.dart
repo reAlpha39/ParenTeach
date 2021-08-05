@@ -89,21 +89,25 @@ class ProfilGuruPage extends StatelessWidget {
                         height: 20,
                       ),
                       ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(pinkColor),
-                            elevation: MaterialStateProperty.all<double>(0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Center(
-                              child: Text(
-                                'Edit Guru',
-                                style: blackText,
-                              ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(pinkColor),
+                          elevation: MaterialStateProperty.all<double>(0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Center(
+                            child: Text(
+                              'Edit Guru',
+                              style: blackText,
                             ),
                           ),
-                          onPressed: () {}),
+                        ),
+                        onPressed: () {
+                          guruController.loadGuruState(Get.arguments);
+                          Get.toNamed(routeName
+                              .reverse[RouteName.ADMINTAMBAHGURUPAGE]!);
+                        },
+                      ),
                       SizedBox(
                         height: 20,
                       ),
