@@ -337,6 +337,7 @@ class DatabaseProvider {
       CollectionReference collection =
           mainCollection().doc('guru').collection('guru');
       await collection.doc(idUser).delete();
+      await deleteUser(idUser);
       if (imageUrl != '') {
         await firebase_storage.FirebaseStorage.instance
             .refFromURL(imageUrl)
