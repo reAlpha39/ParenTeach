@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'ParenTeach',
+                          'Appinter',
                           style: pinkTextBold.copyWith(
                             fontStyle: FontStyle.italic,
                             fontSize: 36,
