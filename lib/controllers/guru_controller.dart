@@ -154,20 +154,18 @@ class GuruController extends GetxController {
         bool isSuccess = await _databaseProvider.deleteGuru(
             listGuru[index].idUser!, listGuru[index].foto!);
         if (isSuccess) {
-          if (isSuccess) {
-            Get.toNamed(routeName.reverse[RouteName.DAFTARGURUPAGE]!);
-            _showDialog(
-              title: 'Sukses',
-              middleText: 'Data Berhasil terhapus',
-            );
-            _getGuruData();
-          } else {
-            _showDialog(
-              title: 'Gagal',
-              middleText:
-                  'Tidak bisa menghapus data data siswa, coba beberapa saat lagi',
-            );
-          }
+          Get.offNamed(routeName.reverse[RouteName.DAFTARGURUPAGE]!);
+          _showDialog(
+            title: 'Sukses',
+            middleText: 'Data Berhasil terhapus',
+          );
+          _getGuruData();
+        } else {
+          _showDialog(
+            title: 'Gagal',
+            middleText:
+                'Tidak bisa menghapus data data siswa, coba beberapa saat lagi',
+          );
         }
       } else {
         _showDialog(
