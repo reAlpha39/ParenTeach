@@ -127,7 +127,7 @@ class GuruController extends GetxController {
           isSuccess = false;
         }
         if (isSuccess) {
-          Get.offNamed(routeName.reverse[RouteName.DAFTARGURUPAGE]!);
+          Get.offAndToNamed(routeName.reverse[RouteName.DAFTARGURUPAGE]!);
           resetState();
           _getGuruData();
           _showDialog(
