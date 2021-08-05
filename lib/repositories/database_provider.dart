@@ -45,6 +45,19 @@ class DatabaseProvider {
     return user;
   }
 
+  Future<Users> getUser(String id) async {
+    Users user = Users();
+    try {
+      CollectionReference collection =
+          mainCollection().doc('users').collection('users');
+      var data = await collection.doc(id).get();
+      user = Users.fromMap(data.data() as Map<String, dynamic>);
+    } catch (e) {
+      print(e);
+    }
+    return user;
+  }
+
   Future<String> addUser(Users data) async {
     String userId = "";
     try {
@@ -308,8 +321,17 @@ class DatabaseProvider {
           mainCollection().doc('guru').collection('guru');
       var querySnapshot = await collection.get();
       for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
-        temp.add(
-            Guru.fromMap(querySnapshot.docs[i].data() as Map<String, dynamic>));
+        Guru data =
+            Guru.fromMap(querySnapshot.docs[i].data() as Map<String, dynamic>);
+        Users user = await getUser(data.idUser!);
+        data.nama = user.nama;
+        data.email = user.email;
+        data.idUsers = user.idUsers;
+        data.noHp = user.noHp;
+        data.password = user.password;
+        data.type = user.type;
+        data.username = user.username;
+        temp.add(data);
       }
     } catch (e) {
       print(e);
