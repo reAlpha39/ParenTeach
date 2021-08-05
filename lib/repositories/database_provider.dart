@@ -322,7 +322,7 @@ class DatabaseProvider {
     try {
       CollectionReference collection =
           mainCollection().doc('guru').collection('guru');
-      await collection.doc(data.nip).set(data.toMap());
+      await collection.doc(data.idUser).set(data.toMap());
       isSuccess = true;
     } catch (e) {
       isSuccess = false;
