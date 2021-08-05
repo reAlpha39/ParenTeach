@@ -331,12 +331,17 @@ class DatabaseProvider {
     return isSuccess;
   }
 
-  Future<bool> deleteGuru(String idUser) async {
+  Future<bool> deleteGuru(String idUser, String imageUrl) async {
     bool isSuccess = false;
     try {
       CollectionReference collection =
           mainCollection().doc('guru').collection('guru');
       await collection.doc(idUser).delete();
+      if (imageUrl != '') {
+        await firebase_storage.FirebaseStorage.instance
+            .refFromURL(imageUrl)
+            .delete();
+      }
       isSuccess = true;
     } catch (e) {
       isSuccess = false;
