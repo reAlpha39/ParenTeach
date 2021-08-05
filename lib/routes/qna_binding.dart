@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/qna_controller.dart';
+import '../controllers/qna_controller.dart';
 
 class QnaBinding extends Bindings {
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
-import 'package:parenteach/controllers/reminding_controller.dart';
-import 'package:parenteach/routes/route_name.dart';
+import '../../controllers/reminding_controller.dart';
+import '../../routes/route_name.dart';
 
 import '../../utils/utils.dart';
 import '../../widgets/favorite_reminding_card.dart';

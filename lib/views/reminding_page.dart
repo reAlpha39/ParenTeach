@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/login_controller.dart';
-import 'package:parenteach/controllers/reminding_controller.dart';
-import 'package:parenteach/widgets/pilih_reminding_card.dart';
+import '../controllers/login_controller.dart';
+import '../controllers/reminding_controller.dart';
+import '../widgets/pilih_reminding_card.dart';
 
 import '../utils/utils.dart';
 

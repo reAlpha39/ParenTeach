@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/models/reminding.dart';
-import 'package:parenteach/repositories/database_provider.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/utils/shared_methods.dart';
-import 'package:parenteach/utils/utils.dart';
+import '../models/reminding.dart';
+import '../repositories/database_provider.dart';
+import '../routes/route_name.dart';
+import '../utils/shared_methods.dart';
+import '../utils/utils.dart';
 
 class RemindingController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();

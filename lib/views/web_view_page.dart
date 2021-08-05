@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/web_view_controller.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
+import '../controllers/web_view_controller.dart';
+import '../utils/theme.dart';
+import '../widgets/custom_appbar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewPage extends StatelessWidget {

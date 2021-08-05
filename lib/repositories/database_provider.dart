@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:parenteach/models/guru.dart';
-import 'package:parenteach/models/qna.dart';
-import 'package:parenteach/models/reminding.dart';
-import 'package:parenteach/models/siswa.dart';
-import 'package:parenteach/models/users.dart';
+import '../models/guru.dart';
+import '../models/qna.dart';
+import '../models/reminding.dart';
+import '../models/siswa.dart';
+import '../models/users.dart';
 
 class DatabaseProvider {
   late FirebaseFirestore firestore;

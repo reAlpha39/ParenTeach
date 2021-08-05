@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parenteach/routes/route_name.dart';
+import '../../routes/route_name.dart';
 
 import '../../utils/utils.dart';
 import '../../widgets/custom_appbar.dart';
@@ -146,102 +146,4 @@ class KalenderPageAdmin extends StatelessWidget {
       ),
     );
   }
-
-  // static Widget _eventIcon = Container(
-  //     decoration: BoxDecoration(
-  //       color: Colors.green,
-  //       borderRadius: BorderRadius.all(Radius.circular(1000)),
-  //     ),
-  //     child: null);
-  // static Widget _eventIcon2 = Container(
-  //     decoration: BoxDecoration(
-  //       color: Colors.yellow[700],
-  //       borderRadius: BorderRadius.all(Radius.circular(1000)),
-  //     ),
-  //     child: null);
-  // static Widget _eventIcon3 = Container(
-  //     decoration: BoxDecoration(
-  //       color: Colors.cyan,
-  //       borderRadius: BorderRadius.all(Radius.circular(1000)),
-  //     ),
-  //     child: null);
-
-  // final EventList<Event> _markedDateMap = new EventList<Event>(
-  //   events: {
-  //     new DateTime(2021, 7, 10): [
-  //       new Event(
-  //         date: new DateTime(2021, 7, 10),
-  //         title: 'Event 1',
-  //         icon: _eventIcon,
-  //       ),
-  //     ],
-  //     new DateTime(2021, 7, 12): [
-  //       new Event(
-  //         date: new DateTime(2021, 7, 12),
-  //         title: 'Event 1',
-  //         icon: _eventIcon2,
-  //       ),
-  //     ],
-  //     new DateTime(2021, 7, 29): [
-  //       new Event(
-  //         date: new DateTime(2021, 7, 29),
-  //         title: 'Event 1',
-  //         icon: _eventIcon3,
-  //       ),
-  //     ],
-  //   },
-  // );
-
-  // Widget buildKalenderTile(String? title, String? date, Color? dot) {
-  //   return Container(
-  //     margin: EdgeInsets.symmetric(vertical: 10),
-  //     decoration: BoxDecoration(
-  //       color: Colors.white,
-  //       borderRadius: BorderRadius.circular(10),
-  //     ),
-  //     child: Row(
-  //       children: [
-  //         Padding(
-  //           padding: const EdgeInsets.all(15.0),
-  //           child: Container(
-  //             height: 15,
-  //             width: 15,
-  //             decoration: BoxDecoration(
-  //               color: dot,
-  //               borderRadius: BorderRadius.circular(15),
-  //             ),
-  //           ),
-  //         ),
-  //         SizedBox(
-  //           width: 10,
-  //         ),
-  //         Expanded(
-  //           child: Column(
-  //             crossAxisAlignment: CrossAxisAlignment.start,
-  //             children: [
-  //               Padding(
-  //                 padding: const EdgeInsets.only(top: 20.0),
-  //                 child: Text(
-  //                   title!,
-  //                   maxLines: 2,
-  //                   overflow: TextOverflow.ellipsis,
-  //                   style: blackTextBold,
-  //                 ),
-  //               ),
-  //               Padding(
-  //                 padding: const EdgeInsets.only(bottom: 20.0),
-  //                 child: Text(
-  //                   date!,
-  //                   style: blackText.copyWith(
-  //                     color: Colors.grey,
-  //                   ),
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

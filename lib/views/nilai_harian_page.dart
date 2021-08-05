@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/siswa_controller.dart';
-import 'package:parenteach/routes/route_name.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
+import '../controllers/siswa_controller.dart';
+import '../routes/route_name.dart';
+import '../widgets/custom_appbar.dart';
 import '../utils/theme.dart';
 import '../widgets/card_nilai_raport.dart';
 

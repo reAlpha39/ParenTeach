@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/siswa_controller.dart';
-import 'package:parenteach/models/constant.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/utils/utils.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
-import 'package:parenteach/widgets/image_preview.dart';
+import '../../controllers/siswa_controller.dart';
+import '../../models/constant.dart';
+import '../../utils/theme.dart';
+import '../../utils/utils.dart';
+import '../../widgets/custom_appbar.dart';
+import '../../widgets/image_preview.dart';
 
 class AdminTambahSiswa extends StatelessWidget {
   final SiswaController _siswaController = Get.find();

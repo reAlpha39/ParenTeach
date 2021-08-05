@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/siswa_controller.dart';
-import 'package:parenteach/routes/route_name.dart';
+import '../controllers/siswa_controller.dart';
+import '../routes/route_name.dart';
 
 class TabelDaftarSiswa extends StatelessWidget {
   final SiswaController _siswaController = Get.find();

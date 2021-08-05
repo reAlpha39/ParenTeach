@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/models/qna.dart';
-import 'package:parenteach/repositories/database_provider.dart';
-import 'package:parenteach/utils/connectivity_checker.dart';
-import 'package:parenteach/utils/utils.dart';
+import '../models/qna.dart';
+import '../repositories/database_provider.dart';
+import '../utils/connectivity_checker.dart';
+import '../utils/utils.dart';
 
 class QnaController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();

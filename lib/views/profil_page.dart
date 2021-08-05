@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/login_controller.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
+import '../controllers/login_controller.dart';
+import '../utils/theme.dart';
+import '../widgets/custom_appbar.dart';
 
 class ProfilPage extends StatelessWidget {
   final LoginController loginController = Get.find();

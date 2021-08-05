@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/models/user_type.dart';
-import 'package:parenteach/models/users.dart';
+import '../models/user_type.dart';
+import '../models/users.dart';
 
 import '../repositories/database_provider.dart';
 import '../routes/route_name.dart';

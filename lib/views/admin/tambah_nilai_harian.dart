@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/nilai_harian_controller.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/views/admin/admin_tambah_siswa.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
+import '../../controllers/nilai_harian_controller.dart';
+import '../../utils/theme.dart';
+import 'admin_tambah_siswa.dart';
+import '../../widgets/custom_appbar.dart';
 
 class TambahNilaiHarian extends StatefulWidget {
   final NilaiHarianController nilaiHarianController = Get.find();

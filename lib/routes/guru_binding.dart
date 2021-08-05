@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/guru_controller.dart';
+
+import '../controllers/guru_controller.dart';
 
 class GuruBinding extends Bindings {
   void dependencies() {

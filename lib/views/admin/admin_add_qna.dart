@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parenteach/controllers/qna_controller.dart';
-import 'package:parenteach/utils/theme.dart';
-import 'package:parenteach/widgets/custom_appbar.dart';
+import '../../controllers/qna_controller.dart';
+import '../../utils/theme.dart';
+import '../../widgets/custom_appbar.dart';
 
 class AdminAddQna extends StatelessWidget {
   final QnaController _qnaController = Get.find();
