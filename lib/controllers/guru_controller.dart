@@ -102,7 +102,13 @@ class GuruController extends GetxController {
         Guru data = _fillGuruData();
         String getDownloadUrl = '';
         Users user = _fillUserData(data);
-        String getIdUser = await _databaseProvider.addUser(user);
+        String getIdUser = '';
+        if (isEdit) {
+          await _databaseProvider.updateUser(user);
+          getIdUser = user.idUsers!;
+        } else {
+          getIdUser = await _databaseProvider.addUser(user);
+        }
         if (getIdUser != '') {
           data.idUsers = getIdUser;
           data.idUser = getIdUser;
