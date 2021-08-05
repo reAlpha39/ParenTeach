@@ -234,6 +234,7 @@ class GuruController extends GetxController {
     data.password = passwordController!.text;
     data.email = emailController!.text;
     data.noHp = noHpController!.text;
+    data.foto = imageUrl.value;
     return data;
   }
 
