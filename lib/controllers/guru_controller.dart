@@ -30,6 +30,7 @@ class GuruController extends GetxController {
   Rx<File> image = File("").obs;
   RxString imageUrl = "".obs;
   RxString fileName = "".obs;
+  RxString idUser = "".obs;
   RxList<Guru> listGuru = RxList<Guru>();
 
   void onInit() {
@@ -180,6 +181,7 @@ class GuruController extends GetxController {
 
   void loadGuruState(int index) {
     resetState();
+    idUser.value = listGuru[index].idUser!;
     namaController!.text = listGuru[index].nama!;
     nipController!.text = listGuru[index].nip!;
     usernameController!.text = listGuru[index].username!;
@@ -195,6 +197,7 @@ class GuruController extends GetxController {
 
   void resetState() {
     try {
+      idUser.value = '';
       namaController!.clear();
       nipController!.clear();
       nipController!.clear();
@@ -221,6 +224,7 @@ class GuruController extends GetxController {
 
   Guru _fillGuruData() {
     Guru data = Guru();
+    data.idUser = idUser.value;
     data.nama = namaController!.text;
     data.nip = nipController!.text;
     data.jenisKelamin = jenisKelamin.value;
@@ -235,6 +239,7 @@ class GuruController extends GetxController {
 
   Users _fillUserData(Guru data) {
     Users user = Users();
+    user.idUsers = data.idUser;
     user.nama = data.nama;
     user.email = data.email;
     user.noHp = data.noHp;
