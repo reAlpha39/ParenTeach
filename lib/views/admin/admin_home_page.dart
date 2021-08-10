@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/login_controller.dart';
@@ -171,6 +172,32 @@ class AdminHomePage extends StatelessWidget {
               ),
             ),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          elevation: 0,
+          child: Container(
+            width: 30,
+            child: Image.asset('assets/send.png'),
+          ),
+          onPressed: () {},
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: AnimatedBottomNavigationBar(
+          iconSize: 30,
+          activeColor: Colors.white,
+          inactiveColor: Colors.white,
+          backgroundColor: pinkColor,
+          elevation: 0,
+          icons: [
+            Icons.home,
+            Icons.calendar_today_rounded,
+            Icons.notifications,
+            Icons.person,
+          ],
+          activeIndex: 1,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.sharpEdge,
+          onTap: (index) => () {},
         ),
       ),
     );
