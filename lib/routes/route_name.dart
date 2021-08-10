@@ -25,6 +25,7 @@ enum RouteName {
   WEBVIEW,
   DAFTARKELAS,
   PROFILGURUPAGE,
+  ADMINTAMBAHKELAS,
 }
 
 final routeName = EnumValues({
@@ -54,6 +55,7 @@ final routeName = EnumValues({
   '/webview': RouteName.WEBVIEW,
   '/daftar_kelas': RouteName.DAFTARKELAS,
   '/profil_guru_page': RouteName.PROFILGURUPAGE,
+  '/admin_tambah_kelas': RouteName.ADMINTAMBAHKELAS,
 });
 
 class EnumValues<T> {

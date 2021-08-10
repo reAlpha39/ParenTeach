@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/routes/route_name.dart';
 import '../../utils/theme.dart';
 import '../../widgets/custom_appbar.dart';
 
@@ -13,6 +14,7 @@ class DaftarKelas extends StatelessWidget {
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
         isAdmin: true,
+        route: RouteName.ADMINTAMBAHKELAS,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

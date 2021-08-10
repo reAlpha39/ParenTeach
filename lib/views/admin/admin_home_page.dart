@@ -118,7 +118,7 @@ class AdminHomePage extends StatelessWidget {
                       HomeFiturCard(
                         route: RouteName.ACTIVITIESPAGE,
                         imageAsset: 'assets/Presensi.png',
-                        titleCard: 'Presensi',
+                        titleCard: 'The Best Parent',
                       ),
                       HomeFiturCard(
                         route: RouteName.PLAYGROUNDPAGE,
