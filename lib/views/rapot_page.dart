@@ -10,7 +10,6 @@ class RapotPage extends StatelessWidget {
   final SiswaController siswaController = Get.find();
   @override
   Widget build(BuildContext context) {
-    int index = Get.arguments;
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
@@ -43,7 +42,8 @@ class RapotPage extends StatelessWidget {
                     height: 30,
                   ),
                   Text(
-                    siswaController.listSiswa[index].nama!,
+                    siswaController
+                        .listSiswa[siswaController.indexSiswa.value].nama!,
                     style: whiteText.copyWith(fontSize: 18),
                   ),
                   SizedBox(

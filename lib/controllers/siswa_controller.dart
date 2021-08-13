@@ -20,6 +20,7 @@ class SiswaController extends GetxController {
   Rx<File> image = File("").obs;
   RxString imageUrl = "".obs;
   RxString fileName = "".obs;
+  RxInt indexSiswa = 0.obs;
   RxList<Siswa> listSiswa = RxList<Siswa>();
 
   void onInit() {

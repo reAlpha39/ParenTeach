@@ -9,7 +9,6 @@ class ProfilSiswaPage extends StatelessWidget {
   final SiswaController siswaController = Get.find();
   @override
   Widget build(BuildContext context) {
-    int index = Get.arguments;
     return Scaffold(
       appBar: CustomAppBar(
         backgroundColor: pinkColor,
@@ -28,7 +27,9 @@ class ProfilSiswaPage extends StatelessWidget {
                     children: [
                       Center(
                         child: Text(
-                          siswaController.listSiswa[index].nama!,
+                          siswaController
+                              .listSiswa[siswaController.indexSiswa.value]
+                              .nama!,
                           style: blackText.copyWith(
                               fontSize: 24, fontWeight: FontWeight.bold),
                         ),
@@ -50,7 +51,7 @@ class ProfilSiswaPage extends StatelessWidget {
                         onPressed: () {
                           Get.toNamed(
                             routeName.reverse[RouteName.RAPOTPAGE]!,
-                            arguments: index,
+                            arguments: siswaController.indexSiswa.value,
                           );
                         },
                       ),
@@ -65,25 +66,35 @@ class ProfilSiswaPage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(siswaController
-                                          .listSiswa[index].fotoSiswa!),
+                                          .listSiswa[
+                                              siswaController.indexSiswa.value]
+                                          .fotoSiswa!),
                                       fit: BoxFit.cover),
                                 ),
                               ),
                               buldDataSiswa(
                                 'Nama Lengkap',
-                                siswaController.listSiswa[index].nama,
+                                siswaController
+                                    .listSiswa[siswaController.indexSiswa.value]
+                                    .nama,
                               ),
                               buldDataSiswa(
                                 'NIS',
-                                siswaController.listSiswa[index].nis,
+                                siswaController
+                                    .listSiswa[siswaController.indexSiswa.value]
+                                    .nis,
                               ),
                               buldDataSiswa(
                                 'Jenis Kelamin',
-                                siswaController.listSiswa[index].jenisKelamin,
+                                siswaController
+                                    .listSiswa[siswaController.indexSiswa.value]
+                                    .jenisKelamin,
                               ),
                               buldDataSiswa(
                                 'Kelas',
-                                siswaController.listSiswa[index].kelas,
+                                siswaController
+                                    .listSiswa[siswaController.indexSiswa.value]
+                                    .kelas,
                               ),
                             ],
                           ),
@@ -108,11 +119,12 @@ class ProfilSiswaPage extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            siswaController.loadSiswaState(index);
+                            siswaController.loadSiswaState(
+                                siswaController.indexSiswa.value);
                             Get.toNamed(
                               routeName
                                   .reverse[RouteName.ADMINTAMBAHSISWAPAGE]!,
-                              arguments: index,
+                              arguments: siswaController.indexSiswa.value,
                             );
                           }),
                       SizedBox(
@@ -120,7 +132,8 @@ class ProfilSiswaPage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          siswaController.deleteSiswa(index);
+                          siswaController
+                              .deleteSiswa(siswaController.indexSiswa.value);
                         },
                         child: Text(
                           'Delete Siswa',
