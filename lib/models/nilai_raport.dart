@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-class Nilai {
-  Nilai({
+class NilaiRaport {
+  NilaiRaport({
     this.nis,
     this.idMapel,
     this.nKeterampilan,
@@ -21,11 +21,11 @@ class Nilai {
   String? tahunAjar;
   String? semester;
 
-  factory Nilai.fromJson(String str) => Nilai.fromMap(json.decode(str));
+  factory NilaiRaport.fromJson(String str) => NilaiRaport.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Nilai.fromMap(Map<String, dynamic> json) => Nilai(
+  factory NilaiRaport.fromMap(Map<String, dynamic> json) => NilaiRaport(
         nis: json["nis"] == null ? null : json["nis"],
         idMapel: json["idMapel"] == null ? null : json["idMapel"],
         nKeterampilan:
