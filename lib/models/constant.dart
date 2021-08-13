@@ -6,3 +6,12 @@ const List<String> status = [
   'Guru Kelas',
   'Guru Bimbingan Konseling',
 ];
+
+const List<String> mataPelajaran = [
+  'Ilmu Pengetahuan Alam',
+  'Ilmu Pengetahuan Sosial',
+  'Matematika',
+  'Bahasa Indonesia',
+  'Bahasa Inggris',
+  'Sejarah',
+];
