@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:parenteach/routes/nilai_raport_binding.dart';
 import 'package:parenteach/views/admin/admin_tambah_kelas.dart';
 import 'guru_binding.dart';
 import 'nilai_harian_binding.dart';
@@ -73,6 +74,7 @@ class Routes {
       bindings: [
         SiswaBinding(),
         NilaiHarianBinding(),
+        NilaiRaportBinding(),
       ],
     ),
     GetPage(
@@ -116,6 +118,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHNILAIRAPOTPAGE]!,
       page: () => AdminTambahNilaiRapot(),
+      binding: NilaiRaportBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHKELAS]!,
