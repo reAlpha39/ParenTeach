@@ -15,3 +15,5 @@ const List<String> mataPelajarans = [
   'Bahasa Inggris',
   'Sejarah',
 ];
+
+const List<String> semester = ['1', '2'];
