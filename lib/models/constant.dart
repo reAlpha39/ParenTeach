@@ -7,7 +7,7 @@ const List<String> status = [
   'Guru Bimbingan Konseling',
 ];
 
-const List<String> mataPelajaran = [
+const List<String> mataPelajarans = [
   'Ilmu Pengetahuan Alam',
   'Ilmu Pengetahuan Sosial',
   'Matematika',
