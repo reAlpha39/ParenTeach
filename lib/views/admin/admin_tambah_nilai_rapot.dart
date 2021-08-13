@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/nilai_raport_controller.dart';
+import 'package:parenteach/models/constant.dart';
+import 'package:parenteach/utils/custom_scroll_behavior.dart';
 import '../../utils/theme.dart';
 import '../../widgets/custom_appbar.dart';
 
 class AdminTambahNilaiRapot extends StatelessWidget {
+  final NilaiRaportController _nilaiRaportController = Get.find();
+
+  _showDialogList(String type) {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Pilih salah satu',
+      content: Selector(
+        type: type,
+      ),
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     late TextEditingController keterampilanController = TextEditingController();
@@ -30,16 +48,8 @@ class AdminTambahNilaiRapot extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildDropDown(
-                    'Nama Mata Pelajaran',
-                    'Pilih Mata Pelajaran',
-                    [
-                      buildDropdownMenuItem(
-                        'Bahasa Alien',
-                        1,
-                      ),
-                    ],
-                  ),
+                  buildDropDown('Nama Mata Pelajaran', 'Pilih Mata Pelajaran',
+                      'mataPelajaran'),
                   buildTextField(keterampilanController, 'Nilai Keterampilan',
                       'Tulis Dengan Angka', false),
                   buildTextField(pengetahuanController, 'Nilai Pengetahuan',
@@ -103,11 +113,12 @@ class AdminTambahNilaiRapot extends StatelessWidget {
             obscureText: isObscure!,
             controller: namaController,
             decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                labelText: label!,
-                labelStyle: blackText.copyWith(fontSize: 16)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              labelText: label!,
+              labelStyle: blackText.copyWith(fontSize: 16),
+            ),
           ),
         ),
         SizedBox(
@@ -118,43 +129,94 @@ class AdminTambahNilaiRapot extends StatelessWidget {
   }
 
   Widget buildDropDown(
-      String? title, String? label, List<DropdownMenuItem<int>>? items) {
+    String title,
+    String label,
+    String type,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title!,
-          style: blackTextBold.copyWith(fontSize: 16),
-        ),
-        SizedBox(
-          height: 10,
-        ),
         Container(
-          width: Get.width,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.grey),
+          margin: const EdgeInsets.only(
+            top: 12,
+            bottom: 4,
           ),
-          child: DropdownButton(
-            underline: SizedBox(),
-            isExpanded: true,
-            items: items,
-            onChanged: (value) {},
-            hint: Text(label!),
+          child: Text(
+            title,
+            style: blackTextBold.copyWith(fontSize: 16),
           ),
         ),
-        SizedBox(
-          height: 10,
+        InkWell(
+          onTap: () => _showDialogList(type),
+          child: Container(
+            width: Get.width,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.grey),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Obx(
+                    () => Text(
+                      _nilaiRaportController.mataPelajaran.value == ''
+                          ? label
+                          : _nilaiRaportController.mataPelajaran.value,
+                      style: blackText.copyWith(
+                        fontSize: 16,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ),
+                ),
+                Icon(Icons.keyboard_arrow_down),
+              ],
+            ),
+          ),
         ),
       ],
     );
   }
+}
 
-  DropdownMenuItem<int> buildDropdownMenuItem(String item, int value) {
-    return DropdownMenuItem(
-      child: Text(item),
-      value: value,
+class Selector extends StatelessWidget {
+  final String type;
+  final NilaiRaportController _controller = Get.find();
+
+  Selector({Key? key, required this.type}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(
+        minHeight: 100,
+        maxHeight: 500,
+        minWidth: 300,
+        maxWidth: 300,
+      ),
+      padding: const EdgeInsets.all(8.0),
+      child: ScrollConfiguration(
+        behavior: CustomScrollBehavior(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: List<Widget>.generate(
+              mataPelajarans.length,
+              (index) => ListTile(
+                title: Text(
+                  mataPelajarans[index],
+                  style: blackText,
+                ),
+                onTap: () {
+                  _controller.mataPelajaran.value = mataPelajarans[index];
+                  Get.back(closeOverlays: false);
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
