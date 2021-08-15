@@ -24,8 +24,6 @@ class AdminTambahNilaiRapot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late TextEditingController keterampilanController = TextEditingController();
-    late TextEditingController pengetahuanController = TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
@@ -50,10 +48,10 @@ class AdminTambahNilaiRapot extends StatelessWidget {
                 children: [
                   buildDropDown('Nama Mata Pelajaran', 'Pilih Mata Pelajaran',
                       'mataPelajaran'),
-                  buildTextField(keterampilanController, 'Nilai Keterampilan',
-                      'Tulis Dengan Angka', false),
-                  buildTextField(pengetahuanController, 'Nilai Pengetahuan',
-                      'Tulis Dengan Angka', false),
+                  buildTextField(_nilaiRaportController.keterampilanController!,
+                      'Nilai Keterampilan', 'Tulis Dengan Angka', false),
+                  buildTextField(_nilaiRaportController.pengetahuanController!,
+                      'Nilai Pengetahuan', 'Tulis Dengan Angka', false),
                   Container(
                     width: 130,
                     child: ElevatedButton(
@@ -76,7 +74,9 @@ class AdminTambahNilaiRapot extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _nilaiRaportController.saveNilaiRaport();
+                      },
                     ),
                   ),
                 ],

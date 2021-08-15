@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/nilai_raport_controller.dart';
 import '../controllers/siswa_controller.dart';
 import '../routes/route_name.dart';
 import '../widgets/custom_appbar.dart';
@@ -8,6 +9,7 @@ import '../widgets/card_nilai_raport.dart';
 
 class RapotPage extends StatelessWidget {
   final SiswaController siswaController = Get.find();
+  final NilaiRaportController nilaiRaportController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +20,10 @@ class RapotPage extends StatelessWidget {
         title: 'Rapot Page',
         isAdmin: true,
         route: RouteName.ADMINTAMBAHNILAIRAPOTPAGE,
+        additionalAddIconFunction: () {
+          nilaiRaportController.nis.value =
+              siswaController.listSiswa[siswaController.indexSiswa.value].nis!;
+        },
       ),
       body: SafeArea(
         child: Stack(

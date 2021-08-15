@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:parenteach/models/nilai_raport.dart';
+import 'package:parenteach/views/nilai_harian_page.dart';
 import '../models/guru.dart';
 import '../models/qna.dart';
 import '../models/reminding.dart';
@@ -365,6 +367,24 @@ class DatabaseProvider {
             .refFromURL(imageUrl)
             .delete();
       }
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future<bool> addNilaiRaport(NilaiRaport data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('siswa').collection('siswa');
+      await collection
+          .doc(data.nis)
+          .collection('nilaiRaport')
+          .doc(data.idMapel)
+          .set(data.toMap());
       isSuccess = true;
     } catch (e) {
       isSuccess = false;
