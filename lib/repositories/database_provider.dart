@@ -375,6 +375,25 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  Future<List<NilaiRaport>> getNilaiRaport(String nis) async {
+    List<NilaiRaport> temp = [];
+    try {
+      CollectionReference collection = mainCollection()
+          .doc('siswa')
+          .collection('siswa')
+          .doc(nis)
+          .collection('nilaiRaport');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(NilaiRaport.fromMap(
+            querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
+  }
+
   Future<bool> addNilaiRaport(NilaiRaport data) async {
     bool isSuccess = false;
     try {

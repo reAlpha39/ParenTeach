@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/siswa_controller.dart';
 import 'package:parenteach/models/nilai_raport.dart';
 import 'package:parenteach/repositories/database_provider.dart';
 import 'package:parenteach/utils/utils.dart';
@@ -8,6 +9,7 @@ class NilaiRaportController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
   TextEditingController? keterampilanController;
   TextEditingController? pengetahuanController;
+  RxList<NilaiRaport> nilaiRaports = RxList<NilaiRaport>();
   RxString nis = "".obs;
   RxString mataPelajaran = "".obs;
   RxString semester = "".obs;
@@ -18,6 +20,11 @@ class NilaiRaportController extends GetxController {
     keterampilanController = TextEditingController();
     pengetahuanController = TextEditingController();
     super.onInit();
+  }
+
+  void onReady() {
+    _getInitialNilaiRaport();
+    super.onReady();
   }
 
   void onClose() {
@@ -43,6 +50,31 @@ class NilaiRaportController extends GetxController {
     mataPelajaran.value = '';
     semester.value = '';
     tahunAjar.value = '';
+  }
+
+  void _getInitialNilaiRaport() {
+    SiswaController siswaController = Get.find();
+    getNilaiRaport(
+        siswaController.listSiswa[siswaController.indexSiswa.value].nis!);
+  }
+
+  void getNilaiRaport(String nis) async {
+    isLoading.value = true;
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        nilaiRaports.value = await _databaseProvider.getNilaiRaport(nis);
+        nilaiRaports.refresh();
+        isLoading.value = false;
+      } else {
+        _showDialog(
+          title: 'Gagal',
+          middleText: 'Tidak bisa terhubung ke internet',
+        );
+      }
+    } catch (e) {
+      _showDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
   }
 
   void saveNilaiRaport({bool isEdit = false}) async {
