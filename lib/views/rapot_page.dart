@@ -107,200 +107,218 @@ class RapotPage extends StatelessWidget {
                     height: 30,
                   ),
                   Expanded(
-                    child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      child: Column(
-                        children: List.generate(
-                          10,
-                          (index) => CardNilaiRaport(
-                            isPengetahuan: true,
-                          ),
-                        )
-                          ..insert(
-                            0,
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Row(
-                                children: [
-                                  buildKategoriRapot(blueColor, 'Pengetahuan'),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  buildKategoriRapot(
-                                      Colors.yellow, 'Keterampilan'),
-                                ],
-                              ),
-                            ),
-                          )
-                          ..add(
-                            Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    bottom: 10,
-                                  ),
-                                  width: Get.width / 3,
-                                  height: 55,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Rangking',
-                                          style: blackText,
-                                        ),
-                                        Text(
-                                          '2',
-                                          style: blackTextBold.copyWith(
-                                              color: blueColor, fontSize: 18),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    bottom: 10,
-                                  ),
-                                  width: Get.width / 2,
-                                  height: 55,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Rata-rata',
-                                              style: blackText,
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              '80',
-                                              style: blackTextBold.copyWith(
-                                                  color: blueColor,
-                                                  fontSize: 18),
-                                            ),
-                                            Text(
-                                              ' : ',
-                                              style: blackTextBold.copyWith(
-                                                  fontSize: 18),
-                                            ),
-                                            Text(
-                                              '78',
-                                              style: blackTextBold.copyWith(
-                                                  color: Colors.yellow,
-                                                  fontSize: 18),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                          ..add(
-                            downloadRaportButton(),
-                          )
-                          ..add(
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Siswa Di Sekolah',
-                                  style: blackTextBold.copyWith(
-                                    fontSize: 18,
-                                    color: pinkColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                          ..add(
-                            Container(
-                              height: 150,
-                              width: Get.width,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                              ),
+                    child: Obx(
+                      () => nilaiRaportController.isLoading.value
+                          ? Center(child: CircularProgressIndicator())
+                          : SingleChildScrollView(
+                              physics: BouncingScrollPhysics(),
                               child: Column(
                                 children: [
-                                  Table(
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: Row(
+                                      children: [
+                                        buildKategoriRapot(
+                                            blueColor, 'Pengetahuan'),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        buildKategoriRapot(
+                                            Colors.yellow, 'Keterampilan'),
+                                      ],
+                                    ),
+                                  ),
+                                  Column(
+                                      children:
+                                          nilaiRaportController.nilaiRaports
+                                              .map(
+                                                (element) => CardNilaiRaport(
+                                                  isPengetahuan: true,
+                                                  nomor: nilaiRaportController
+                                                      .nilaiRaports.length
+                                                      .toString(),
+                                                  mapel: element.idMapel!,
+                                                  nilaiPengetahuan: element
+                                                      .nPengetahuan
+                                                      .toString(),
+                                                  nilaiKeterampilan: element
+                                                      .nKeterampilan
+                                                      .toString(),
+                                                ),
+                                              )
+                                              .toList()),
+                                  Row(
                                     children: [
-                                      TableRow(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(10),
-                                            child: Text(
-                                              'Nama Bakat',
-                                              style: blackText.copyWith(
-                                                  color: blueColor,
-                                                  fontSize: 16),
-                                            ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                          bottom: 10,
+                                        ),
+                                        width: Get.width / 3,
+                                        height: 55,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Rangking',
+                                                style: blackText,
+                                              ),
+                                              Text(
+                                                '2',
+                                                style: blackTextBold.copyWith(
+                                                    color: blueColor,
+                                                    fontSize: 18),
+                                              ),
+                                            ],
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(10),
-                                            child: Text(
-                                              'Nilai',
-                                              style: blackText.copyWith(
-                                                  color: Colors.yellow,
-                                                  fontSize: 16),
-                                            ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                          bottom: 10,
+                                        ),
+                                        width: Get.width / 2,
+                                        height: 55,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    'Rata-rata',
+                                                    style: blackText,
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '80',
+                                                    style:
+                                                        blackTextBold.copyWith(
+                                                            color: blueColor,
+                                                            fontSize: 18),
+                                                  ),
+                                                  Text(
+                                                    ' : ',
+                                                    style: blackTextBold
+                                                        .copyWith(fontSize: 18),
+                                                  ),
+                                                  Text(
+                                                    '78',
+                                                    style:
+                                                        blackTextBold.copyWith(
+                                                            color:
+                                                                Colors.yellow,
+                                                            fontSize: 18),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  Table(
-                                    border: TableBorder.all(),
+                                  Column(
                                     children: [
-                                      TableRow(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(10),
-                                            child: Text(
-                                              '1. Futsal',
-                                              style: blackTextBold,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(10),
-                                            child: Text(
-                                              'A',
-                                              style: blackTextBold,
-                                            ),
-                                          ),
-                                        ],
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        'Siswa Di Sekolah',
+                                        style: blackTextBold.copyWith(
+                                          fontSize: 18,
+                                          color: pinkColor,
+                                        ),
                                       ),
                                     ],
+                                  ),
+                                  Container(
+                                    height: 150,
+                                    width: Get.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Table(
+                                          children: [
+                                            TableRow(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10),
+                                                  child: Text(
+                                                    'Nama Bakat',
+                                                    style: blackText.copyWith(
+                                                        color: blueColor,
+                                                        fontSize: 16),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10),
+                                                  child: Text(
+                                                    'Nilai',
+                                                    style: blackText.copyWith(
+                                                        color: Colors.yellow,
+                                                        fontSize: 16),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        Table(
+                                          border: TableBorder.all(),
+                                          children: [
+                                            TableRow(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10),
+                                                  child: Text(
+                                                    '1. Futsal',
+                                                    style: blackTextBold,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10),
+                                                  child: Text(
+                                                    'A',
+                                                    style: blackTextBold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                      ),
                     ),
                   ),
                 ],

@@ -5,8 +5,20 @@ import '../utils/utils.dart';
 
 class CardNilaiRaport extends StatelessWidget {
   final bool? isPengetahuan;
+  final String? nomor;
+  final String? mapel;
+  final String? nilaiPengetahuan;
+  final String? nilaiKeterampilan;
 
-  const CardNilaiRaport({Key? key, this.isPengetahuan}) : super(key: key);
+  const CardNilaiRaport(
+      {Key? key,
+      this.isPengetahuan,
+      this.nomor,
+      this.mapel,
+      this.nilaiPengetahuan,
+      this.nilaiKeterampilan})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,11 +39,11 @@ class CardNilaiRaport extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '1. ',
+                  nomor!,
                   style: blackTextBold.copyWith(color: pinkColor, fontSize: 18),
                 ),
                 Text(
-                  'Ilmu Pengetahuan Alam',
+                  mapel!,
                   style: blackText,
                 ),
               ],
@@ -42,7 +54,7 @@ class CardNilaiRaport extends StatelessWidget {
                     ? Row(
                         children: [
                           Text(
-                            '80',
+                            nilaiKeterampilan!,
                             style: blackTextBold.copyWith(
                                 color: blueColor, fontSize: 18),
                           ),
@@ -54,7 +66,7 @@ class CardNilaiRaport extends StatelessWidget {
                       )
                     : SizedBox(),
                 Text(
-                  '78',
+                  nilaiPengetahuan!,
                   style: blackTextBold.copyWith(
                       color: Colors.yellow, fontSize: 18),
                 ),
