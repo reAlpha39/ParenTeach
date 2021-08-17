@@ -15,6 +15,8 @@ class NilaiRaportController extends GetxController {
   RxString semester = "".obs;
   RxString tahunAjar = "".obs;
   RxBool isLoading = false.obs;
+  RxInt averageNilaiRaportPengetahuan = 0.obs;
+  RxInt averageNilaiRaportKeterampilan = 0.obs;
 
   void onInit() {
     keterampilanController = TextEditingController();
@@ -64,6 +66,18 @@ class NilaiRaportController extends GetxController {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
         nilaiRaports.value = await _databaseProvider.getNilaiRaport(nis);
+        // Get rata-rata nilai pengetahuan
+        double averagePengetahuan = nilaiRaports
+                .map((element) => element.nPengetahuan)
+                .reduce((a, b) => a! + b!)! /
+            nilaiRaports.length;
+        averageNilaiRaportPengetahuan.value = averagePengetahuan.toInt();
+        // Get rata-rata nilai keterampilan
+        double averageKeterampilan = nilaiRaports
+                .map((element) => element.nKeterampilan)
+                .reduce((a, b) => a! + b!)! /
+            nilaiRaports.length;
+        averageNilaiRaportKeterampilan.value = averageKeterampilan.toInt();
         nilaiRaports.refresh();
         isLoading.value = false;
       } else {

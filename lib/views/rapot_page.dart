@@ -129,23 +129,22 @@ class RapotPage extends StatelessWidget {
                                     ),
                                   ),
                                   Column(
-                                      children:
-                                          nilaiRaportController.nilaiRaports
-                                              .map(
-                                                (element) => CardNilaiRaport(
-                                                  isPengetahuan: true,
-                                                  nomor:
-                                                      '${nilaiRaportController.nilaiRaports.indexOf(element) + 1} ',
-                                                  mapel: element.idMapel!,
-                                                  nilaiPengetahuan: element
-                                                      .nPengetahuan
-                                                      .toString(),
-                                                  nilaiKeterampilan: element
-                                                      .nKeterampilan
-                                                      .toString(),
-                                                ),
-                                              )
-                                              .toList()),
+                                    children: nilaiRaportController.nilaiRaports
+                                        .map(
+                                          (element) => CardNilaiRaport(
+                                            isPengetahuan: true,
+                                            nomor:
+                                                '${nilaiRaportController.nilaiRaports.indexOf(element) + 1} ',
+                                            mapel: element.idMapel!,
+                                            nilaiPengetahuan:
+                                                element.nPengetahuan.toString(),
+                                            nilaiKeterampilan: element
+                                                .nKeterampilan
+                                                .toString(),
+                                          ),
+                                        )
+                                        .toList(),
+                                  ),
                                   Row(
                                     children: [
                                       Container(
@@ -196,8 +195,6 @@ class RapotPage extends StatelessWidget {
                                         child: Padding(
                                           padding: const EdgeInsets.all(10),
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Row(
                                                 children: [
@@ -205,29 +202,39 @@ class RapotPage extends StatelessWidget {
                                                     'Rata-rata',
                                                     style: blackText,
                                                   ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    '80',
-                                                    style:
-                                                        blackTextBold.copyWith(
-                                                            color: blueColor,
-                                                            fontSize: 18),
+                                                  SizedBox(
+                                                    width: 50,
                                                   ),
-                                                  Text(
-                                                    ' : ',
-                                                    style: blackTextBold
-                                                        .copyWith(fontSize: 18),
-                                                  ),
-                                                  Text(
-                                                    '78',
-                                                    style:
-                                                        blackTextBold.copyWith(
-                                                            color:
-                                                                Colors.yellow,
-                                                            fontSize: 18),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        nilaiRaportController
+                                                            .averageNilaiRaportPengetahuan
+                                                            .value
+                                                            .toString(),
+                                                        style: blackTextBold
+                                                            .copyWith(
+                                                                color:
+                                                                    pinkColor,
+                                                                fontSize: 18),
+                                                      ),
+                                                      Text(
+                                                        ' : ',
+                                                        style: blackTextBold,
+                                                      ),
+                                                      Text(
+                                                        nilaiRaportController
+                                                            .averageNilaiRaportKeterampilan
+                                                            .value
+                                                            .round()
+                                                            .toString(),
+                                                        style: blackTextBold
+                                                            .copyWith(
+                                                                color:
+                                                                    pinkColor,
+                                                                fontSize: 18),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
