@@ -28,10 +28,10 @@ class NilaiHarianPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: List.generate(
-                10, (index) => Text('khagshias'),
-                // CardNilaiRaport(
-                //   isPengetahuan: false,
-                // ),
+                10,
+                (index) => CardNilaiRaport(
+                  isPengetahuan: false,
+                ),
               )..add(
                   Container(
                     margin: EdgeInsets.only(

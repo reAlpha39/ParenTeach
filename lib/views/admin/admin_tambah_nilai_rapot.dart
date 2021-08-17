@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/nilai_raport_controller.dart';
@@ -112,6 +113,7 @@ class AdminTambahNilaiRapot extends StatelessWidget {
             ),
             obscureText: isObscure!,
             controller: namaController,
+            keyboardType: TextInputType.number,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
