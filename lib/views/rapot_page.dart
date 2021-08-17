@@ -134,9 +134,8 @@ class RapotPage extends StatelessWidget {
                                               .map(
                                                 (element) => CardNilaiRaport(
                                                   isPengetahuan: true,
-                                                  nomor: nilaiRaportController
-                                                      .nilaiRaports.length
-                                                      .toString(),
+                                                  nomor:
+                                                      '${nilaiRaportController.nilaiRaports.indexOf(element) + 1} ',
                                                   mapel: element.idMapel!,
                                                   nilaiPengetahuan: element
                                                       .nPengetahuan

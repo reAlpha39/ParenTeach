@@ -95,6 +95,7 @@ class NilaiRaportController extends GetxController {
                 : 'Data nilai berhasil ditambahkan',
           );
           resetState();
+          _getInitialNilaiRaport();
         } else {
           _showDialog(
             title: 'Gagal',
