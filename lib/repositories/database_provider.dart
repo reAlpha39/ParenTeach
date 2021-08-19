@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:parenteach/models/nilai_raport.dart';
-import 'package:parenteach/views/nilai_harian_page.dart';
 import '../models/guru.dart';
 import '../models/qna.dart';
 import '../models/reminding.dart';
