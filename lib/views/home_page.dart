@@ -48,8 +48,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // Obx(
-                      //   () =>
                       GestureDetector(
                         onTap: () => Get.toNamed(
                             routeName.reverse[RouteName.PROFILPAGE]!),

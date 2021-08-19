@@ -10,7 +10,6 @@ class NilaiHarianPage extends StatelessWidget {
   final SiswaController siswaController = Get.find();
   @override
   Widget build(BuildContext context) {
-    // int index = Get.arguments;
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
