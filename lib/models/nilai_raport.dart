@@ -21,7 +21,8 @@ class NilaiRaport {
   String? tahunAjar;
   String? semester;
 
-  factory NilaiRaport.fromJson(String str) => NilaiRaport.fromMap(json.decode(str));
+  factory NilaiRaport.fromJson(String str) =>
+      NilaiRaport.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
