@@ -66,18 +66,23 @@ class NilaiRaportController extends GetxController {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
         nilaiRaports.value = await _databaseProvider.getNilaiRaport(nis);
-        // Get rata-rata nilai pengetahuan
-        double averagePengetahuan = nilaiRaports
-                .map((element) => element.nPengetahuan)
-                .reduce((a, b) => a! + b!)! /
-            nilaiRaports.length;
-        averageNilaiRaportPengetahuan.value = averagePengetahuan.toInt();
-        // Get rata-rata nilai keterampilan
-        double averageKeterampilan = nilaiRaports
-                .map((element) => element.nKeterampilan)
-                .reduce((a, b) => a! + b!)! /
-            nilaiRaports.length;
-        averageNilaiRaportKeterampilan.value = averageKeterampilan.toInt();
+        if (nilaiRaports.length != 0) {
+          // Get rata-rata nilai pengetahuan
+          double averagePengetahuan = nilaiRaports
+                  .map((element) => element.nPengetahuan)
+                  .reduce((a, b) => a! + b!)! /
+              nilaiRaports.length;
+          averageNilaiRaportPengetahuan.value = averagePengetahuan.toInt();
+          // Get rata-rata nilai keterampilan
+          double averageKeterampilan = nilaiRaports
+                  .map((element) => element.nKeterampilan)
+                  .reduce((a, b) => a! + b!)! /
+              nilaiRaports.length;
+          averageNilaiRaportKeterampilan.value = averageKeterampilan.toInt();
+        } else {
+          averageNilaiRaportKeterampilan.value = 0;
+          averageNilaiRaportPengetahuan.value = 0;
+        }
         nilaiRaports.refresh();
         isLoading.value = false;
       } else {
