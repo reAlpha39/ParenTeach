@@ -31,6 +31,10 @@ class NilaiHarianPage extends StatelessWidget {
                 10,
                 (index) => CardNilaiRaport(
                   isPengetahuan: false,
+                  nomor: '1',
+                  mapel: 'aasas',
+                  nilaiKeterampilan: '90',
+                  nilaiPengetahuan: '90',
                 ),
               )..add(
                   Container(
