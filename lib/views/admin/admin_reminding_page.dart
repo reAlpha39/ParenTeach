@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import 'package:parenteach/widgets/pilih_reminding_card.dart';
 import '../../controllers/reminding_controller.dart';
 import '../../routes/route_name.dart';
@@ -15,9 +16,11 @@ class AdminRemindingPage extends StatefulWidget {
 class _AdminRemindingPageState extends State<AdminRemindingPage> {
   final TextEditingController searchReminding = TextEditingController();
   final RemindingController remindingController = Get.find();
+  final LoginController loginController = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    int selectedItem = 0;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -82,10 +85,41 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                               color: Colors.white,
                             ),
                           ),
-                          Icon(
-                            Icons.more_vert,
-                            color: Colors.white,
-                          )
+                          PopupMenuButton<int>(
+                            icon: Icon(
+                              Icons.more_vert,
+                              color: Colors.white,
+                            ),
+                            onSelected: (item) {
+                              setState(() {
+                                selectedItem = item;
+                                handleThreeDots(selectedItem);
+                              });
+                            },
+                            itemBuilder: (context) => [
+                              PopupMenuItem<int>(
+                                value: 0,
+                                child: Text(
+                                  'Profile',
+                                  style: blackText,
+                                ),
+                              ),
+                              PopupMenuItem<int>(
+                                value: 1,
+                                child: Text(
+                                  'About Us',
+                                  style: blackText,
+                                ),
+                              ),
+                              PopupMenuItem<int>(
+                                value: 2,
+                                child: Text(
+                                  'Logout',
+                                  style: blackText,
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -216,5 +250,18 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
         ),
       ),
     );
+  }
+
+  void handleThreeDots(int? item) {
+    switch (item) {
+      case 0:
+        Get.toNamed(routeName.reverse[RouteName.PROFILPAGE]!);
+        break;
+      case 1:
+        Get.toNamed(routeName.reverse[RouteName.WEBVIEW]!);
+        break;
+      case 2:
+        loginController.userLogout();
+    }
   }
 }
