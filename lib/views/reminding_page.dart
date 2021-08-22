@@ -108,17 +108,17 @@ class RemindingPage extends StatelessWidget {
                                   SizedBox(
                                     height: 15,
                                   ),
-                                  SingleChildScrollView(
-                                    child: Column(
-                                      children:
-                                          remindingController.listReminding
-                                              .map(
-                                                (element) => PilihRemindingCard(
-                                                    reminding: element),
-                                              )
-                                              .toList(),
-                                    ),
-                                  )
+                                  // SingleChildScrollView(
+                                  //   child: Column(
+                                  //     children:
+                                  //         remindingController.listReminding
+                                  //             .map(
+                                  //               (element) => PilihRemindingCard(
+                                  //                   pertanyaan: element),
+                                  //             )
+                                  //             .toList(),
+                                  //   ),
+                                  // )
                                 ],
                               ),
                       ),

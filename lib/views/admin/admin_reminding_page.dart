@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
+import 'package:parenteach/widgets/pilih_reminding_card.dart';
 import '../../controllers/reminding_controller.dart';
 import '../../routes/route_name.dart';
 
@@ -166,55 +167,13 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                                               .listReminding.length,
                                           itemBuilder: (context, index) {
                                             if (searchReminding.text.isEmpty) {
-                                              return Container(
-                                                margin:
-                                                    EdgeInsets.only(bottom: 14),
-                                                height: 170,
-                                                width: Get.width,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      14.0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Image.asset(
-                                                          'assets/soup_icon.png'),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(14.0),
-                                                          child: Text(
-                                                            remindingController
-                                                                .listReminding[
-                                                                    index]
-                                                                .pertanyaan!,
-                                                            style: blackTextBold
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        11),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment: Alignment
-                                                            .bottomRight,
-                                                        child: Container(
-                                                          height: 20,
-                                                          child: Image.asset(
-                                                              'assets/send_icon_pink.png'),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
+                                              return PilihRemindingCard(
+                                                idReminding: remindingController
+                                                    .listReminding[index]
+                                                    .idReminding,
+                                                pertanyaan: remindingController
+                                                    .listReminding[index]
+                                                    .pertanyaan,
                                               );
                                             } else if (remindingController
                                                     .listReminding[index]
@@ -228,56 +187,15 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                                                     .toLowerCase()
                                                     .contains(
                                                         searchReminding.text)) {
-                                              return Container(
-                                                margin:
-                                                    EdgeInsets.only(bottom: 14),
-                                                height: 170,
-                                                width: Get.width,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      14.0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Image.asset(
-                                                          'assets/soup_icon.png'),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(14.0),
-                                                          child: Text(
-                                                            remindingController
-                                                                .listReminding[
-                                                                    index]
-                                                                .pertanyaan!,
-                                                            style: blackTextBold
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        11),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment: Alignment
-                                                            .bottomRight,
-                                                        child: Container(
-                                                          height: 20,
-                                                          child: Image.asset(
-                                                              'assets/send_icon_pink.png'),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
+                                              return PilihRemindingCard(
+                                                  idReminding:
+                                                      remindingController
+                                                          .listReminding[index]
+                                                          .idReminding,
+                                                  pertanyaan:
+                                                      remindingController
+                                                          .listReminding[index]
+                                                          .pertanyaan);
                                             } else {
                                               return Container();
                                             }

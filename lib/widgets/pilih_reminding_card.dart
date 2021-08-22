@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/login_controller.dart';
 import '../controllers/reminding_controller.dart';
-import '../models/reminding.dart';
 
 import '../utils/utils.dart';
 
 class PilihRemindingCard extends StatelessWidget {
-  final LoginController loginController = Get.find();
   final RemindingController remindingController = Get.find();
-  final Reminding reminding;
+  final String? idReminding;
+  final String? pertanyaan;
 
-  PilihRemindingCard({Key? key, required this.reminding}) : super(key: key);
+  PilihRemindingCard({Key? key, this.idReminding, this.pertanyaan})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +32,33 @@ class PilihRemindingCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Text(
-                  reminding.pertanyaan!,
+                  pertanyaan!,
                   style: blackTextBold.copyWith(fontSize: 11),
                 ),
               ),
             ),
             Align(
               alignment: Alignment.bottomRight,
-              child: Container(
-                height: 20,
-                child: Image.asset('assets/send_icon_pink.png'),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      // print('object');
+                      remindingController.deleteReminding(idReminding!);
+                    },
+                    child: Icon(
+                      Icons.delete,
+                      color: pinkColor,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    height: 20,
+                    child: Image.asset('assets/send_icon_pink.png'),
+                  ),
+                ],
               ),
             ),
           ],

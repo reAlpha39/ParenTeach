@@ -184,7 +184,7 @@ class HomePage extends StatelessWidget {
                         titleCard: 'QnA',
                       ),
                       HomeFiturCard(
-                        route: RouteName.BLOGPAGE,
+                        route: RouteName.WEBVIEW,
                         imageAsset: 'assets/Blog.png',
                         titleCard: 'Blog',
                       ),
