@@ -5,12 +5,16 @@ import '../../controllers/reminding_controller.dart';
 import '../../routes/route_name.dart';
 
 import '../../utils/utils.dart';
-import '../../widgets/favorite_reminding_card.dart';
-import '../../widgets/pilih_reminding_card.dart';
-import '../../widgets/reminding_page_textfield.dart';
 
-class AdminRemindingPage extends StatelessWidget {
+class AdminRemindingPage extends StatefulWidget {
+  @override
+  _AdminRemindingPageState createState() => _AdminRemindingPageState();
+}
+
+class _AdminRemindingPageState extends State<AdminRemindingPage> {
+  final TextEditingController searchReminding = TextEditingController();
   final RemindingController remindingController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +117,26 @@ class AdminRemindingPage extends StatelessWidget {
                   // SizedBox(
                   //   height: 15,
                   // ),
-                  RemindingPageTextField(),
+                  // RemindingPageTextField(),
+                  Container(
+                    color: Colors.white,
+                    child: TextField(
+                      controller: searchReminding,
+                      onChanged: (value) {
+                        setState(() {});
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: pinkColor,
+                        ),
+                        contentPadding: EdgeInsets.all(10),
+                        border: InputBorder.none,
+                        labelText: 'Cari Asmaul Husna',
+                        labelStyle: blackText.copyWith(fontSize: 12),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: 15,
                   ),
@@ -124,23 +147,149 @@ class AdminRemindingPage extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
-                  Obx(
-                    () => remindingController.isLoading.value
-                        ? Center(child: CircularProgressIndicator())
-                        : Expanded(
-                            child: SingleChildScrollView(
-                              physics: BouncingScrollPhysics(),
-                              child: Column(
-                                children: remindingController.listReminding
-                                    .map(
-                                      (e) => PilihRemindingCard(
-                                        reminding: e,
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Obx(
+                            () => remindingController.isLoading.value
+                                ? Center(child: CircularProgressIndicator())
+                                : SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        ListView.builder(
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemCount: remindingController
+                                              .listReminding.length,
+                                          itemBuilder: (context, index) {
+                                            if (searchReminding.text.isEmpty) {
+                                              return Container(
+                                                margin:
+                                                    EdgeInsets.only(bottom: 14),
+                                                height: 170,
+                                                width: Get.width,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      14.0),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Image.asset(
+                                                          'assets/soup_icon.png'),
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(14.0),
+                                                          child: Text(
+                                                            remindingController
+                                                                .listReminding[
+                                                                    index]
+                                                                .pertanyaan!,
+                                                            style: blackTextBold
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        11),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Align(
+                                                        alignment: Alignment
+                                                            .bottomRight,
+                                                        child: Container(
+                                                          height: 20,
+                                                          child: Image.asset(
+                                                              'assets/send_icon_pink.png'),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+                                            } else if (remindingController
+                                                    .listReminding[index]
+                                                    .pertanyaan!
+                                                    .toLowerCase()
+                                                    .contains(
+                                                        searchReminding.text) ||
+                                                remindingController
+                                                    .listReminding[index]
+                                                    .pertanyaan!
+                                                    .toLowerCase()
+                                                    .contains(
+                                                        searchReminding.text)) {
+                                              return Container(
+                                                margin:
+                                                    EdgeInsets.only(bottom: 14),
+                                                height: 170,
+                                                width: Get.width,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      14.0),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Image.asset(
+                                                          'assets/soup_icon.png'),
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(14.0),
+                                                          child: Text(
+                                                            remindingController
+                                                                .listReminding[
+                                                                    index]
+                                                                .pertanyaan!,
+                                                            style: blackTextBold
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        11),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Align(
+                                                        alignment: Alignment
+                                                            .bottomRight,
+                                                        child: Container(
+                                                          height: 20,
+                                                          child: Image.asset(
+                                                              'assets/send_icon_pink.png'),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+                                            } else {
+                                              return Container();
+                                            }
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                           ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
