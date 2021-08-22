@@ -86,33 +86,33 @@ class AdminRemindingPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 170,
                   ),
-                  Text(
-                    'Reminding Favorite',
-                    style: whiteText.copyWith(fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Obx(
-                    () => remindingController.isLoading.value
-                        ? CircularProgressIndicator()
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: remindingController.listReminding
-                                .map(
-                                  (e) => FavoriteRemindingCard(
-                                    reminding: e.pertanyaan,
-                                  ),
-                                )
-                                .take(2)
-                                .toList(),
-                          ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  // Text(
+                  //   'Reminding Favorite',
+                  //   style: whiteText.copyWith(fontSize: 18),
+                  // ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  // Obx(
+                  //   () => remindingController.isLoading.value
+                  //       ? CircularProgressIndicator()
+                  //       : Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //           children: remindingController.listReminding
+                  //               .map(
+                  //                 (e) => FavoriteRemindingCard(
+                  //                   reminding: e.pertanyaan,
+                  //                 ),
+                  //               )
+                  //               .take(2)
+                  //               .toList(),
+                  //         ),
+                  // ),
+                  // SizedBox(
+                  //   height: 15,
+                  // ),
                   RemindingPageTextField(),
                   SizedBox(
                     height: 15,

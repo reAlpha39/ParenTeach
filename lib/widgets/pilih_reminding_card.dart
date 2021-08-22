@@ -17,7 +17,7 @@ class PilihRemindingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 14),
-      height: 104,
+      height: 170,
       width: Get.width,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -34,7 +34,7 @@ class PilihRemindingCard extends StatelessWidget {
                 padding: const EdgeInsets.all(14.0),
                 child: Text(
                   reminding.pertanyaan!,
-                  style: blackTextBold,
+                  style: blackTextBold.copyWith(fontSize: 11),
                 ),
               ),
             ),
