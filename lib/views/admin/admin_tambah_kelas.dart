@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/kelas_controller.dart';
 import '../../utils/theme.dart';
 import '../../widgets/custom_appbar.dart';
 
 class AdminTambahKelas extends StatelessWidget {
+  final KelasController kelasController = Get.find();
   @override
   Widget build(BuildContext context) {
-    late TextEditingController kelas = TextEditingController();
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
@@ -39,7 +40,7 @@ class AdminTambahKelas extends StatelessWidget {
                       ),
                     ],
                   ),
-                  buildTextField(kelas, 'Ruangan'),
+                  buildTextField(kelasController.ruanganTextField!, 'Ruangan'),
                   Container(
                     width: 130,
                     child: ElevatedButton(
@@ -62,7 +63,9 @@ class AdminTambahKelas extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        kelasController.addOrUpdateKelas();
+                      },
                     ),
                   ),
                 ],

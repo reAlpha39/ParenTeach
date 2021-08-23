@@ -255,10 +255,10 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
   void handleThreeDots(int? item) {
     switch (item) {
       case 0:
-        Get.toNamed(routeName.reverse[RouteName.PROFILPAGE]!);
+        Get.offAndToNamed(routeName.reverse[RouteName.PROFILPAGE]!);
         break;
       case 1:
-        Get.toNamed(routeName.reverse[RouteName.WEBVIEW]!);
+        Get.offAndToNamed(routeName.reverse[RouteName.WEBVIEW]!);
         break;
       case 2:
         loginController.userLogout();
