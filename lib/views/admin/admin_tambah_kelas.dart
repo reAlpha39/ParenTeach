@@ -4,8 +4,14 @@ import 'package:parenteach/controllers/kelas_controller.dart';
 import '../../utils/theme.dart';
 import '../../widgets/custom_appbar.dart';
 
-class AdminTambahKelas extends StatelessWidget {
+class AdminTambahKelas extends StatefulWidget {
+  @override
+  _AdminTambahKelasState createState() => _AdminTambahKelasState();
+}
+
+class _AdminTambahKelasState extends State<AdminTambahKelas> {
   final KelasController kelasController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,17 +36,46 @@ class AdminTambahKelas extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildDropDown(
-                    'Tambah Kelas',
-                    'Tingkat Kelas',
-                    [
-                      buildDropdownMenuItem(
-                        'Bahasa Alien',
-                        1,
-                      ),
-                    ],
+                  Container(
+                    height: 50,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: DropdownButton<String>(
+                      elevation: 0,
+                      underline: SizedBox(),
+                      isExpanded: true,
+                      hint: Text("Status"),
+                      value: kelasController.tingkatKelas.value,
+                      items: <String>[
+                        '--Pilih Kelas--',
+                        'Satu',
+                        'Dua',
+                        'Tiga',
+                        'Empat'
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? val) {
+                        setState(() {
+                          kelasController.tingkatKelas.value = val!;
+                          print(kelasController.tingkatKelas.value);
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   buildTextField(kelasController.ruanganTextField!, 'Ruangan'),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     width: 130,
                     child: ElevatedButton(

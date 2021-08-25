@@ -8,6 +8,7 @@ import 'package:parenteach/utils/shared_methods.dart';
 
 class KelasController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
+  RxString tingkatKelas = "--Pilih Kelas--".obs;
   TextEditingController? ruanganTextField;
   Rx<Kelas> kelas = Kelas().obs;
   RxBool isUpdate = false.obs;
@@ -54,7 +55,7 @@ class KelasController extends GetxController {
       if (isConnected) {
         Kelas data = Kelas();
         data.ruangan = ruanganTextField!.text;
-        data.tingkat = ruanganTextField!.text;
+        data.tingkat = tingkatKelas.value;
         if (idKelas != null) {
           data.idKelas = idKelas;
           isUpdate.value = true;
