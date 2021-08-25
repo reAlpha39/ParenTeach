@@ -83,8 +83,10 @@ class ChatPage extends StatelessWidget {
                       ),
                       child: TextFormField(
                         decoration: InputDecoration(
+                          labelText: 'Write',
+                          labelStyle: whiteText,
                           border: InputBorder.none,
-                          contentPadding: EdgeInsets.all(15),
+                          contentPadding: EdgeInsets.all(7),
                         ),
                       ),
                     ),
