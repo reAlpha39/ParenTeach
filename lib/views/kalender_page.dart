@@ -18,7 +18,7 @@ class KalenderPage extends StatelessWidget {
           WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: CustomAppBar(
-          enableLeading: true,
+          enableLeading: false,
           title: 'Kalender',
           isAdmin: false,
           backgroundColor: pinkColor,

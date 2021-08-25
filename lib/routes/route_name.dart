@@ -27,6 +27,7 @@ enum RouteName {
   PROFILGURUPAGE,
   ADMINTAMBAHKELAS,
   CHATPAGE,
+  MAINPAGE,
 }
 
 final routeName = EnumValues({
@@ -58,6 +59,7 @@ final routeName = EnumValues({
   '/profil_guru_page': RouteName.PROFILGURUPAGE,
   '/admin_tambah_kelas': RouteName.ADMINTAMBAHKELAS,
   '/chat_page': RouteName.CHATPAGE,
+  '/main_page': RouteName.MAINPAGE,
 });
 
 class EnumValues<T> {

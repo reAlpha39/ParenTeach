@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:parenteach/routes/kelas_binding.dart';
 import 'package:parenteach/routes/nilai_raport_binding.dart';
+import 'package:parenteach/routes/utils_binding.dart';
 import 'package:parenteach/views/admin/admin_tambah_kelas.dart';
 import 'package:parenteach/views/chat_page.dart';
+import 'package:parenteach/views/main_page.dart';
 import 'guru_binding.dart';
 import 'nilai_harian_binding.dart';
 import 'qna_binding.dart';
@@ -169,6 +171,11 @@ class Routes {
       name: routeName.reverse[RouteName.CHATPAGE]!,
       page: () => ChatPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.MAINPAGE]!,
+      page: () => MainPage(),
+      binding: UtilsBinding(),
     ),
   ];
 }

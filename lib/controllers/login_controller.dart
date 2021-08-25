@@ -53,7 +53,7 @@ class LoginController extends GetxController {
                 break;
               case UserType.ORANGTUA:
                 Get.offAndToNamed(
-                  routeName.reverse[RouteName.HOMEPAGE]!,
+                  routeName.reverse[RouteName.MAINPAGE]!,
                 );
                 break;
               default:
