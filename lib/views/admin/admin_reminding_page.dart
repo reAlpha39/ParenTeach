@@ -210,17 +210,11 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                                                     .pertanyaan,
                                               );
                                             } else if (remindingController
-                                                    .listReminding[index]
-                                                    .pertanyaan!
-                                                    .toLowerCase()
-                                                    .contains(
-                                                        searchReminding.text) ||
-                                                remindingController
-                                                    .listReminding[index]
-                                                    .pertanyaan!
-                                                    .toLowerCase()
-                                                    .contains(
-                                                        searchReminding.text)) {
+                                                .listReminding[index]
+                                                .pertanyaan!
+                                                .toLowerCase()
+                                                .contains(
+                                                    searchReminding.text)) {
                                               return PilihRemindingCard(
                                                   idReminding:
                                                       remindingController

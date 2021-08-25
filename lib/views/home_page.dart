@@ -212,7 +212,9 @@ class HomePage extends StatelessWidget {
             width: 30,
             child: Image.asset('assets/send.png'),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(routeName.reverse[RouteName.CHATPAGE]!);
+          },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: AnimatedBottomNavigationBar(
