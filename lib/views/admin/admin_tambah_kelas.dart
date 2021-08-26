@@ -4,14 +4,8 @@ import 'package:parenteach/controllers/kelas_controller.dart';
 import '../../utils/theme.dart';
 import '../../widgets/custom_appbar.dart';
 
-class AdminTambahKelas extends StatefulWidget {
-  @override
-  _AdminTambahKelasState createState() => _AdminTambahKelasState();
-}
-
-class _AdminTambahKelasState extends State<AdminTambahKelas> {
+class AdminTambahKelas extends StatelessWidget {
   final KelasController kelasController = Get.find();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,90 +17,99 @@ class _AdminTambahKelasState extends State<AdminTambahKelas> {
         foregroundColor: greyBackgroundColor,
       ),
       backgroundColor: greyBackgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 50,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 1),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: DropdownButton<String>(
-                      elevation: 0,
-                      underline: SizedBox(),
-                      isExpanded: true,
-                      hint: Text("Status"),
-                      value: kelasController.tingkatKelas.value,
-                      items: <String>[
-                        '--Pilih Kelas--',
-                        'Satu',
-                        'Dua',
-                        'Tiga',
-                        'Empat'
-                      ].map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (String? val) {
-                        setState(() {
+      body: Obx(
+        () => SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 50,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey, width: 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: DropdownButton<String>(
+                        elevation: 0,
+                        underline: SizedBox(),
+                        isExpanded: true,
+                        hint: Text("Status"),
+                        value: kelasController.tingkatKelas.value,
+                        items: <String>[
+                          '--Pilih Kelas--',
+                          'Satu',
+                          'Dua',
+                          'Tiga',
+                          'Empat'
+                        ].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? val) {
                           kelasController.tingkatKelas.value = val!;
                           print(kelasController.tingkatKelas.value);
-                        });
-                      },
+                        },
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  buildTextField(kelasController.ruanganTextField!, 'Ruangan'),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    width: 130,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(blueColor),
-                        elevation: MaterialStateProperty.all<double>(0),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    buildTextField(
+                        kelasController.ruanganTextField!, 'Ruangan'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: 130,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(blueColor),
+                          elevation: MaterialStateProperty.all<double>(0),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                           ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Center(
-                          child: Text(
-                            'Simpan',
-                            style: whiteText,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Center(
+                            child: Text(
+                              'Simpan',
+                              style: whiteText,
+                            ),
                           ),
                         ),
+                        onPressed: () {
+                          if (kelasController.ruanganTextField!.text == "") {
+                            Get.snackbar(
+                              'Ruangan Masih Kosong',
+                              'Silakan isi nama ruangan',
+                              backgroundColor: Colors.white,
+                            );
+                          } else {
+                            kelasController.addOrUpdateKelas();
+                          }
+                        },
                       ),
-                      onPressed: () {
-                        kelasController.addOrUpdateKelas();
-                      },
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

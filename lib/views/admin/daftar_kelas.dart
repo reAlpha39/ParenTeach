@@ -22,7 +22,9 @@ class DaftarKelas extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Obx(
           () => kelasController.isLoading.value
-              ? CircularProgressIndicator()
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
               : Container(
                   width: Get.width,
                   decoration: BoxDecoration(
