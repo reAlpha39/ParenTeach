@@ -12,7 +12,6 @@ import '../utils/shared_methods.dart';
 
 class MainPage extends StatelessWidget {
   final UtilsController utilsController = Get.find();
-  @override
   final List<Widget> pages = [
     HomePage(),
     KalenderPage(),
@@ -20,6 +19,7 @@ class MainPage extends StatelessWidget {
     // RemindingPage(),
     ProfilPage(),
   ];
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {

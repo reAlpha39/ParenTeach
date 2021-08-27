@@ -38,11 +38,27 @@ class AddAgenda extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  TextField(
-                    controller: tanggalController,
-                    onTap: () {
-                      _selectDate(context, selectedDate);
-                    },
+                  Text(
+                    'Pilih tanggal',
+                    style: blackTextBold,
+                  ),
+                  Container(
+                    height: 50,
+                    child: TextFormField(
+                      style: blackText.copyWith(
+                        fontSize: 14,
+                      ),
+                      controller: tanggalController,
+                      onTap: () {
+                        _selectDate(context, selectedDate);
+                      },
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          labelText: 'Pilih Tanggal',
+                          labelStyle: blackText.copyWith(fontSize: 16)),
+                    ),
                   ),
                   Container(
                     width: 130,
@@ -69,8 +85,8 @@ class AddAgenda extends StatelessWidget {
                       onPressed: () {
                         if (agendaController.text == "") {
                           Get.snackbar(
-                            'Ruangan Masih Kosong',
-                            'Silakan isi nama ruangan',
+                            'Agenda Masih Kosong',
+                            'Silakan isi agenda',
                             backgroundColor: Colors.white,
                           );
                         } else {
