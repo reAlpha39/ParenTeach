@@ -160,6 +160,14 @@ class KalenderPage extends StatelessWidget {
             ),
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          elevation: 0,
+          child: Icon(Icons.add),
+          backgroundColor: pinkColor,
+          onPressed: () {
+            Get.toNamed(routeName.reverse[RouteName.ADDAGENDA]!);
+          },
+        ),
       ),
     );
   }

@@ -7,7 +7,6 @@ import 'package:parenteach/utils/utils.dart';
 import 'package:parenteach/views/home_page.dart';
 import 'package:parenteach/views/kalender_page.dart';
 import 'package:parenteach/views/profil_page.dart';
-import 'package:parenteach/views/reminding_page.dart';
 
 import '../utils/shared_methods.dart';
 

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:parenteach/routes/kelas_binding.dart';
 import 'package:parenteach/routes/nilai_raport_binding.dart';
 import 'package:parenteach/routes/utils_binding.dart';
+import 'package:parenteach/views/add_agenda.dart';
 import 'package:parenteach/views/admin/admin_tambah_kelas.dart';
 import 'package:parenteach/views/chat_page.dart';
 import 'package:parenteach/views/main_page.dart';
@@ -176,6 +177,10 @@ class Routes {
       name: routeName.reverse[RouteName.MAINPAGE]!,
       page: () => MainPage(),
       binding: UtilsBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.ADDAGENDA]!,
+      page: () => AddAgenda(),
     ),
   ];
 }
