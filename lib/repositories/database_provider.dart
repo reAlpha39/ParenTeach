@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:parenteach/models/agenda.dart';
 import 'package:parenteach/models/kelas.dart';
 import 'package:parenteach/models/nilai_raport.dart';
 import '../models/guru.dart';
@@ -203,6 +204,22 @@ class DatabaseProvider {
       var querySnapshot = await collection.get();
       for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
         temp.add(Reminding.fromMap(
+            querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
+  }
+
+  Future<List<Agenda>> getListAgenda() async {
+    List<Agenda> temp = [];
+    try {
+      CollectionReference collection =
+          mainCollection().doc('agenda').collection('agenda');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(Agenda.fromMap(
             querySnapshot.docs[i].data() as Map<String, dynamic>));
       }
     } catch (e) {
