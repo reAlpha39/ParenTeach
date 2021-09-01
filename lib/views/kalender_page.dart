@@ -104,6 +104,7 @@ class KalenderPage extends StatelessWidget {
                         horizontal: 8.0,
                       ),
                       child: CalendarCarousel<Event>(
+                        customGridViewPhysics: NeverScrollableScrollPhysics(),
                         onDayPressed: (DateTime date, List<Event> events) {
                           //take an action with date and its events
                         },
