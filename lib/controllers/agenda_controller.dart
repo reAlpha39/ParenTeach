@@ -42,14 +42,6 @@ class AgendaController extends GetxController {
         siswaController.listSiswa[siswaController.indexSiswa.value].nis!);
   }
 
-  Agenda _fillNilaiAgenda() {
-    Agenda data = Agenda();
-    data.idAgenda = 'asasasas';
-    data.agenda = agendaController!.text;
-    data.tanggalAgenda = tanggalController!.text;
-    return data;
-  }
-
   void getAgendaData(String nis) async {
     isLoading.value = true;
     try {
