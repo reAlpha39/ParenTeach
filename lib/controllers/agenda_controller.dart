@@ -37,17 +37,15 @@ class AgendaController extends GetxController {
   }
 
   void _getInitialAgenda() {
-    SiswaController siswaController = Get.find();
-    getAgendaData(
-        siswaController.listSiswa[siswaController.indexSiswa.value].nis!);
+    getAgendaData(loginController.user.value.idUsers!);
   }
 
-  void getAgendaData(String nis) async {
+  void getAgendaData(String idUser) async {
     isLoading.value = true;
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
-        listAgenda.value = await _databaseProvider.getAgenda(nis);
+        listAgenda.value = await _databaseProvider.getAgenda(idUser);
         listAgenda.refresh();
         isLoading.value = false;
       } else {
@@ -61,7 +59,7 @@ class AgendaController extends GetxController {
     }
   }
 
-  void addAgenda({String? nis, String? idAgenda}) async {
+  void addAgenda() async {
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
@@ -83,7 +81,7 @@ class AgendaController extends GetxController {
                 loginController.user.value.idUsers!, data);
         if (isSuccess) {
           Get.toNamed(routeName.reverse[RouteName.KALENDERPAGEORANGTUA]!);
-          // getRemindingData();
+          _getInitialAgenda();
           showModalDialog(
             title: 'Success',
             middleText:

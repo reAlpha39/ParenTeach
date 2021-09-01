@@ -460,25 +460,6 @@ class DatabaseProvider {
     return temp;
   }
 
-  Future<List<Agenda>> getAgenda(String nis) async {
-    List<Agenda> temp = [];
-    try {
-      CollectionReference collection = mainCollection()
-          .doc('siswa')
-          .collection('siswa')
-          .doc(nis)
-          .collection('agenda');
-      var querySnapshot = await collection.get();
-      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
-        temp.add(Agenda.fromMap(
-            querySnapshot.docs[i].data() as Map<String, dynamic>));
-      }
-    } catch (e) {
-      print(e);
-    }
-    return temp;
-  }
-
   Future<bool> addNilaiRaport(NilaiRaport data) async {
     bool isSuccess = false;
     try {
@@ -495,6 +476,25 @@ class DatabaseProvider {
       print(e);
     }
     return isSuccess;
+  }
+
+  Future<List<Agenda>> getAgenda(String idUser) async {
+    List<Agenda> temp = [];
+    try {
+      CollectionReference collection = mainCollection()
+          .doc('users')
+          .collection('users')
+          .doc(idUser)
+          .collection('agenda');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(Agenda.fromMap(
+            querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
   }
 
   Future<bool> addAgenda(String idUser, Agenda data) async {

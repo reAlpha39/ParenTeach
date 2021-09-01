@@ -163,7 +163,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.KALENDERPAGEORANGTUA]!,
       page: () => KalenderPage(),
-      binding: LoginBinding(),
+      bindings: [
+        LoginBinding(),
+        AgendaBinding(),
+      ],
     ),
     GetPage(
       name: routeName.reverse[RouteName.WEBVIEW]!,
@@ -183,7 +186,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.MAINPAGE]!,
       page: () => MainPage(),
-      binding: UtilsBinding(),
+      bindings: [
+        UtilsBinding(),
+        AgendaBinding(),
+      ],
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADDAGENDA]!,

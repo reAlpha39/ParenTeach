@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/agenda_controller.dart';
 import 'package:parenteach/controllers/login_controller.dart';
 import '../routes/route_name.dart';
 
@@ -10,6 +11,7 @@ import '../utils/utils.dart';
 
 class KalenderPage extends StatelessWidget {
   final LoginController loginController = Get.find();
+  final AgendaController agendaController = Get.find();
   @override
   Widget build(BuildContext context) {
     DateTime _currentDate = DateTime.now();
@@ -146,13 +148,25 @@ class KalenderPage extends StatelessWidget {
                         markedDateMoreShowTotal: true,
                       ),
                     ),
-                    Column(
-                      // Masih dummy
-                      children: List.generate(
-                        2,
-                        (index) => buildKalenderTile(
-                            'Belanja', '23 September 2020', Colors.yellow[700]),
-                      ),
+                    Obx(
+                      () => agendaController.isLoading.value
+                          ? CircularProgressIndicator()
+                          : Column(
+                              // Masih dummy
+                              children: agendaController.listAgenda
+                                  .map(
+                                    (element) => buildKalenderTile(
+                                        element.agenda,
+                                        element.tanggalAgenda,
+                                        yellowAccentColor),
+                                  )
+                                  .toList()
+                              // List.generate(
+                              //   2,
+                              //   (index) => buildKalenderTile(
+                              //       'Belanja', '23 September 2020', Colors.yellow[700]),
+                              // ),
+                              ),
                     ),
                   ],
                 ),
