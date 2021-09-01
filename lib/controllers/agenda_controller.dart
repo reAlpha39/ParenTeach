@@ -47,7 +47,6 @@ class AgendaController extends GetxController {
     data.idAgenda = 'asasasas';
     data.agenda = agendaController!.text;
     data.tanggalAgenda = tanggalController!.text;
-    data.nis = 'hzgahzgah';
     return data;
   }
 
