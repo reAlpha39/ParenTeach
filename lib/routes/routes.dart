@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:parenteach/routes/agenda.dart';
 import 'package:parenteach/routes/kelas_binding.dart';
 import 'package:parenteach/routes/nilai_raport_binding.dart';
 import 'package:parenteach/routes/utils_binding.dart';
@@ -187,6 +188,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADDAGENDA]!,
       page: () => AddAgenda(),
+      binding: AgendaBinding(),
     ),
   ];
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:parenteach/controllers/agenda_controller.dart';
 import '../../utils/theme.dart';
 import '../../widgets/custom_appbar.dart';
 
 class AddAgenda extends StatelessWidget {
-  final TextEditingController tanggalController = TextEditingController();
-  final TextEditingController agendaController = TextEditingController();
+  final AgendaController agendaController = Get.find();
   final DateTime currentDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,8 @@ class AddAgenda extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildTextField(
-                      agendaController, 'Nama Agenda', 'Tulis Nama Di Sini'),
+                  buildTextField(agendaController.agendaController!,
+                      'Nama Agenda', 'Tulis Nama Di Sini'),
                   SizedBox(
                     height: 10,
                   ),
@@ -48,7 +48,7 @@ class AddAgenda extends StatelessWidget {
                       style: blackText.copyWith(
                         fontSize: 14,
                       ),
-                      controller: tanggalController,
+                      controller: agendaController.tanggalController,
                       onTap: () {
                         _selectDate(context, selectedDate);
                       },
@@ -83,14 +83,21 @@ class AddAgenda extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        if (agendaController.text == "") {
+                        if (agendaController.agendaController!.text == "") {
+                          Get.snackbar(
+                            'Agenda Masih Kosong',
+                            'Silakan isi agenda',
+                            backgroundColor: Colors.white,
+                          );
+                        } else if (agendaController.tanggalController!.text ==
+                            "") {
                           Get.snackbar(
                             'Agenda Masih Kosong',
                             'Silakan isi agenda',
                             backgroundColor: Colors.white,
                           );
                         } else {
-                          // kelasController.addOrUpdateKelas();
+                          agendaController.addAgenda();
                         }
                       },
                     ),
@@ -145,7 +152,8 @@ class AddAgenda extends StatelessWidget {
 
     if (newSelectedDate != null) {
       selectedDate = newSelectedDate;
-      tanggalController..text = DateFormat.yMMMMEEEEd().format(selectedDate);
+      agendaController.tanggalController!
+        ..text = DateFormat.yMMMMEEEEd().format(selectedDate);
     }
   }
 }

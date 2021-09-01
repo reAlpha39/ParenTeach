@@ -1,18 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/login_controller.dart';
+import 'package:parenteach/controllers/siswa_controller.dart';
 import 'package:parenteach/models/agenda.dart';
+import 'package:parenteach/repositories/database_provider.dart';
+import 'package:parenteach/routes/route_name.dart';
 // import '../repositories/database_provider.dart';
 import '../utils/shared_methods.dart';
 import '../utils/utils.dart';
 
 class AgendaController extends GetxController {
-  // final DatabaseProvider _databaseProvider = DatabaseProvider();
+  final LoginController loginController = Get.find();
+  final DatabaseProvider _databaseProvider = DatabaseProvider();
   TextEditingController? agendaController;
   TextEditingController? tanggalController;
   Rx<Agenda> agenda = Agenda().obs;
   RxBool isUpdate = false.obs;
   RxBool isLoading = true.obs;
-  RxList<Agenda> listReminding = RxList<Agenda>();
+  RxList<Agenda> listAgenda = RxList<Agenda>();
 
   void onInit() {
     agendaController = TextEditingController();
@@ -21,7 +26,7 @@ class AgendaController extends GetxController {
   }
 
   void onReady() {
-    getRemindingData();
+    _getInitialAgenda();
     super.onReady();
   }
 
@@ -31,13 +36,28 @@ class AgendaController extends GetxController {
     super.onClose();
   }
 
-  void getRemindingData() async {
+  void _getInitialAgenda() {
+    SiswaController siswaController = Get.find();
+    getAgendaData(
+        siswaController.listSiswa[siswaController.indexSiswa.value].nis!);
+  }
+
+  Agenda _fillNilaiAgenda() {
+    Agenda data = Agenda();
+    data.idAgenda = 'asasasas';
+    data.agenda = agendaController!.text;
+    data.tanggalAgenda = tanggalController!.text;
+    data.nis = 'hzgahzgah';
+    return data;
+  }
+
+  void getAgendaData(String nis) async {
     isLoading.value = true;
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
-        // listReminding.value = await _databaseProvider.getListReminding();
-        listReminding.refresh();
+        listAgenda.value = await _databaseProvider.getAgenda(nis);
+        listAgenda.refresh();
         isLoading.value = false;
       } else {
         showModalDialog(
@@ -47,47 +67,56 @@ class AgendaController extends GetxController {
       }
     } catch (e) {
       showModalDialog(title: 'Error', middleText: "Error: " + e.toString());
-    } 
+    }
   }
 
-  // void addOrUpdateReminding({String? idReminding}) async {
-  //   try {
-  //     bool isConnected = await connectivityChecker();
-  //     if (isConnected) {
-  //       Reminding data = Reminding();
-  //       data.pertanyaan = remindingTextField!.text;
-  //       if (idReminding != null) {
-  //         data.idReminding = idReminding;
-  //         isUpdate.value = true;
-  //       } else {
-  //         isUpdate.value = false;
-  //       }
-  //       bool isSuccess = isUpdate.value
-  //           ? await _databaseProvider.updateReminding(data)
-  //           : await _databaseProvider.addReminding(data);
-  //       if (isSuccess) {
-  //         Get.toNamed(routeName.reverse[RouteName.ADMINREMINDINGPAGE]!);
-  //         getRemindingData();
-  //         showModalDialog(
-  //           title: 'Success',
-  //           middleText: isUpdate.value
-  //               ? 'Reminding berhasil diperbaharui'
-  //               : 'Reminding berhasil ditambahkan',
-  //         );
-  //         clearText();
-  //       } else {
-  //         showModalDialog(
-  //           title: 'Gagal',
-  //           middleText: isUpdate.value
-  //               ? 'QnA gagal diperbaharui, mohon coba lagi'
-  //               : 'QnA gagal ditambahkan, mohon coba lagi',
-  //         );
-  //       }
-  //     }
-  //   } catch (e) {
-  //     showModalDialog(title: 'Error', middleText: "Error: " + e.toString());
-  //   }
-  // }
+  void addAgenda({String? nis, String? idAgenda}) async {
+    try {
+      bool isConnected = await connectivityChecker();
+      if (isConnected) {
+        Agenda data = Agenda();
+        data.agenda = agendaController!.text;
+        data.tanggalAgenda = tanggalController!.text;
+        // if (idReminding != null) {
+        //   data.idReminding = idReminding;
+        //   isUpdate.value = true;
+        // } else {
+        //   isUpdate.value = false;
+        // }
+
+        bool isSuccess =
+            // isUpdate.value
+            // ? await _databaseProvider.updateReminding(data)
+            // :
+            await _databaseProvider.addAgenda(
+                loginController.user.value.idUsers!, data);
+        if (isSuccess) {
+          Get.toNamed(routeName.reverse[RouteName.KALENDERPAGEORANGTUA]!);
+          // getRemindingData();
+          showModalDialog(
+            title: 'Success',
+            middleText:
+                // isUpdate.value
+                // ? 'Reminding berhasil diperbaharui'
+                // :
+                'Agenda berhasil ditambahkan',
+          );
+          // clearText();
+        } else {
+          showModalDialog(
+            title: 'Gagal',
+            middleText:
+                // isUpdate.value
+                //     ? 'QnA gagal diperbaharui, mohon coba lagi'
+                // :
+                'QnA gagal ditambahkan, mohon coba lagi',
+          );
+        }
+      }
+    } catch (e) {
+      showModalDialog(title: 'Error', middleText: "Error: " + e.toString());
+    }
+  }
 
   // void deleteReminding(String idReminding) async {
   //   try {

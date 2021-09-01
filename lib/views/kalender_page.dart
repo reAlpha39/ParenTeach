@@ -6,7 +6,6 @@ import 'package:parenteach/controllers/login_controller.dart';
 import '../routes/route_name.dart';
 
 import '../utils/utils.dart';
-import '../widgets/custom_appbar.dart';
 // import 'package:intl/intl.dart' show DateFormat;
 
 class KalenderPage extends StatelessWidget {
@@ -19,13 +18,12 @@ class KalenderPage extends StatelessWidget {
       onTap: () =>
           WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: CustomAppBar(
-          enableLeading: false,
-          title: 'Kalender',
-          isAdmin: false,
-          backgroundColor: pinkColor,
-          foregroundColor: Colors.white,
-          route: RouteName.ADMINADDQNAPAGE,
+        appBar: AppBar(
+          title: Text(
+            'Kalender',
+            style: whiteTextBold,
+          ),
+          elevation: 0,
         ),
         backgroundColor: greyBackgroundColor,
         body: Stack(

@@ -212,22 +212,6 @@ class DatabaseProvider {
     return temp;
   }
 
-  Future<List<Agenda>> getListAgenda() async {
-    List<Agenda> temp = [];
-    try {
-      CollectionReference collection =
-          mainCollection().doc('agenda').collection('agenda');
-      var querySnapshot = await collection.get();
-      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
-        temp.add(Agenda.fromMap(
-            querySnapshot.docs[i].data() as Map<String, dynamic>));
-      }
-    } catch (e) {
-      print(e);
-    }
-    return temp;
-  }
-
   Future<List<Kelas>> getKelas() async {
     List<Kelas> temp = [];
     try {
@@ -476,6 +460,25 @@ class DatabaseProvider {
     return temp;
   }
 
+  Future<List<Agenda>> getAgenda(String nis) async {
+    List<Agenda> temp = [];
+    try {
+      CollectionReference collection = mainCollection()
+          .doc('siswa')
+          .collection('siswa')
+          .doc(nis)
+          .collection('agenda');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(Agenda.fromMap(
+            querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
+  }
+
   Future<bool> addNilaiRaport(NilaiRaport data) async {
     bool isSuccess = false;
     try {
@@ -485,6 +488,24 @@ class DatabaseProvider {
           .doc(data.nis)
           .collection('nilaiRaport')
           .doc(data.idMapel)
+          .set(data.toMap());
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future<bool> addAgenda(String idUser, Agenda data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('users').collection('users');
+      await collection
+          .doc(idUser)
+          .collection('agenda')
+          .doc(data.idAgenda)
           .set(data.toMap());
       isSuccess = true;
     } catch (e) {
