@@ -87,7 +87,7 @@ class RemindingController extends GetxController {
     }
   }
 
-  void deleteReminding(String idReminding) async {
+  deleteReminding(String idReminding) async {
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {

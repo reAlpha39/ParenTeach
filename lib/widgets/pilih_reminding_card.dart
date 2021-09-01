@@ -10,7 +10,9 @@ class PilihRemindingCard extends StatelessWidget {
   final String? pertanyaan;
   final bool? isAdmin;
 
-  PilihRemindingCard({Key? key, this.idReminding, this.pertanyaan, this.isAdmin}) : super(key: key);
+  PilihRemindingCard(
+      {Key? key, this.idReminding, this.pertanyaan, this.isAdmin})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +43,47 @@ class PilihRemindingCard extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: Row(
                 children: [
-                  isAdmin == true ? 
-                  GestureDetector(
-                    onTap: () {
-                      // print('object');
-                      remindingController.deleteReminding(idReminding!);
-                    },
-                    child: Icon(
-                      Icons.delete,
-                      color: pinkColor,
-                    ),
-                  ) : Text('Yes', style: pinkText,),
+                  isAdmin == true
+                      ? GestureDetector(
+                          onTap: () {
+                            Get.defaultDialog(
+                              radius: 17,
+                              title: 'Konfirmasi Hapus Data',
+                              content: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 4,
+                                  horizontal: 12,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Anda yakin ingin menghapus data ini?',
+                                    style: blackText,
+                                  ),
+                                ),
+                              ),
+                              textConfirm: 'OK',
+                              textCancel: 'Batal',
+                              buttonColor: pinkColor,
+                              cancelTextColor: Colors.black87,
+                              confirmTextColor: Colors.white,
+                              onConfirm: () {
+                                remindingController
+                                    .deleteReminding(idReminding!);
+                                Navigator.of(Get.overlayContext!).pop();
+                              },
+                              onCancel: () =>
+                                  Navigator.of(Get.overlayContext!).pop(),
+                            ).then((value) => value = false);
+                          },
+                          child: Icon(
+                            Icons.delete,
+                            color: pinkColor,
+                          ),
+                        )
+                      : Text(
+                          'Yes',
+                          style: pinkText,
+                        ),
                   SizedBox(
                     width: 10,
                   ),

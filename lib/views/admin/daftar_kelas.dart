@@ -74,8 +74,36 @@ class DaftarKelas extends StatelessWidget {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        kelasController
-                                            .deleteKelas(element.idKelas!);
+                                        Get.defaultDialog(
+                                          radius: 17,
+                                          title: 'Konfirmasi Hapus Data',
+                                          content: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 4,
+                                              horizontal: 12,
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'Anda yakin ingin menghapus data ini?',
+                                                style: blackText,
+                                              ),
+                                            ),
+                                          ),
+                                          textConfirm: 'OK',
+                                          textCancel: 'Batal',
+                                          buttonColor: pinkColor,
+                                          cancelTextColor: Colors.black87,
+                                          confirmTextColor: Colors.white,
+                                          onConfirm: () {
+                                            kelasController
+                                                .deleteKelas(element.idKelas!);
+                                            Navigator.of(Get.overlayContext!)
+                                                .pop();
+                                          },
+                                          onCancel: () =>
+                                              Navigator.of(Get.overlayContext!)
+                                                  .pop(),
+                                        ).then((value) => value = false);
                                       },
                                       child: Icon(
                                         Icons.delete,

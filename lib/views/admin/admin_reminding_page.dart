@@ -127,32 +127,6 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                   SizedBox(
                     height: 170,
                   ),
-                  // Text(
-                  //   'Reminding Favorite',
-                  //   style: whiteText.copyWith(fontSize: 18),
-                  // ),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
-                  // Obx(
-                  //   () => remindingController.isLoading.value
-                  //       ? CircularProgressIndicator()
-                  //       : Row(
-                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //           children: remindingController.listReminding
-                  //               .map(
-                  //                 (e) => FavoriteRemindingCard(
-                  //                   reminding: e.pertanyaan,
-                  //                 ),
-                  //               )
-                  //               .take(2)
-                  //               .toList(),
-                  //         ),
-                  // ),
-                  // SizedBox(
-                  //   height: 15,
-                  // ),
-                  // RemindingPageTextField(),
                   Container(
                     color: Colors.white,
                     child: TextField(
@@ -217,7 +191,7 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                                                 .contains(
                                                     searchReminding.text)) {
                                               return PilihRemindingCard(
-                                                isAdmin: true,
+                                                  isAdmin: true,
                                                   idReminding:
                                                       remindingController
                                                           .listReminding[index]

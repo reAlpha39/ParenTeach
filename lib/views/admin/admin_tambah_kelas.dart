@@ -46,10 +46,18 @@ class AdminTambahKelas extends StatelessWidget {
                         value: kelasController.tingkatKelas.value,
                         items: <String>[
                           '--Pilih Kelas--',
-                          'Satu',
-                          'Dua',
-                          'Tiga',
-                          'Empat'
+                          '1',
+                          '2',
+                          '3',
+                          '4',
+                          '5',
+                          '6',
+                          '7',
+                          '8',
+                          '9',
+                          '10',
+                          '11',
+                          '12',
                         ].map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,

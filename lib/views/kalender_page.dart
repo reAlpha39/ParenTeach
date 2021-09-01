@@ -153,7 +153,6 @@ class KalenderPage extends StatelessWidget {
                       () => agendaController.isLoading.value
                           ? CircularProgressIndicator()
                           : Column(
-                              // Masih dummy
                               children: agendaController.listAgenda
                                   .map(
                                     (element) => buildKalenderTile(
@@ -161,13 +160,7 @@ class KalenderPage extends StatelessWidget {
                                         element.tanggalAgenda,
                                         yellowAccentColor),
                                   )
-                                  .toList()
-                              // List.generate(
-                              //   2,
-                              //   (index) => buildKalenderTile(
-                              //       'Belanja', '23 September 2020', Colors.yellow[700]),
-                              // ),
-                              ),
+                                  .toList()),
                     ),
                   ],
                 ),
