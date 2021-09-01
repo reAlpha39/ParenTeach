@@ -5,6 +5,7 @@ import 'package:parenteach/routes/utils_binding.dart';
 import 'package:parenteach/views/add_agenda.dart';
 import 'package:parenteach/views/admin/admin_tambah_kelas.dart';
 import 'package:parenteach/views/chat_page.dart';
+import 'package:parenteach/views/kalender_page.dart';
 import 'package:parenteach/views/main_page.dart';
 import 'guru_binding.dart';
 import 'nilai_harian_binding.dart';
@@ -156,6 +157,11 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.PROFILPAGE]!,
       page: () => ProfilPage(),
+      binding: LoginBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.KALENDERPAGEORANGTUA]!,
+      page: () => KalenderPage(),
       binding: LoginBinding(),
     ),
     GetPage(

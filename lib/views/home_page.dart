@@ -160,7 +160,7 @@ class HomePage extends StatelessWidget {
                       HomeFiturCard(
                         route: RouteName.ACTIVITIESPAGE,
                         imageAsset: 'assets/Presensi.png',
-                        titleCard: 'Activities',
+                        titleCard: 'Presensi',
                       ),
                       HomeFiturCard(
                         route: RouteName.PLAYGROUNDPAGE,
@@ -175,7 +175,7 @@ class HomePage extends StatelessWidget {
                       HomeFiturCard(
                         route: RouteName.RAPOTPAGE,
                         imageAsset: 'assets/Rapot.png',
-                        titleCard: 'Kelas',
+                        titleCard: 'Siswa',
                       ),
                       HomeFiturCard(
                         route: RouteName.QNAPAGE,

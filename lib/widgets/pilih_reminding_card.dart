@@ -8,9 +8,9 @@ class PilihRemindingCard extends StatelessWidget {
   final RemindingController remindingController = Get.find();
   final String? idReminding;
   final String? pertanyaan;
+  final bool? isAdmin;
 
-  PilihRemindingCard({Key? key, this.idReminding, this.pertanyaan})
-      : super(key: key);
+  PilihRemindingCard({Key? key, this.idReminding, this.pertanyaan, this.isAdmin}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +41,7 @@ class PilihRemindingCard extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: Row(
                 children: [
+                  isAdmin == true ? 
                   GestureDetector(
                     onTap: () {
                       // print('object');
@@ -50,7 +51,7 @@ class PilihRemindingCard extends StatelessWidget {
                       Icons.delete,
                       color: pinkColor,
                     ),
-                  ),
+                  ) : Text('Yes', style: pinkText,),
                   SizedBox(
                     width: 10,
                   ),

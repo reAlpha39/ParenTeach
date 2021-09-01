@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import '../routes/route_name.dart';
 
 import '../utils/utils.dart';
@@ -9,6 +10,7 @@ import '../widgets/custom_appbar.dart';
 // import 'package:intl/intl.dart' show DateFormat;
 
 class KalenderPage extends StatelessWidget {
+  final LoginController loginController = Get.find();
   @override
   Widget build(BuildContext context) {
     DateTime _currentDate = DateTime.now();
@@ -68,7 +70,7 @@ class KalenderPage extends StatelessWidget {
                             fontSize: 14, color: Colors.grey),
                       ),
                       Text(
-                        'Miftah',
+                        loginController.user.value.nama!,
                         style: blackTextBold.copyWith(
                             fontSize: 18, color: pinkColor),
                       ),

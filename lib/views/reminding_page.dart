@@ -114,6 +114,7 @@ class RemindingPage extends StatelessWidget {
                                           .listReminding
                                           .map(
                                             (element) => PilihRemindingCard(
+                                              isAdmin: false,
                                               idReminding: element.idReminding,
                                               pertanyaan: element.pertanyaan,
                                             ),

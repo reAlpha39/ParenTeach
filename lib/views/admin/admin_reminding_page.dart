@@ -167,7 +167,7 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                         ),
                         contentPadding: EdgeInsets.all(10),
                         border: InputBorder.none,
-                        labelText: 'Cari Asmaul Husna',
+                        labelText: 'Cari Reminding',
                         labelStyle: blackText.copyWith(fontSize: 12),
                       ),
                     ),
@@ -202,6 +202,7 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                                           itemBuilder: (context, index) {
                                             if (searchReminding.text.isEmpty) {
                                               return PilihRemindingCard(
+                                                isAdmin: true,
                                                 idReminding: remindingController
                                                     .listReminding[index]
                                                     .idReminding,
@@ -216,6 +217,7 @@ class _AdminRemindingPageState extends State<AdminRemindingPage> {
                                                 .contains(
                                                     searchReminding.text)) {
                                               return PilihRemindingCard(
+                                                isAdmin: true,
                                                   idReminding:
                                                       remindingController
                                                           .listReminding[index]

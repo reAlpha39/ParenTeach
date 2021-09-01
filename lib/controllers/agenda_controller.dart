@@ -47,7 +47,7 @@ class AgendaController extends GetxController {
       }
     } catch (e) {
       showModalDialog(title: 'Error', middleText: "Error: " + e.toString());
-    }
+    } 
   }
 
   // void addOrUpdateReminding({String? idReminding}) async {
