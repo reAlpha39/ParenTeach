@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/models/kelas.dart';
 import 'package:parenteach/repositories/database_provider.dart';
-import 'package:parenteach/routes/route_name.dart';
 import 'package:parenteach/utils/connectivity_checker.dart';
 import 'package:parenteach/utils/shared_methods.dart';
 
@@ -57,6 +56,7 @@ class KelasController extends GetxController {
         data.ruangan = ruanganTextField!.text;
         data.tingkat = tingkatKelas.value;
         if (idKelas != null) {
+          print(idKelas);
           data.idKelas = idKelas;
           isUpdate.value = true;
         } else {
@@ -66,8 +66,8 @@ class KelasController extends GetxController {
             ? await _databaseProvider.updateKelas(data)
             : await _databaseProvider.addKelas(data);
         if (isSuccess) {
-          Get.toNamed(routeName.reverse[RouteName.DAFTARKELAS]!);
           getKelasData();
+          Get.back();
           showModalDialog(
             title: 'Success',
             middleText: isUpdate.value
@@ -99,6 +99,7 @@ class KelasController extends GetxController {
             title: 'Sukses',
             middleText: 'Data Berhasil terhapus',
           );
+          clearText();
           getKelasData();
         } else {
           showModalDialog(
@@ -117,8 +118,15 @@ class KelasController extends GetxController {
     }
   }
 
-  void clearText() {
+  void loadText(String tingkat, String ruangan) {
+    isUpdate.value = true;
+    tingkatKelas.value = tingkat;
+    ruanganTextField!.text = ruangan;
+  }
+
+  clearText() {
     isUpdate.value = false;
+    tingkatKelas.value = "--Pilih Kelas--";
     ruanganTextField!.clear();
   }
 }

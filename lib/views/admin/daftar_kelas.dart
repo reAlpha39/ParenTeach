@@ -66,7 +66,15 @@ class DaftarKelas extends StatelessWidget {
                                 Row(
                                   children: [
                                     GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        kelasController.loadText(
+                                            element.tingkat!, element.ruangan!);
+                                        Get.toNamed(
+                                          routeName.reverse[
+                                              RouteName.ADMINTAMBAHKELAS]!,
+                                          arguments: element.idKelas!,
+                                        );
+                                      },
                                       child: Icon(
                                         Icons.edit,
                                         color: pinkColor,

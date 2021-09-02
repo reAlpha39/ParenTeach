@@ -11,10 +11,15 @@ class AdminTambahKelas extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         enableLeading: true,
-        title: 'Tambah Kelas',
+        title: kelasController.isUpdate.value ? 'Update Kelas' : 'Tambah Kelas',
         isAdmin: false,
         backgroundColor: pinkColor,
         foregroundColor: greyBackgroundColor,
+        additionalLeadingFunction: kelasController.isUpdate.value
+            ? () {
+                kelasController.clearText();
+              }
+            : () {},
       ),
       backgroundColor: greyBackgroundColor,
       body: Obx(
@@ -108,7 +113,9 @@ class AdminTambahKelas extends StatelessWidget {
                               backgroundColor: Colors.white,
                             );
                           } else {
-                            kelasController.addOrUpdateKelas();
+                            kelasController.addOrUpdateKelas(
+                              idKelas: Get.arguments,
+                            );
                           }
                         },
                       ),
