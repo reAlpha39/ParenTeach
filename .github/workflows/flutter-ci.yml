@@ -52,7 +52,8 @@ jobs:
         run: flutter build appbundle
 
       - name: Setup Ruby
-      - uses: ruby/setup-ruby@v1
+        uses: actions/checkout@v2
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
           bundler-cache: true
