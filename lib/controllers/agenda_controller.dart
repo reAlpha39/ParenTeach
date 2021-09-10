@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:parenteach/controllers/login_controller.dart';
-import 'package:parenteach/controllers/siswa_controller.dart';
 import 'package:parenteach/models/agenda.dart';
 import 'package:parenteach/repositories/database_provider.dart';
 import 'package:parenteach/routes/route_name.dart';
-// import '../repositories/database_provider.dart';
 import '../utils/shared_methods.dart';
 import '../utils/utils.dart';
 
@@ -106,38 +104,4 @@ class AgendaController extends GetxController {
       showModalDialog(title: 'Error', middleText: "Error: " + e.toString());
     }
   }
-
-  // void deleteReminding(String idReminding) async {
-  //   try {
-  //     bool isConnected = await connectivityChecker();
-  //     if (isConnected) {
-  //       bool isSuccess = await _databaseProvider.deleteReminding(idReminding);
-  //       if (isSuccess) {
-  //         showModalDialog(
-  //           title: 'Sukses',
-  //           middleText: 'Data Berhasil terhapus',
-  //         );
-  //         getRemindingData();
-  //       } else {
-  //         showModalDialog(
-  //           title: 'Gagal',
-  //           middleText:
-  //               'Tidak bisa menghapus data Reminding, coba beberapa saat lagi',
-  //         );
-  //       }
-  //     } else {
-  //       showModalDialog(
-  //         title: 'Gagal',
-  //         middleText: 'Tidak bisa terhubung ke internet',
-  //       );
-  //     }
-  //   } catch (e) {
-  //     showModalDialog(title: 'Error', middleText: "Error: " + e.toString());
-  //   }
-  // }
-
-  // void clearText() {
-  //   isUpdate.value = false;
-  //   remindingTextField!.clear();
-  // }
 }
