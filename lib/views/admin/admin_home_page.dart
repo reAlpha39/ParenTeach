@@ -18,6 +18,7 @@ class AdminHomePage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          leading: Container(),
           elevation: 0,
           backgroundColor: greyBackgroundColor,
           title: Column(

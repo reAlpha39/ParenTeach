@@ -89,7 +89,7 @@ class LoginController extends GetxController {
 
   void userLogout() {
     user.value = Users();
-    Get.offAll(routeName.reverse[RouteName.LOGINPAGE]!);
+    Get.offAndToNamed(routeName.reverse[RouteName.LOGINPAGE]!);
   }
 
   _showDialog({required String title, required String middleText}) {
