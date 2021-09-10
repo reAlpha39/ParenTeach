@@ -52,10 +52,11 @@ jobs:
         run: flutter build appbundle
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
           bundler-cache: true
+      - run: bundle exec rake
 
       - name: Cache bundle dependencies
         uses: actions/cache@v2
