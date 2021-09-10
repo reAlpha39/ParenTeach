@@ -6,8 +6,6 @@ on:
   push:
     tags:
       - "*"
-    tags-ignore:
-      - "v*"
 
 # on: push    # Default will running for every branch.
 
