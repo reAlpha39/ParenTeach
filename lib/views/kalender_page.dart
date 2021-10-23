@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:get/get.dart';
+import 'package:parenteach/controllers/agenda_controller.dart';
+import 'package:parenteach/controllers/login_controller.dart';
 import '../routes/route_name.dart';
 
 import '../utils/utils.dart';
-import '../widgets/custom_appbar.dart';
 // import 'package:intl/intl.dart' show DateFormat;
 
 class KalenderPage extends StatelessWidget {
+  final LoginController loginController = Get.find();
+  final AgendaController agendaController = Get.find();
   @override
   Widget build(BuildContext context) {
     DateTime _currentDate = DateTime.now();
@@ -17,13 +20,12 @@ class KalenderPage extends StatelessWidget {
       onTap: () =>
           WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: CustomAppBar(
-          enableLeading: true,
-          title: 'Kalender',
-          isAdmin: false,
-          backgroundColor: pinkColor,
-          foregroundColor: Colors.white,
-          route: RouteName.ADMINADDQNAPAGE,
+        appBar: AppBar(
+          title: Text(
+            'Kalender',
+            style: whiteTextBold,
+          ),
+          elevation: 0,
         ),
         backgroundColor: greyBackgroundColor,
         body: Stack(
@@ -68,7 +70,7 @@ class KalenderPage extends StatelessWidget {
                             fontSize: 14, color: Colors.grey),
                       ),
                       Text(
-                        'Miftah',
+                        loginController.user.value.nama!,
                         style: blackTextBold.copyWith(
                             fontSize: 18, color: pinkColor),
                       ),
@@ -102,6 +104,7 @@ class KalenderPage extends StatelessWidget {
                         horizontal: 8.0,
                       ),
                       child: CalendarCarousel<Event>(
+                        customGridViewPhysics: NeverScrollableScrollPhysics(),
                         onDayPressed: (DateTime date, List<Event> events) {
                           //take an action with date and its events
                         },
@@ -146,19 +149,32 @@ class KalenderPage extends StatelessWidget {
                         markedDateMoreShowTotal: true,
                       ),
                     ),
-                    Column(
-                      // Masih dummy
-                      children: List.generate(
-                        2,
-                        (index) => buildKalenderTile(
-                            'Belanja', '23 September 2020', Colors.yellow[700]),
-                      ),
+                    Obx(
+                      () => agendaController.isLoading.value
+                          ? CircularProgressIndicator()
+                          : Column(
+                              children: agendaController.listAgenda
+                                  .map(
+                                    (element) => buildKalenderTile(
+                                        element.agenda,
+                                        element.tanggalAgenda,
+                                        yellowAccentColor),
+                                  )
+                                  .toList()),
                     ),
                   ],
                 ),
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          elevation: 0,
+          child: Icon(Icons.add),
+          backgroundColor: pinkColor,
+          onPressed: () {
+            Get.toNamed(routeName.reverse[RouteName.ADDAGENDA]!);
+          },
         ),
       ),
     );

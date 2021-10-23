@@ -5,7 +5,7 @@ name: Flutter CI
 on:
   push:
     tags:
-    - '*'
+      - "*"
 
 # on: push    # Default will running for every branch.
 
@@ -14,37 +14,77 @@ jobs:
     # This job will run on ubuntu virtual machine
     runs-on: ubuntu-latest
     steps:
+      # Setup Java environment in order to build the Android app.
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
 
-    # Setup Java environment in order to build the Android app.
-    - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1
-      with:
-        java-version: '12.x'
+      # Restore keystore
+      - name: Restore Keystore
+        run: |
+          echo "${{ secrets.RELEASE_KEYSTORE }}" > upload-keystore.jks.asc
+          gpg --batch --passphrase "${{ secrets.GPG_PASSPHRASE }}" -d -o android/app/upload-keystore.jks upload-keystore.jks.asc
+          echo "storeFile=upload-keystore.jks" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "storePassword=${{ secrets.STORE_KEY_PASSWORD }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.STORE_KEY_PASSWORD }}" >> android/key.properties
 
-    # Setup the flutter environment.
-    - uses: subosito/flutter-action@v1
-      with:
-        channel: 'stable' # 'dev', 'alpha', default to: 'stable'
-        # flutter-version: '1.12.x' # you can also specify exact version of flutter
+      # Setup the flutter environment.
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          # flutter-version: '1.12.x' # you can also specify exact version of flutter
 
-    # Get flutter dependencies.
-    - run: flutter pub get
+      # Get flutter dependencies.
+      - run: flutter pub get
 
-    # Check for any formatting issues in the code.
-    - run: flutter format --set-exit-if-changed .
+      # Check for any formatting issues in the code.
+      - run: flutter format --set-exit-if-changed .
 
-    # Statically analyze the Dart code for any errors.
-    - run: flutter analyze .
+      # Statically analyze the Dart code for any errors.
+      - run: flutter analyze .
 
-    # Run widget tests for our flutter project.
-    # - run: flutter test
+      # Run widget tests for our flutter project.
+      # - run: flutter test
 
-    # Build apk.
-    - run: flutter build apk --split-per-abi
+      - name: Build Android App Bundle
+        run: flutter build appbundle
 
-    # Upload generated apk to the release page.
-    - name: Create release apk
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "build/app/outputs/apk/release/*.apk"
-        token: ${{ secrets.CSM_WORKFLOW }}
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: true
+
+      - name: Cache bundle dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gems-
+
+      - name: Download bundle dependencies
+        run: |
+          gem install bundler:2.0.2
+          bundle config path vendor/bundle
+          bundle install
+
+      - name: Release to Google Play (beta)
+        env:
+          SUPPLY_PACKAGE_NAME: ${{ secrets.ANDROID_PACKAGE_NAME }}
+          SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          bundle exec fastlane supply \
+          --aab build/app/outputs/bundle/release/app-release.aab \
+          --track beta
+
+      # Build apk.
+      - run: flutter build apk --split-per-abi
+
+      # Upload generated apk to the release page.
+      - name: Create release apk
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/apk/release/*.apk"
+          token: ${{ secrets.CSM_WORKFLOW }}

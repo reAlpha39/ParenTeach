@@ -1,6 +1,13 @@
 import 'package:get/get.dart';
+import 'package:parenteach/routes/agenda.dart';
+import 'package:parenteach/routes/kelas_binding.dart';
 import 'package:parenteach/routes/nilai_raport_binding.dart';
+import 'package:parenteach/routes/utils_binding.dart';
+import 'package:parenteach/views/add_agenda.dart';
 import 'package:parenteach/views/admin/admin_tambah_kelas.dart';
+import 'package:parenteach/views/chat_page.dart';
+import 'package:parenteach/views/kalender_page.dart';
+import 'package:parenteach/views/main_page.dart';
 import 'guru_binding.dart';
 import 'nilai_harian_binding.dart';
 import 'qna_binding.dart';
@@ -84,7 +91,10 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINREMINDINGPAGE]!,
       page: () => AdminRemindingPage(),
-      binding: RemindingBinding(),
+      bindings: [
+        LoginBinding(),
+        RemindingBinding(),
+      ],
     ),
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHREMINDINGPAGE]!,
@@ -123,6 +133,7 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.ADMINTAMBAHKELAS]!,
       page: () => AdminTambahKelas(),
+      binding: KelasBinding(),
     ),
     GetPage(
       name: routeName.reverse[RouteName.TAMBAHNILAIHARIANPAGE]!,
@@ -150,6 +161,14 @@ class Routes {
       binding: LoginBinding(),
     ),
     GetPage(
+      name: routeName.reverse[RouteName.KALENDERPAGEORANGTUA]!,
+      page: () => KalenderPage(),
+      bindings: [
+        LoginBinding(),
+        AgendaBinding(),
+      ],
+    ),
+    GetPage(
       name: routeName.reverse[RouteName.WEBVIEW]!,
       page: () => WebviewPage(),
       binding: WebviewBinding(),
@@ -157,6 +176,25 @@ class Routes {
     GetPage(
       name: routeName.reverse[RouteName.DAFTARKELAS]!,
       page: () => DaftarKelas(),
+      binding: KelasBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.CHATPAGE]!,
+      page: () => ChatPage(),
+      binding: LoginBinding(),
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.MAINPAGE]!,
+      page: () => MainPage(),
+      bindings: [
+        UtilsBinding(),
+        AgendaBinding(),
+      ],
+    ),
+    GetPage(
+      name: routeName.reverse[RouteName.ADDAGENDA]!,
+      page: () => AddAgenda(),
+      binding: AgendaBinding(),
     ),
   ];
 }

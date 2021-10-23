@@ -10,7 +10,7 @@ class FavoriteRemindingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: 200,
       width: 152,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -48,8 +48,7 @@ class FavoriteRemindingCard extends StatelessWidget {
               child: Text(
                 reminding!,
                 maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: blackTextBold,
+                style: blackTextBold.copyWith(fontSize: 12),
               ),
             ),
           ),

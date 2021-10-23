@@ -19,7 +19,7 @@ class WebviewPage extends StatelessWidget {
         () => Stack(
           children: [
             WebView(
-              initialUrl: Get.arguments,
+              initialUrl: 'https://appinter.id/',
               javascriptMode: JavascriptMode.unrestricted,
               onPageFinished: (finish) {
                 webviewController.isLoading.value = false;

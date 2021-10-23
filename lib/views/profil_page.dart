@@ -42,7 +42,7 @@ class ProfilPage extends StatelessWidget {
                     buldDataUser(
                         'Nama Lengkap', loginController.user.value.username),
                     buldDataUser('No. Hp', loginController.user.value.noHp),
-                    buldDataUser('No. Hp', loginController.user.value.email),
+                    buldDataUser('Email', loginController.user.value.email),
                   ],
                 ),
               ),

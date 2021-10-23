@@ -1,41 +1,41 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../models/reminding.dart';
-import '../repositories/database_provider.dart';
-import '../routes/route_name.dart';
-import '../utils/shared_methods.dart';
-import '../utils/utils.dart';
+import 'package:parenteach/models/kelas.dart';
+import 'package:parenteach/repositories/database_provider.dart';
+import 'package:parenteach/utils/connectivity_checker.dart';
+import 'package:parenteach/utils/shared_methods.dart';
 
-class RemindingController extends GetxController {
+class KelasController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
-  TextEditingController? remindingTextField;
-  Rx<Reminding> reminding = Reminding().obs;
+  RxString tingkatKelas = "--Pilih Kelas--".obs;
+  TextEditingController? ruanganTextField;
+  Rx<Kelas> kelas = Kelas().obs;
   RxBool isUpdate = false.obs;
   RxBool isLoading = true.obs;
-  RxList<Reminding> listReminding = RxList<Reminding>();
+  RxList<Kelas> listKelas = RxList<Kelas>();
 
   void onInit() {
-    remindingTextField = TextEditingController();
+    ruanganTextField = TextEditingController();
     super.onInit();
   }
 
   void onReady() {
-    getRemindingData();
+    getKelasData();
     super.onReady();
   }
 
   void onClose() {
-    remindingTextField?.dispose();
+    ruanganTextField?.dispose();
     super.onClose();
   }
 
-  void getRemindingData() async {
+  void getKelasData() async {
     isLoading.value = true;
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
-        listReminding.value = await _databaseProvider.getListReminding();
-        listReminding.refresh();
+        listKelas.value = await _databaseProvider.getKelas();
+        listKelas.refresh();
         isLoading.value = false;
       } else {
         showModalDialog(
@@ -48,37 +48,39 @@ class RemindingController extends GetxController {
     }
   }
 
-  void addOrUpdateReminding({String? idReminding}) async {
+  void addOrUpdateKelas({String? idKelas}) async {
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
-        Reminding data = Reminding();
-        data.pertanyaan = remindingTextField!.text;
-        if (idReminding != null) {
-          data.idReminding = idReminding;
+        Kelas data = Kelas();
+        data.ruangan = ruanganTextField!.text;
+        data.tingkat = tingkatKelas.value;
+        if (idKelas != null) {
+          print(idKelas);
+          data.idKelas = idKelas;
           isUpdate.value = true;
         } else {
           isUpdate.value = false;
         }
         bool isSuccess = isUpdate.value
-            ? await _databaseProvider.updateReminding(data)
-            : await _databaseProvider.addReminding(data);
+            ? await _databaseProvider.updateKelas(data)
+            : await _databaseProvider.addKelas(data);
         if (isSuccess) {
-          Get.toNamed(routeName.reverse[RouteName.ADMINREMINDINGPAGE]!);
-          getRemindingData();
+          getKelasData();
+          Get.back();
           showModalDialog(
             title: 'Success',
             middleText: isUpdate.value
-                ? 'Reminding berhasil diperbaharui'
-                : 'Reminding berhasil ditambahkan',
+                ? 'Kelas berhasil diperbaharui'
+                : 'Kelas berhasil ditambahkan',
           );
           clearText();
         } else {
           showModalDialog(
             title: 'Gagal',
             middleText: isUpdate.value
-                ? 'QnA gagal diperbaharui, mohon coba lagi'
-                : 'QnA gagal ditambahkan, mohon coba lagi',
+                ? 'Kelas gagal diperbaharui, mohon coba lagi'
+                : 'Kelas gagal ditambahkan, mohon coba lagi',
           );
         }
       }
@@ -87,22 +89,22 @@ class RemindingController extends GetxController {
     }
   }
 
-  deleteReminding(String idReminding) async {
+  void deleteKelas(String idKelas) async {
     try {
       bool isConnected = await connectivityChecker();
       if (isConnected) {
-        bool isSuccess = await _databaseProvider.deleteReminding(idReminding);
+        bool isSuccess = await _databaseProvider.deleteKelas(idKelas);
         if (isSuccess) {
           showModalDialog(
             title: 'Sukses',
             middleText: 'Data Berhasil terhapus',
           );
-          getRemindingData();
+          clearText();
+          getKelasData();
         } else {
           showModalDialog(
             title: 'Gagal',
-            middleText:
-                'Tidak bisa menghapus data Reminding, coba beberapa saat lagi',
+            middleText: 'Tidak bisa menghapus data Ke, coba beberapa saat lagi',
           );
         }
       } else {
@@ -116,8 +118,15 @@ class RemindingController extends GetxController {
     }
   }
 
-  void clearText() {
+  void loadText(String tingkat, String ruangan) {
+    isUpdate.value = true;
+    tingkatKelas.value = tingkat;
+    ruanganTextField!.text = ruangan;
+  }
+
+  clearText() {
     isUpdate.value = false;
-    remindingTextField!.clear();
+    tingkatKelas.value = "--Pilih Kelas--";
+    ruanganTextField!.clear();
   }
 }

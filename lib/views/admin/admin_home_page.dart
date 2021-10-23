@@ -18,6 +18,7 @@ class AdminHomePage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          leading: Container(),
           elevation: 0,
           backgroundColor: greyBackgroundColor,
           title: Column(
@@ -142,7 +143,7 @@ class AdminHomePage extends StatelessWidget {
                         titleCard: 'QnA',
                       ),
                       HomeFiturCard(
-                        route: RouteName.BLOGPAGE,
+                        route: RouteName.WEBVIEW,
                         imageAsset: 'assets/Blog.png',
                         titleCard: 'Blog',
                       ),

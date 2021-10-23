@@ -110,13 +110,16 @@ class RemindingPage extends StatelessWidget {
                                   ),
                                   SingleChildScrollView(
                                     child: Column(
-                                      children:
-                                          remindingController.listReminding
-                                              .map(
-                                                (element) => PilihRemindingCard(
-                                                    reminding: element),
-                                              )
-                                              .toList(),
+                                      children: remindingController
+                                          .listReminding
+                                          .map(
+                                            (element) => PilihRemindingCard(
+                                              isAdmin: false,
+                                              idReminding: element.idReminding,
+                                              pertanyaan: element.pertanyaan,
+                                            ),
+                                          )
+                                          .toList(),
                                     ),
                                   )
                                 ],

@@ -47,13 +47,13 @@ class LoginController extends GetxController {
           if (isValidate.value) {
             switch (user.value.type) {
               case UserType.ADMIN:
-                Get.offAndToNamed(
+                Get.toNamed(
                   routeName.reverse[RouteName.ADMINHOMEPAGE]!,
                 );
                 break;
               case UserType.ORANGTUA:
-                Get.offAndToNamed(
-                  routeName.reverse[RouteName.HOMEPAGE]!,
+                Get.toNamed(
+                  routeName.reverse[RouteName.MAINPAGE]!,
                 );
                 break;
               default:
@@ -89,7 +89,7 @@ class LoginController extends GetxController {
 
   void userLogout() {
     user.value = Users();
-    Get.toNamed(routeName.reverse[RouteName.LOGINPAGE]!);
+    Get.offAndToNamed(routeName.reverse[RouteName.LOGINPAGE]!);
   }
 
   _showDialog({required String title, required String middleText}) {

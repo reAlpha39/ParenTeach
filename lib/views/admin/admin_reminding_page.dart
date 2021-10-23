@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icon.dart';
+import 'package:parenteach/controllers/login_controller.dart';
+import 'package:parenteach/widgets/pilih_reminding_card.dart';
 import '../../controllers/reminding_controller.dart';
 import '../../routes/route_name.dart';
 
 import '../../utils/utils.dart';
-import '../../widgets/favorite_reminding_card.dart';
-import '../../widgets/pilih_reminding_card.dart';
-import '../../widgets/reminding_page_textfield.dart';
 
-class AdminRemindingPage extends StatelessWidget {
+class AdminRemindingPage extends StatefulWidget {
+  @override
+  _AdminRemindingPageState createState() => _AdminRemindingPageState();
+}
+
+class _AdminRemindingPageState extends State<AdminRemindingPage> {
+  final TextEditingController searchReminding = TextEditingController();
   final RemindingController remindingController = Get.find();
+  final LoginController loginController = Get.find();
+
   @override
   Widget build(BuildContext context) {
+    int selectedItem = 0;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -77,43 +85,67 @@ class AdminRemindingPage extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                          Icon(
-                            Icons.more_vert,
-                            color: Colors.white,
-                          )
+                          PopupMenuButton<int>(
+                            icon: Icon(
+                              Icons.more_vert,
+                              color: Colors.white,
+                            ),
+                            onSelected: (item) {
+                              setState(() {
+                                selectedItem = item;
+                                handleThreeDots(selectedItem);
+                              });
+                            },
+                            itemBuilder: (context) => [
+                              PopupMenuItem<int>(
+                                value: 0,
+                                child: Text(
+                                  'Profile',
+                                  style: blackText,
+                                ),
+                              ),
+                              PopupMenuItem<int>(
+                                value: 1,
+                                child: Text(
+                                  'About Us',
+                                  style: blackText,
+                                ),
+                              ),
+                              PopupMenuItem<int>(
+                                value: 2,
+                                child: Text(
+                                  'Logout',
+                                  style: blackText,
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 170,
                   ),
-                  Text(
-                    'Reminding Favorite',
-                    style: whiteText.copyWith(fontSize: 18),
+                  Container(
+                    color: Colors.white,
+                    child: TextField(
+                      controller: searchReminding,
+                      onChanged: (value) {
+                        setState(() {});
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: pinkColor,
+                        ),
+                        contentPadding: EdgeInsets.all(10),
+                        border: InputBorder.none,
+                        labelText: 'Cari Reminding',
+                        labelStyle: blackText.copyWith(fontSize: 12),
+                      ),
+                    ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Obx(
-                    () => remindingController.isLoading.value
-                        ? CircularProgressIndicator()
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: remindingController.listReminding
-                                .map(
-                                  (e) => FavoriteRemindingCard(
-                                    reminding: e.pertanyaan,
-                                  ),
-                                )
-                                .take(2)
-                                .toList(),
-                          ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  RemindingPageTextField(),
                   SizedBox(
                     height: 15,
                   ),
@@ -124,23 +156,62 @@ class AdminRemindingPage extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
-                  Obx(
-                    () => remindingController.isLoading.value
-                        ? Center(child: CircularProgressIndicator())
-                        : Expanded(
-                            child: SingleChildScrollView(
-                              physics: BouncingScrollPhysics(),
-                              child: Column(
-                                children: remindingController.listReminding
-                                    .map(
-                                      (e) => PilihRemindingCard(
-                                        reminding: e,
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Obx(
+                            () => remindingController.isLoading.value
+                                ? Center(child: CircularProgressIndicator())
+                                : SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        ListView.builder(
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemCount: remindingController
+                                              .listReminding.length,
+                                          itemBuilder: (context, index) {
+                                            if (searchReminding.text.isEmpty) {
+                                              return PilihRemindingCard(
+                                                isAdmin: true,
+                                                idReminding: remindingController
+                                                    .listReminding[index]
+                                                    .idReminding,
+                                                pertanyaan: remindingController
+                                                    .listReminding[index]
+                                                    .pertanyaan,
+                                              );
+                                            } else if (remindingController
+                                                .listReminding[index]
+                                                .pertanyaan!
+                                                .toLowerCase()
+                                                .contains(
+                                                    searchReminding.text)) {
+                                              return PilihRemindingCard(
+                                                  isAdmin: true,
+                                                  idReminding:
+                                                      remindingController
+                                                          .listReminding[index]
+                                                          .idReminding,
+                                                  pertanyaan:
+                                                      remindingController
+                                                          .listReminding[index]
+                                                          .pertanyaan);
+                                            } else {
+                                              return Container();
+                                            }
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                           ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -149,5 +220,18 @@ class AdminRemindingPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void handleThreeDots(int? item) {
+    switch (item) {
+      case 0:
+        Get.offAndToNamed(routeName.reverse[RouteName.PROFILPAGE]!);
+        break;
+      case 1:
+        Get.offAndToNamed(routeName.reverse[RouteName.WEBVIEW]!);
+        break;
+      case 2:
+        loginController.userLogout();
+    }
   }
 }

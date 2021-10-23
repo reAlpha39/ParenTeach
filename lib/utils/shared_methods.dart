@@ -58,7 +58,7 @@ Future<void> confirmPopup(Function? confirm) {
   ).then((value) => value = false);
 }
 
-showDialog({required String title, required String middleText}) {
+showModalDialog({required String title, required String middleText}) {
   Get.defaultDialog(
     barrierDismissible: false,
     titleStyle: blackText.copyWith(fontSize: 24),

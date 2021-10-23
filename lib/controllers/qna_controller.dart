@@ -67,6 +67,7 @@ class QnaController extends GetxController {
             ? await _databaseProvider.updateQna(data)
             : await _databaseProvider.addQna(data);
         if (isSuccess) {
+          Get.back();
           _getQnaData();
           _showDialog(
             title: 'Success',

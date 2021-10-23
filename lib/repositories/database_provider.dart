@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:parenteach/models/agenda.dart';
+import 'package:parenteach/models/kelas.dart';
 import 'package:parenteach/models/nilai_raport.dart';
 import '../models/guru.dart';
 import '../models/qna.dart';
@@ -150,6 +152,27 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  Future<bool> addKelas(Kelas data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('kelas').collection('kelas');
+      var querySnapshot = await collection.get();
+      if (querySnapshot.size == 0) {
+        data.idKelas = '1';
+      } else {
+        int lastId = searchLastId(querySnapshot)!;
+        data.idKelas = (lastId + 1).toString();
+      }
+      isSuccess = true;
+      await collection.doc(data.idKelas).set(data.toMap());
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
   int? searchLastId(QuerySnapshot querySnapshot) {
     int? id;
     var data = querySnapshot.docs.last.id;
@@ -187,6 +210,36 @@ class DatabaseProvider {
       print(e);
     }
     return temp;
+  }
+
+  Future<List<Kelas>> getKelas() async {
+    List<Kelas> temp = [];
+    try {
+      CollectionReference collection =
+          mainCollection().doc('kelas').collection('kelas');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(Kelas.fromMap(
+            querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
+  }
+
+  Future<bool> updateKelas(Kelas data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('kelas').collection('kelas');
+      await collection.doc(data.idKelas).set(data.toMap());
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
   }
 
   Future<bool> updateQna(Qna data) async {
@@ -315,6 +368,20 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  Future<bool> deleteKelas(String idKelas) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('kelas').collection('kelas');
+      await collection.doc(idKelas).delete();
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
   Future<List<Guru>> getGuruList() async {
     List<Guru> temp = [];
     try {
@@ -402,6 +469,43 @@ class DatabaseProvider {
           .doc(data.nis)
           .collection('nilaiRaport')
           .doc(data.idMapel)
+          .set(data.toMap());
+      isSuccess = true;
+    } catch (e) {
+      isSuccess = false;
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future<List<Agenda>> getAgenda(String idUser) async {
+    List<Agenda> temp = [];
+    try {
+      CollectionReference collection = mainCollection()
+          .doc('users')
+          .collection('users')
+          .doc(idUser)
+          .collection('agenda');
+      var querySnapshot = await collection.get();
+      for (int i = 0; i <= querySnapshot.docs.length - 1; i++) {
+        temp.add(Agenda.fromMap(
+            querySnapshot.docs[i].data() as Map<String, dynamic>));
+      }
+    } catch (e) {
+      print(e);
+    }
+    return temp;
+  }
+
+  Future<bool> addAgenda(String idUser, Agenda data) async {
+    bool isSuccess = false;
+    try {
+      CollectionReference collection =
+          mainCollection().doc('users').collection('users');
+      await collection
+          .doc(idUser)
+          .collection('agenda')
+          .doc(data.idAgenda)
           .set(data.toMap());
       isSuccess = true;
     } catch (e) {

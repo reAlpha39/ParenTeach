@@ -32,7 +32,51 @@ class KalenderPageAdmin extends StatelessWidget {
                 label2: 'Tahun Akhir',
                 isDouble: true,
               ),
-              // Yang set tahun belum
+              Container(
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 50,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey, width: 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: DropdownButton<String>(
+                        elevation: 0,
+                        underline: SizedBox(),
+                        isExpanded: true,
+                        hint: Text("Status"),
+                        value: '--Set Tahun Aktif--',
+                        items: <String>[
+                          '--Set Tahun Aktif--',
+                          '2020/2021',
+                          '2021/2022',
+                          '2022/2023',
+                          '2023/2024',
+                        ].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? val) {
+                          // kelasController.tingkatKelas.value = val!;
+                          // print(kelasController.tingkatKelas.value);
+                        },
+                      ),
+                    ),
+                    buildButton(onPressed: () {}),
+                  ],
+                ),
+              ),
               buildTextField(
                 namaController: tahunAwal,
                 label1: '2019/2020',

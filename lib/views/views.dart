@@ -4,4 +4,4 @@ export 'home_page.dart';
 export 'login_page.dart';
 export 'playground_page.dart';
 export 'qna_page.dart';
-export 'admin/kalender_page.dart';
+export 'admin/tahun_page.dart';
