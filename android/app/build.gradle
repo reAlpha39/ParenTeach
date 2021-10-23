@@ -46,6 +46,10 @@ android {
     }
 }
 
+dependencies {
+  implementation 'io.grpc:grpc-okhttp:1.41.0'
+}
+
 flutter {
     source '../..'
 }
